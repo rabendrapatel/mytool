@@ -1,0 +1,2097 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+// @import "handy_material_theming.scss";
+@import "handy_mat_theme.scss";
+// Plus imports for other components in your app.
+// src\client\web\node_modules\@angular\material\_theming.scss
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$custom-typography: mat-typography-config(
+  $font-family:
+    ' segoe-ui, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" ',
+);
+
+@include angular-material-typography($custom-typography);
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+// LIGHT pallets
+$web-light-primary: mat-palette($mat-primary-blue-handy, 500);
+$web-light-accent: mat-palette($mat-accent-yellow-handy, 500, A200, A100, A400);
+$web-light-warn: mat-palette($mat-warn-red-handy, 400);
+
+// DARK pallets
+$web-dark-primary: mat-palette($mat-primary-blue-handy, 500);
+$web-dark-accent: mat-palette($mat-accent-yellow-handy, 500, A200, A100, A400);
+$web-dark-warn: mat-palette($mat-warn-red-handy, 300);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$web-light-theme: mat-light-theme($web-light-primary, $web-light-accent, $web-light-warn);
+$web-dark-theme: mat-dark-theme($web-dark-primary, $web-dark-accent, $web-dark-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+// import normalizer
+@import "normalizer.scss";
+
+/*=============================================
+=            Sizes            =
+=============================================*/
+
+$marginPaddingPinned: 51px;
+$marginPaddingUnpined: 251px;
+
+/*=====  End of Sizes  ======*/
+
+/*=============================================
+=            Transitions            =
+=============================================*/
+$transitionsWidth: width 250ms cubic-bezier(0.86, 0, 0.07, 1);
+$transitionsPadding: padding 250ms cubic-bezier(0.86, 0, 0.07, 1);
+$transitionsAll: 250ms cubic-bezier(0.86, 0, 0.07, 1);
+$transitionSec: 250ms;
+/*=====  End of Transitions  ======*/
+
+@import "colorsThemes.scss";
+
+/*=============================================
+=            Light Theme           =
+=============================================*/
+
+.light-theme {
+  @include angular-material-theme($web-light-theme);
+  // Colors
+  $mainColor: mat-color(mat-palette($mat-gray-handy, 800));
+  $navIconColor: mat-color(mat-palette($mat-gray-handy, 400));
+  $activeItemNav: mat-color(mat-palette($mat-gray-handy, 800));
+  $colorTextLink: mat-color(mat-palette($mat-gray-handy, 50));
+  $activeIcon: mat-color(mat-palette($mat-primary-blue-handy, 500));
+  $backgroundColorActive: mat-color(mat-palette($mat-primary-blue-handy, 500));
+  $borderColor: mat-color(mat-palette($mat-gray-handy, 900));
+  $colorWhite: #fff;
+  $overFlow: rgba(0, 0, 0, 0.6);
+  $titleSectionSideNav: mat-color(mat-palette($mat-gray-handy, 400));
+  $blackLight: rgba(0, 0, 0, 0.3);
+  $backgroundFooterColor: mat-color(mat-palette($mat-gray-handy, 100));
+  $footerText: mat-color(mat-palette($mat-gray-handy, 900));
+  $footerBorder: mat-color(mat-palette($mat-gray-handy, 200));
+  $backGroundColorCardHeader: mat-color(mat-palette($mat-gray-handy, 100));
+
+  @include colorTheme(
+    $mainColor,
+    $navIconColor,
+    $activeItemNav,
+    $colorTextLink,
+    $activeIcon,
+    $backgroundColorActive,
+    $borderColor,
+    $colorWhite,
+    $overFlow,
+    $titleSectionSideNav,
+    $blackLight,
+    $backgroundFooterColor,
+    $footerText,
+    $footerBorder,
+    $backGroundColorCardHeader
+  );
+
+  .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: mat-color(mat-palette($mat-primary-blue-handy, 600));
+  }
+
+  .mat-form-field-appearance-fill.mat-form-field-disabled .mat-form-field-flex {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  /*=============================================
+  =            Section handu-rte-input color            =
+  =============================================*/
+  quill-view-html .ql-container {
+    border: 1px solid #949494 !important;
+  }
+
+  quill-editor .ql-container.ql-snow,
+  quill-editor .ql-toolbar.ql-snow {
+    border-color: #949494 !important;
+  }
+// addedhere
+.auth-page {
+       .logo-side-nav {
+        border: 1px solid #0098d3;
+       }
+      }
+  /*=====  End of Section handu-rte-input color   ======*/
+  // Error notifications
+  .error-notification {
+    background-color: mat-color(mat-palette($mat-warn-red-handy, 400)) !important;
+    color: #fff !important;
+  }
+   // login forms
+  //  .auth-page {
+     .mat-card {
+       border: 1px solid #c8ced3;
+      
+    //  }
+   }
+
+  //  def notifications
+   .mat-snack-bar-container{
+     color: mat-color(mat-palette($mat-gray-handy, 800));
+     background: mat-color(mat-palette($mat-gray-handy, 50));
+   }
+    // title complete registration form
+    .handy-complete-reg-form-title {
+      background-color: mat-color(mat-palette($mat-primary-blue-handy, 500));
+      color: #fff;
+    }
+    // menu popup disabled
+    .mat-menu-after .mat-menu-item[disabled],
+     .mat-menu-after .mat-menu-item[disabled]::after,
+     .mat-menu-item[disabled],
+     .mat-menu-item[disabled]::after {
+      color: mat-color(mat-palette($mat-gray-handy, 400));
+    }
+      
+
+  //  .mat-menu-after.mat-menu-panel {
+  //     background: mat-color(mat-palette($mat-gray-handy, 50));
+  //     box-shadow: 0px 0px 0px 1px #c8ced3;
+      
+  //   }
+
+  //   .mat-menu-after .mat-menu-item {
+  //     color: mat-color(mat-palette($mat-gray-handy, 800));
+  //   }
+
+    // form login footer action
+    .handy-form-action-login-footer {
+      a {
+        color: mat-color(mat-palette($mat-primary-blue-handy, 500));
+        &:hover {
+          color: mat-color(mat-palette($mat-primary-blue-handy, 700));
+        }
+      }
+      .handy-form-unlock {
+        color: mat-color(mat-palette($mat-accent-yellow-handy, 800));
+        &:hover {
+          color: mat-color(mat-palette($mat-accent-yellow-handy, 900));
+        }
+      }
+    }
+
+    // upload component
+    .upload-drag-over {
+      background-color: mat-color(mat-palette($mat-gray-handy, 900)) !important;
+      color: mat-color(mat-palette($mat-gray-handy, 50)) !important;
+    }
+
+    .upload-btn-browse {
+      color: mat-color(mat-palette($mat-primary-blue-handy, 500));
+      transition: 350ms;
+      &:hover{
+      color: mat-color(mat-palette($mat-primary-blue-handy, 700));
+      }
+    }
+
+    .upload-form-drag-and-drop-section {
+      icon-btn {
+        mat-icon {
+          &:hover {
+            color: mat-color(mat-palette($mat-primary-blue-handy, 500));
+            
+          }
+        }
+      }
+    }
+     
+  .file-thumb-actions {
+      background: linear-gradient(mat-color(mat-palette($mat-primary-blue-handy, 500)), rgba(255, 255, 255, 0));
+    }
+
+}
+
+/*=============================================
+=            Dark Theme           =
+=============================================*/
+
+.dark-theme {
+  @include angular-material-theme($web-dark-theme);
+  // Colors
+  $mainColor: mat-color(mat-palette($mat-gray-handy, 800));
+  $navIconColor: mat-color(mat-palette($mat-gray-handy, 400));
+  $activeItemNav: mat-color(mat-palette($mat-gray-handy, 800));
+  $colorTextLink: mat-color(mat-palette($mat-gray-handy, 50));
+  $activeIcon: mat-color(mat-palette($mat-primary-blue-handy, 500));
+  $backgroundColorActive: mat-color(mat-palette($mat-primary-blue-handy, 500));
+  $borderColor: mat-color(mat-palette($mat-gray-handy, 900));
+  $colorWhite: #fff;
+  $overFlow: rgba(0, 0, 0, 0.6);
+  $titleSectionSideNav: mat-color(mat-palette($mat-gray-handy, 400));
+  $blackLight: rgba(0, 0, 0, 0.3);
+  $backgroundFooterColor: mat-color(mat-palette($mat-gray-handy, 800));
+  $footerText: mat-color(mat-palette($mat-gray-handy, 200));
+  $footerBorder: mat-color(mat-palette($mat-gray-handy, 900));
+  $backGroundColorCardHeader: mat-color(mat-palette($mat-gray-handy, 700));
+
+  @include colorTheme(
+    $mainColor,
+    $navIconColor,
+    $activeItemNav,
+    $colorTextLink,
+    $activeIcon,
+    $backgroundColorActive,
+    $borderColor,
+    $colorWhite,
+    $overFlow,
+    $titleSectionSideNav,
+    $blackLight,
+    $backgroundFooterColor,
+    $footerText,
+    $footerBorder,
+    $backGroundColorCardHeader
+  );
+
+  .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #fff;
+    // mat-color(mat-palette($mat-primary-blue-handy, 300));s
+  }
+
+
+
+  /*=============================================
+  =            handu-rte-input color            =
+  =============================================*/
+  handy-rte-input {
+    .ql-toolbar.ql-snow {
+      background-color: mat-color(mat-palette($mat-gray-handy, 700));
+    }
+
+    .ql-snow .ql-stroke,
+    .ql-snow .ql-fill,
+    .ql-snow.ql-toolbar .ql-stroke.ql-fill {
+      stroke: #fff;
+    }
+
+    .ql-snow .ql-picker:not(.ql-expanded) {
+      color: #fff;
+    }
+
+    .ql-editor.ql-blank::before {
+      color: #fff;
+    }
+
+    .ql-snow .ql-picker-item .ql-stroke {
+      stroke: #444;
+    }
+  }
+
+  quill-view-html .ql-container {
+    border: 1px solid #c4c6c9 !important;
+  }
+
+  quill-editor .ql-container.ql-snow,
+  quill-editor .ql-toolbar.ql-snow {
+    border-color: #c4c6c9 !important;
+  }
+
+  /*=====  End of handu-rte-input  ======*/
+
+  // Error notifications
+  .error-notification {
+    background-color: mat-color(mat-palette($mat-warn-red-handy, 300)) !important;
+    color:#fff;
+  }
+
+  // login forms
+  // .auth-page {
+    .mat-card {
+      border: 1px solid #23282c;
+    }
+  // }
+  //  def notifications
+  .mat-snack-bar-container {
+    color: mat-color(mat-palette($mat-gray-handy, 50));
+    background: mat-color(mat-palette($mat-gray-handy, 800));
+  }
+
+  // title complete registration form
+  .handy-complete-reg-form-title {
+    background-color: mat-color(mat-palette($mat-primary-blue-handy, 500));
+  }
+
+  // form login footer action
+  .handy-form-action-login-footer {
+    a {
+      color: mat-color(mat-palette($mat-primary-blue-handy, 500));
+
+      &:hover {
+        color: mat-color(mat-palette($mat-primary-blue-handy, 700));
+      }
+    }
+
+    .handy-form-unlock {
+      color: mat-color(mat-palette($mat-accent-yellow-handy, 400));
+
+      &:hover {
+        color: mat-color(mat-palette($mat-accent-yellow-handy, 700));
+      }
+    }
+  }
+
+  // upload component
+  .upload-drag-over {
+    background-color: mat-color(mat-palette($mat-gray-handy, 50)) !important;
+    color: mat-color(mat-palette($mat-gray-handy, 900)) !important;
+  }
+  
+  .upload-btn-browse {
+    color: mat-color(mat-palette($mat-primary-blue-handy, 500));
+    transition: 350ms;
+    &:hover {
+      color: mat-color(mat-palette($mat-primary-blue-handy, 700));
+    }
+  }
+  .upload-form-drag-and-drop-section {
+    icon-btn {
+      mat-icon {
+        &:hover {
+          color: mat-color(mat-palette($mat-primary-blue-handy, 500));
+
+        }
+      }
+    }
+  }
+
+  .file-thumb-actions {
+    background: linear-gradient(mat-color(mat-palette($mat-primary-blue-handy, 500)), rgba(255, 255, 255, 0));
+  }
+
+}
+
+
+/*=============================================
+=            Theme General Settings            =
+=============================================*/
+
+
+
+.cdk-overlay-pane{
+  transform: none !important;
+}
+
+
+
+/*=============================================
+=            handy-rte-input  general settings            =
+=============================================*/
+quill-view-html .ql-container {
+  margin-bottom: 1.34375em;
+  transition: $transitionsAll;
+}
+
+.ql-snow .ql-stroke,
+.ql-snow .ql-fill,
+.ql-snow.ql-toolbar .ql-stroke.ql-fill,
+.ql-snow .ql-picker,
+.ql-editor.ql-blank::before,
+.ql-snow .ql-picker-item .ql-stroke {
+  transition: $transitionsAll;
+}
+
+.ql-container,
+.ql-toolbar.ql-snow {
+  font-family: segoe-ui, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+
+.quill-editor-handy-section {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-bottom: 1.34375em;
+
+  .mat-progress-spinner {
+    position: absolute;
+    bottom: calc(1.34375em + 10px);
+    right: 10px;
+  }
+
+  & > button {
+    position: absolute;
+    bottom: calc(1.34375em);
+    right: -0.7rem;
+  }
+}
+
+quill-editor .ql-tooltip {
+  z-index: 5;
+}
+
+/*=====  End of handy-rte-input  general settings  ======*/
+
+// Data picker
+
+.date-calendar-handy {
+  .mat-calendar-header {
+    padding-top: 0 !important;
+
+    .mat-calendar-control {
+      margin-top: 0 !important;
+    }
+  }
+}
+
+.date-overlay-wrapper {
+  & > handy-select-input {
+    .mat-form-field-wrapper {
+      bottom: -0.2em;
+    }
+  }
+}
+
+.time-zone {
+  .mat-form-field-infix {
+    text-align: center !important;
+  }
+}
+
+.datepicker-input-calendar .mat-calendar-content {
+  padding-bottom: 0 !important;
+}
+
+.data-range-elements .mat-form-field-infix {
+  width: auto;
+}
+
+/*=============================================
+=            Scrollbar            =
+=============================================*/
+
+// // scroll bar
+
+// ::-webkit-scrollbar {
+//   width: 10px;
+// }
+
+// /* Track */
+// ::-webkit-scrollbar-track {
+//   box-shadow: inset 0 0 5px mat-color(mat-palette($mat-gray-handy, 500));
+//   border-radius: 5px;
+// }
+
+// /* Handle */
+// ::-webkit-scrollbar-thumb {
+//   background: mat-color(mat-palette($mat-gray-handy, 500));
+//   border-radius: 2px;
+// }
+
+// /* Handle on hover */
+// ::-webkit-scrollbar-thumb:hover {
+//   background: mat-color(mat-palette($mat-gray-handy, 700));
+// }
+
+/*=====  End of Scrollbar  ======*/
+
+/* You can add global styles to this file, and also import other style files */
+mat-sidenav-content {
+  padding-top: 94px;
+}
+
+.xsmall-layout {
+  mat-sidenav-content {
+    padding-top: 70px;
+  }
+}
+
+/*=============================================
+=            Handy Side-Nav            =
+=============================================*/
+
+// side-nav pinned
+handy-sidenav {
+  .side-nav-content.pinned {
+    width: $marginPaddingUnpined;
+    transition: $transitionsWidth;
+  }
+}
+
+// Title side Nav
+.sidebar-nav-title {
+  padding: 0.75rem 0.2rem 0.75rem 1.2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+// not-pinned start
+%nonpipedPadding {
+  padding: 0.3rem 0 !important;
+}
+
+%cursorPointed {
+  cursor: pointer !important;
+}
+
+.non-pinned {
+  transition: $transitionsWidth;
+
+  .sidebar-nav-title {
+    display: none;
+  }
+
+  .sidneav-navigation-item-non-pined {
+    padding: 0;
+
+    non-pinned-menu {
+      @extend %nonpipedPadding;
+    }
+
+    handy-icon {
+      @extend %nonpipedPadding;
+
+      mat-icon.icon_placement_sidenav {
+        font-size: 1.125rem !important;
+      }
+    }
+
+    &:hover {
+      @extend %cursorPointed;
+    }
+  }
+}
+
+// sub nav pinned
+.mat-menu-panel {
+  border-radius: 0 !important;
+}
+
+.mat-menu-panel .mat-menu-content:not(:empty) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mat-menu-panel .mat-icon {
+  font-size: 1rem !important;
+  width: auto;
+  height: auto;
+}
+
+.mat-menu-item {
+  height: 35px !important;
+  line-height: 35px !important;
+
+  padding: 0 1rem !important;
+  transition: $transitionSec;
+}
+
+.mat-menu-item .mat-icon {
+  margin-right: 0.5rem !important;
+}
+
+// side nav pined
+.sidneav-navigation-item-pined {
+  padding: 0.2rem 1rem;
+
+  & > handy-icon {
+    & > mat-icon {
+      font-size: 1.15rem !important;
+    }
+  }
+
+  & > handy-icon.ng-star-inserted {
+    & > mat-icon {
+      font-size: 0.6rem !important;
+    }
+  }
+
+  &:hover {
+    @extend %cursorPointed;
+  }
+}
+
+/*=====  End of Handy Side-Nav  ======*/
+
+/*=============================================
+=            Top Bar            =
+=============================================*/
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 55px !important;
+}
+
+.mat-toolbar-single-row {
+  padding: 0 6px !important;
+}
+
+.mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+  right: -5px !important;
+}
+
+.mat-badge-small.mat-badge-above .mat-badge-content {
+  top: -6px !important;
+  width: auto;
+  height: auto;
+  padding: 0 0.6em;
+  border-radius: 10rem;
+  line-height: 1.8;
+}
+
+.navbar-nav-right-side {
+  margin-left: auto !important;
+  margin-right: 1rem;
+}
+
+.top-nav-icon-setings {
+  margin-left: 1rem !important;
+}
+
+.top-nav-title {
+  font-size: 1rem;
+}
+
+.mat-icon {
+  transition: color $transitionSec;
+}
+
+handy-nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3000;
+  right: 0;
+}
+
+.nav-bar-over-not-pinned {
+  padding-left: 0;
+}
+
+.nav-bar-over-pinned {
+  padding-left: $marginPaddingPinned;
+  transition: $transitionsPadding;
+}
+
+.nav-bar-over-pinned-close {
+  padding-left: 0;
+}
+
+.nav-bar-over-not-pinned-open {
+  padding-left: $marginPaddingUnpined;
+  transition: $transitionsPadding;
+}
+
+.side-nav-was-pinned {
+  margin-left: $marginPaddingPinned !important;
+  transition: $transitionsWidth;
+}
+
+.tran-side-content {
+  transition: $transitionsWidth;
+}
+
+.piped-and-close {
+  margin-left: 0 !important;
+}
+
+.not-piped-open {
+  margin-left: $marginPaddingUnpined !important;
+  transition: $transitionsWidth;
+}
+
+/*=====  End of Top Bar  ======*/
+
+// main content and footer
+
+.mat-sidenav-content {
+  transition: $transitionsAll;
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.main-content {
+  padding: 0 1.5rem;
+  min-height: 100%;
+  margin: 0 auto 70px;
+}
+
+.handy-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  max-height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: $transitionsWidth;
+
+  p {
+    font-size: 0.875rem;
+    margin: 0;
+    white-space: break-spaces;
+    text-align: center;
+    line-height: 1.5;
+
+    a {
+      font-size: inherit;
+    }
+  }
+}
+
+/*=============================================
+=            LOGO            =
+=============================================*/
+
+// logo side nav
+.logo-side-nav {
+  overflow: hidden;
+  max-width: 80px;
+  border-radius: 50%;
+  margin: 2rem auto;
+  // background-color: $colorWhite;
+
+  img {
+    display: block;
+    transition: $transitionSec;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    img {
+      transform: scale(0.9);
+    }
+  }
+}
+
+.non-pinned .logo-side-nav {
+  max-width: 80px;
+  margin: 0.8rem 0.5rem;
+}
+
+// logo top bar
+%imgLog {
+  display: block;
+  transition: $transitionSec;
+  transform: scale(0.9);
+}
+
+.logo-top-bar {
+  max-width: 130px;
+  max-height: 40px;
+  padding: 0.2rem 0.7rem;
+  border-radius: 10rem;
+  margin: 0 1rem;
+
+  img {
+    @extend %imgLog;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1);
+    }
+  }
+}
+
+// logo top bar pinned
+.logo-top-bar-pined {
+  width: 40px;
+  border-radius: 10rem;
+  height: 40px;
+
+  img {
+    @extend %imgLog;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1);
+    }
+  }
+}
+
+/*=====  End of LOGO  ======*/
+
+// general transition
+handy-sidenav .sidneav-navigation-item-pined,
+handy-sidenav .sidneav-navigation-item-pined mat-ico,
+.side-nav-content-bottom,
+.side-nav-content-bottom:hover mat-icon,
+mat-ico {
+  transition: $transitionsAll;
+}
+
+// need
+.cdk-overlay-container {
+  z-index: 3001;
+}
+
+.mat-drawer.mat-sidenav {
+  z-index: 3000 !important;
+}
+
+.mat-drawer-backdrop {
+  z-index: 2999 !important;
+}
+
+/*=====  End of Theme General Settings  ======*/
+
+mat-form-field {
+  width: 100%;
+}
+
+.calendar-single-select {
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+/*=============================================
+=            Example Components            =
+===============================`==============*/
+
+.example-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  button {
+    margin: 0.5rem;
+  }
+
+  a {
+    display: block;
+  }
+
+  .example-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    button {
+      margin: 0.5rem;
+    }
+  }
+}
+
+.handy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/*=====  End of Example Components  ======*/
+
+/*=============================================
+=            ADDITIONAL            =
+=============================================*/
+//  form fields general
+.mat-form-field-prefix {
+  padding-right: 0.2rem;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: 0 !important;
+}
+
+.mat-select-panel .mat-optgroup-label {
+  font-weight: bold;
+}
+
+handy-radio-group-input mat-label {
+  margin-right: 0.5rem;
+}
+
+.mat-radio-button {
+  padding: 0.2rem;
+}
+
+// card
+.mat-card {
+  padding: 0 !important;
+
+  .mat-card-header {
+    padding: 0.5rem;
+    // border-bottom: 1px solid mat-color(mat-palette($mat-gray-handy, 900));
+    // background-color: mat-color(mat-palette($mat-gray-handy, 700));
+
+    .mat-card-title {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 2;
+      margin: 0 !important;
+    }
+  }
+
+  .mat-card-content {
+    padding: 1rem 1.5rem;
+  }
+}
+
+u {
+  text-decoration: underline;
+}
+
+form > handy-icon .mat-icon {
+  font-size: 16px !important;
+}
+
+.mat-form-field-prefix,
+.mat-form-field-suffix {
+  text-align: center;
+}
+
+// mat icons
+.mat-mini-fab .mat-button-wrapper,
+.mat-fab .mat-button-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-content: center !important;
+}
+
+/*=====  End of ADDITIONAL  ======*/
+/*=============================================
+=            Login Form   07.07.2020         =
+=============================================*/
+.handy-form-action-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: .8rem;
+  margin-bottom: .8rem;
+
+  a {
+    color: #0098d3;
+
+    &:hover {
+      color: #0079b2;
+    }
+  }
+}
+
+.handy-form-action-login-footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+
+  // a {
+  //   color: #0098d3;
+
+  //   &:hover {
+  //     color: #0079b2;
+  //   }
+  // }
+
+  // .handy-form-unlock {
+  //   color: #ffca28;
+
+  //   &:hover {
+  //     color: #ffa000;
+  //   }
+  // }
+
+
+
+.handy-form-action-login-footer-many {
+  justify-content: space-between;
+
+}
+
+.handy-form-unlockCountDown,
+.handy-form-title {
+  text-align: center;
+}
+
+.handy-form-title {
+  // font-size: 1.7rem !important;
+  // text-transform: capitalize;
+}
+
+.handy-single-button-form {
+  margin-top: .8rem;
+}
+
+// register form
+.handy-form-password-hint {
+  .password-strength-wrapper {
+    position: relative;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+
+    icon-btn {
+      &:first-of-type {
+        position: absolute;
+        right: 25px;
+        top: -13px;
+        color: #0098d3;
+        // color:#ffca28;
+
+      }
+
+      &:last-of-type {
+        position: absolute;
+        right: -9px;
+        top: -13px;
+
+      }
+    }
+
+  }
+}
+
+password-hint>.ng-star-inserted {
+
+  span.ng-star-inserted {
+    align-items: center;
+    margin-bottom: .2rem;
+
+    handy-icon {
+      margin-right: .5rem;
+    }
+  }
+}
+
+
+.auth-page {
+  mat-form-field {
+    margin-bottom: .2rem;
+  }
+}
+
+// .auth-page {
+.mat-card {
+  box-shadow: none !important;
+  // border: 1px solid #23282c;
+  border-radius: .25rem;
+  // }
+}
+
+
+
+// complete registration form
+
+
+handy-radio-group-input>div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+user-preferences-form {
+  handy-radio-group-input>div {
+    flex-direction: column;
+     align-items: flex-start;
+  }
+  
+}
+
+.handy-complete-reg-form-content{
+  .mat-vertical-content {
+    margin: .5rem 0;
+    padding: 0 24px ;
+  }
+  
+}
+
+.handy-complete-reg-form-content mat-vertical-stepper {
+    padding: 1rem 0 !important;
+}
+
+.handy-user-preference-elements > *{
+  margin: 1rem 0;
+}
+
+.handy-complete-reg-form-title{
+  margin-bottom: 0 !important;
+  text-align: center;
+  // background-color: #0098d3;
+  padding: .8rem 0;
+}
+
+.auth-home-page {
+  margin-top: 2rem;
+}
+
+
+
+// .mat-dialog-container {
+//   user-preferences-form {
+//     min-width: 500px !important;
+//   }
+// }
+// .cdk-global-overlay-wrapper{
+//   .cdk-overlay-pane{
+//     // max-width: 90vw !important;
+//     max-width: 500px !important;
+//     min-width: 500px !important;
+//   }
+// }
+
+
+/*=============================================
+=            Upload Component            =
+=============================================*/
+upload-form {
+  handy-form {
+    form {
+      // padding-right: 18px;
+      padding-top: 40px !important;
+
+      .mat-tooltip-trigger {
+        margin-right: -14px;
+        margin-top: -2px;
+      }
+    }
+  }
+}
+
+
+
+.upload-form-drag-and-drop-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+
+  .upload-form-drag-and-drop-title {
+    font-size: 1.1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: .8rem;
+
+    .upload-btn-browse {
+
+      text-decoration: underline;
+      margin-left: 6px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  icon-btn {
+
+    mat-icon {
+      font-size: 40px !important;
+    }
+  }
+}
+
+
+
+.upload-form-drag-and-drop-files-list {
+  // file thumb
+  display: flex;
+  // justify-content: center;
+  flex-wrap: wrap;
+
+  file-thumb {
+    position: relative;
+    // border: 1px solid #7d8996;
+    padding: 0;
+    margin: 0 .6rem .6rem 0;
+    width: 78.75px;
+
+    .file-thumb-image-block {
+      height: 105px;
+
+      img {
+        object-fit: cover;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .file-thumb-file-name {
+      margin-top: .15rem;
+      font-size: .7rem;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    .file-thumb-actions {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: .2rem 0;
+      display: flex;
+      justify-content: space-between;
+      width: 78.75px;
+      margin-left: auto;
+      margin-right: auto;
+
+      icon-btn {
+        display: block;
+        margin-right: 0 !important;
+        button {
+          display: block;
+          width: 25px;
+          height: 30px;
+          line-height: 25px;
+          span {
+            handy-icon {
+
+              mat-icon {
+                margin-left: 0 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .file-thumb-file-icon {
+      &>handy-icon {
+        margin-right: 0;
+
+        .mat-icon {
+          // font-size: 105px !important;
+          height: 105px !important;
+          width: 78.75px !important;
+          display: flex;
+          justify-content: center;
+        }
+      }
+      .mat-progress-spinner{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+      }
+    }
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+.upload-form-drag-and-drop-input{
+  position: relative;
+  &>.mat-progress-spinner{
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 200;
+  }
+  mat-error{
+    position: relative;
+    top: -5px;
+  }
+
+}
+
+.upload-form-drag-and-drop-submit{
+  margin-top: 1rem;
+}
+
+
+/*=====  End of Upload Component  ======*/
+/*=============================================
+=            Media Queries            =
+=============================================*/
+@media only screen and (max-width: 725px) {
+.mat-dialog-container {
+  user-preferences-form {
+    min-width: 300px !important;
+  }
+}
+}
+
+@media only screen and (max-width: 500px) {
+  // title top nav
+  .top-nav-title {
+    display: none;
+    margin-top: -1px;
+  }
+
+  // main content
+  .main-content {
+    padding: 0 1rem;
+  }
+
+  .handy-grid {
+    grid-template-columns: repeat(1, auto);
+  }
+
+  // upload component
+  .upload-form-drag-and-drop-files-list {
+    // file thumb
+    justify-content: center;
+  }
+
+  
+}
+
+@media only screen and (max-width: 400px) {
+  .mat-dialog-container {
+    user-preferences-form {
+      min-width: 250px !important;
+    }
+  }
+  .cdk-global-overlay-wrapper {
+    .cdk-overlay-pane {
+      max-width: 95vw !important;
+    }
+  }
+}
+
+/*=====  End of Media Queries  ======*/
+
+/*=====  Needed for RTE input  ======*/
+@import "../../../../../node_modules/quill/dist/quill.core.css";
+@import "../../../../../node_modules/quill/dist/quill.snow.css";
+
+/* ------------------------------ Added by peter ----------------------------- */
+
+.btn-with-icon {
+  display: flex !important;
+  align-items: center;
+}
+
+.btn-with-icon .mat-button-wrapper {
+  display: flex;
+  align-items: center;
+  // justify-content: space-around;
+}
+
+
+
+.full-screen-handy-form {
+  // border: 3px solid yellow;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------------------------------- Table --------------------------------- */
+mat-table {
+  width: fit-content;
+  min-height: 300px;
+  min-width: 100%;
+}
+
+// mat-header-cell,
+// mat-cell {
+//   min-width: 150px;
+// }
+
+mat-row,
+mat-header-row,
+mat-footer-row {
+  width: 100%;
+}
+
+.expanded-crud-table-wrapper {
+  width: 100%;
+  max-width: 2000px;
+}
+
+.crud-table-wrapper {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.crud-table-page-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.crud-table-actions-bar {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.crud-table-filters-form {
+  width: 100%;
+}
+
+.crud-table-search-input {
+  width: 100%;
+  max-width: 350px;
+}
+
+.small-layout .crud-table-search-input {
+  width: 65%;
+  max-width: 65%;
+}
+
+.xsmall-layout .crud-table-search-input {
+  width: 100%;
+  max-width: 100%;
+}
+
+.crud-table-searchable-fields-input {
+  width: 150px;
+  margin-left: 8px;
+}
+
+.small-layout .crud-table-searchable-fields-input {
+  width: calc(35% - 8px);
+  margin-left: 8px;
+}
+
+.xsmall-layout .crud-table-searchable-fields-input {
+  width: 100%;
+  margin-left: 0;
+}
+
+.crud-table-search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.crud-table-filters-btns-wrapper {
+  width: 100%;
+}
+
+.crud-table-filters-btns {
+  display: flex;
+  justify-content: space-between;
+  width: 268px;
+}
+
+.crud-table-filter-input {
+  width: 175px;
+}
+
+.xsmall-layout .crud-table-filter-input {
+  width: 100%;
+}
+
+.small-layout .crud-table-filter-input {
+  width: 32%;
+}
+
+.medium-layout .crud-table-filter-input {
+  width: 18%;
+}
+
+.table-expand-btn {
+  width: 100%;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.crud-table-actions-col {
+  min-width: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---------------------------------- Form ---------------------------------- */
+
+.handy-form-wrapper {
+  width: 100%;
+  // max-width: 1000px;
+}
+
+.handy-form-page-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.handy-form-actions-divider {
+  margin: 8px 0;
+}
+
+.handy-form-input {
+  min-width: 175px;
+  max-width: 175px;
+}
+
+.xsmall-layout .handy-form-input {
+  width: 100%;
+}
+
+.small-layout .handy-form-input {
+  width: 32%;
+}
+
+.medium-layout .handy-form-input {
+  width: 18%;
+}
+
+
+
+
+
+/*=====  End of Login Form  ======*/
+
+.do-not-display{
+  display: none !important;
+}
+
+.remove-all-margin{
+margin: 0 !important;
+padding: 1.5rem 0 !important;
+}
+
+
+
+
+mat-dialog-container{
+  .mat-dialog-actions {
+    padding: 8px 0 15px;
+  }
+}
+
+.light-link {
+  color: #0098d3;
+  cursor: pointer;
+}
+
+/*=======================================================================
+// ! BASE
+=========================================================================*/
+
+.mat-card .mat-card-content {
+  padding: 0.75rem 0.75rem;
+}
+
+
+.mat-body, .mat-body-1, .mat-typography {
+    font: 400 14px/20px "Roboto";
+    letter-spacing: normal;
+}
+
+.logo-side-nav:hover{
+  cursor: pointer;
+}
+
+handy-nav-bar > mat-toolbar > button mat-icon,
+handy-nav-bar .navbar-nav-right-side button mat-icon {
+  font-size: 26px !important;
+}
+
+/*=============================================
+=            Side Nav            =
+=============================================*/
+
+.sidneav-navigation-item-pined > handy-icon > mat-icon,
+.mat-menu-panel button.mat-menu-item > handy-icon > mat-icon {
+  font-size: 1.1rem !important;
+  color: #fff !important;
+}
+
+// menu header
+.side-nav-content-middle > .sidebar-nav-title{
+  letter-spacing: .06rem;
+font-family: 'Roboto', sans-serif;
+font-size: .7rem;
+}
+
+
+.sidneav-navigation-item-pined,
+button.mat-menu-item  {
+  padding: 0.5rem .6rem;
+  font-size: .95rem;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: .02rem;
+  font-weight: 300;
+}
+/*=====  End of Side Nav  ======*/
+
+
+/*=============================================
+=            Menu section            =
+=============================================*/
+.mat-menu-content .sidebar-nav-title{
+  letter-spacing: .06rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: .7rem;
+}  
+
+.mat-menu-panel button.mat-menu-item > handy-icon > mat-icon {
+  margin-right: 0.4rem !important;
+}
+
+
+/*=====  End of  Menu section  ======*/
+// fields border
+.mat-form-field-appearance-fill .mat-form-field-underline::before{
+  height: 2px !important;
+}
+
+
+
+.main-content .crud-table-actions-bar{
+  align-items: center;
+}
+
+.main-content .crud-table-actions-bar handy-form{
+  width: auto;
+  flex: 1;
+}
+
+.main-content .crud-table-actions-bar > raised-btn{
+  width: auto;
+  order: 2;
+  margin-bottom: 1.34375em;
+}
+
+// icons
+.mat-form-field-prefix {
+  padding-right: 0.4rem;
+  bottom: 5px;
+}
+// .main-content .crud-table-actions-bar handy-form mat-form-field > .mat-form-field-wrapper> .mat-form-field-flex > .mat-form-field-prefix{
+//   bottom: 5px;
+//   padding-right: 0.4rem;
+// }
+// icons file size
+.main-content .crud-table-actions-bar handy-form mat-form-field > .mat-form-field-wrapper> .mat-form-field-flex > .mat-form-field-prefix > handy-icon > mat-icon{
+  font-size: 150% !important;
+
+}
+
+
+
+// .mat-raised-button,
+// .mat-stroked-button{
+//   padding: 0 14px 0 10px !important;
+// }
+
+.mat-form-field-wrapper .mat-form-field-flex{
+  display: flex;
+ align-items: center;
+}
+
+
+basic-btn.auth-home-page > button handy-icon{
+  margin-bottom: 2px !important;
+}
+
+// stroked-btn.auth-home-page > button {
+//   color:#fff !important;
+//   border-width: 0 !important;
+//   transition: 250ms;
+// }
+
+// stroked-btn.auth-home-page > button:hover{
+//   color: #0098d3 !important;
+// }
+
+// stroked-btn.auth-home-page > button:hover .mat-button-focus-overlay{
+//   background-color: transparent !important;
+
+// }
+
+
+.mat-button-wrapper > handy-icon > mat-icon.icon_placement_btn-left-icon {
+  font-size: 22px !important;
+  margin-right: 8px !important;
+}
+
+button handy-icon .mat-icon{
+  font-size: 22px !important;
+}
+
+
+
+// forms
+handy-form .crud-table-search-bar{
+  align-items: center !important;
+}
+
+handy-form .crud-table-search-bar>*{
+  margin-right: 1rem;
+}
+
+handy-form .crud-table-search-bar button{
+  margin-bottom: 1.34375em;
+}
+
+.mat-form-field, .mat-h1, .mat-headline, .mat-typography h1{
+  font-family: 'Roboto', "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+// Maciej 28 Nov
+
+.top-nav-title {
+  font-weight: 300;
+  font-size: 1.3rem;
+  line-height: 1;
+  letter-spacing: 0.03rem;
+  margin-top: -3px;
+}
+
+
+// ! Ion Added new for base 17.12.2020
+.medium-layout .handy-form-input,
+.small-layout .handy-form-input {
+  width: 100% ;
+}
+
+.mat-option .mat-icon {
+  margin-right: .2rem !important;
+}
+
+
+.mat-select handy-icon mat-icon{
+  font-size: 1rem !important;
+  top: 1px;
+}
+
+td.mat-cell handy-custom-file-input{
+width: 0;
+}
+.material-icons:hover{
+  cursor: pointer;
+}
+.light-theme mat-dialog-container .mat-card-header{
+  border-bottom: 1px solid #3a4149;
+  background-color: #3a4149;
+  color: #fff;
+}
+
+mat-dialog-container .mat-card {
+  border-width: 0 !important;
+  margin: -24px;
+  max-width: 650px;
+}
+mat-dialog-container .mat-card-header .mat-card-title{
+  font-size: 1.2rem !important;
+letter-spacing: .06rem;
+}
+
+mat-dialog-container mat-card-header .mat-card-header-text{
+  width: 100%;
+    mat-card-title{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+}
+.dark-theme .main-content mat-card basic-btn .mat-button {
+  background-color: #282d32;
+}
+
+.crud-table-search-input {
+  width: auto;
+}
+.crud-table-filter-input {
+  width: auto;
+}
+
+.crud-table-filters-btns-wrapper {
+  width: auto;
+}
+
+.mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab{
+  text-transform: uppercase;
+  letter-spacing: .06rem;
+  font-size: .87em;
+  // font: 400 16px/20px "Roboto" !important;
+  font-family: 'Roboto', "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+
+.mat-toolbar{
+// , .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3, .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6{
+  font: 500 16px/20px "Roboto" !important;
+  // font: 500 1.2rem/1.2 'Roboto', "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+
+.mat-toolbar{
+  .navbar-nav-right-side{
+    .mat-button-wrapper{
+      font-size: 16px;
+    }
+  }
+}
+
+.light-theme .main-content basic-btn .mat-button{
+  background-color:#d9d9d9;
+  
+}
+
+.dark-theme .main-content basic-btn .mat-button{
+  background-color:#3a4149;
+  
+}
+.top-nav-title {
+  font-size: 1.3rem;
+  line-height: 1;
+  letter-spacing: .06rem;
+  margin-top: -3px;
+}
+
+
+
+// row flex
+.base-fields-two-row{
+  width: 100%;
+  margin: 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+}
+.base-fields-two-row>*{
+  width: 50% !important;
+  max-width: 100% !important;
+}
+
+.base-fields-two-row>*:nth-child(odd){
+  padding-right: 5px;
+} 
+.base-fields-two-row>*:nth-child(even){
+  padding-left: 5px;
+} 
+
+.base-fields-one-row{
+  width: 100%;
+  margin: 0 !important;
+}
+
+// fielsd underline
+.mat-form-field-appearance-legacy .mat-form-field-underline,
+.mat-form-field-appearance-legacy.mat-form-field-invalid:not(.mat-focused) .mat-form-field-ripple  {
+  height: 2px !important;
+}
+
+.mat-card .mat-card-header .mat-card-title{
+  margin-bottom: 0 !important;
+  padding: .5rem ;
+}
+
+// mat radio button
+label.mat-radio-label,
+label.mat-checkbox-layout{
+  white-space: normal;
+}
+
+.mat-radio-label{
+  align-items: flex-start !important;
+}
+
+.mat-radio-label{
+  .mat-radio-label-content{
+    margin-top: -1px;
+  }
+}
+
+
+label.mat-checkbox-layout{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  .mat-checkbox-label{
+    line-height: 1.429 !important;  
+    margin-top: -2px;
+  }
+  .mat-checkbox-inner-container{
+    margin: 0 8px 0 0;
+  }
+}
+
+.navbar-nav-right-side{
+  .mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab {
+    text-transform: initial;
+  }
+}
+
+
+.handy-nav-bar{
+  .mat-toolbar{
+    .navbar-nav-right-side{
+      font-size: 16px !important;
+    }
+  }
+}
+
+
+.top-nav-title {
+  font-weight: 400;
+  white-space: normal;
+}
+
+
+
+// !issue with hover on pass show icon, tooltip
+.cdk-overlay-container{
+  z-index: 2147483647 !important;
+}
+
+// main content .mat-card
+.main-content{
+  .mat-card {
+    border-width: 1px !important;
+    .mat-card-content {
+      padding: 0.75rem 0.75rem;
+    }
+  }
+}
+
+// !modal new aproach
+.mat-dialog-container{
+  padding: 0.75rem !important;
+  overflow: hidden;
+  .mat-dialog-content {
+    margin: 0 !important;
+     padding: 0 !important ;
+     max-height: 70vh;
+  }
+}
+
+
+// modal
+.mat-dialog-actions{
+  justify-content: space-between;
+  margin-bottom: 0 !important;
+  margin-top: .5rem !important;
+}
+mat-dialog-container .mat-dialog-actions {
+  padding: 0 !important;
+}
+
+// transparent btn
+.btn-no-background {
+  .mat-button{
+    background: transparent !important;
+  }
+}
+
+// actions devider
+.handy-form-actions-divider {
+  margin: .75rem 0;
+}
+
+// !Media Base
+@media only screen and (max-width: 590px) {
+  .base-fields-two-row-space>*{
+    width: 100% !important;
+    margin-bottom: .5rem;
+  }
+  .base-fields-two-row-space>*:nth-child(odd){
+    padding-right: 0 !important;
+  } 
+  .base-fields-two-row-space>*:nth-child(even){
+    padding-left: 0 !important;
+  } 
+  
+}
+
+@media only screen and (max-width: 530px) {
+  mat-card{
+    margin-left: .6rem;
+    margin-right: .6rem;
+  }
+
+  .main-content{
+    mat-card{
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  .cdk-global-overlay-wrapper .cdk-overlay-pane {
+    max-width: 90vw !important;
+    min-width: 300px !important;
+  }
+ 
+}
+
+
+@media only screen and (max-width: 500px) {
+  // !base
+  .top-nav-title {
+    display: block;
+    font-size: 1.1rem;
+  }
+  
+    
+}
+
+
+@media only screen and (max-width: 450px) {
+    // !base
+  .base-fields-two-row>*{
+    width: 100% !important;
+  }
+  .base-fields-two-row>*:nth-child(odd){
+    padding-right: 0 !important;
+  } 
+  .base-fields-two-row>*:nth-child(even){
+    padding-left: 0 !important;
+  } 
+  
+}
+
+// @media only screen and (max-width: 400px) {
+//   .cdk-global-overlay-wrapper .cdk-overlay-pane {
+//     max-width: 90vw !important;
+//     border: 2px solid;
+//   }
+// }
+/*=======================================================================
+// ! BASE END
+=========================================================================*/
+
+// To avoid jg... cutting
+// .mat-select-value {
+//   overflow: visible !important;
+// }
+
+
+/*=======================================================================
+// UTILITIES
+=========================================================================*/
+
+
+.basic-table {
+  width: 100%;
+
+  border: 1px solid rgba(0,0,0,0.3)
+
+  td {
+    padding: 0.3rem 0.7rem;
+  }
+}
+
+.basic-table thead td,
+.basic-table.basic-table-vertical tr td:first-child {
+  font-weight: bolder;
+}
+
+.handy-notif-error {
+  text-transform: none !important;
+  font-weight: normal !important;
+}

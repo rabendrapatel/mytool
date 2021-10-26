@@ -1,0 +1,53 @@
+<mat-form-field [appearance]="_appearance">
+
+  <mat-label>{{ _label }}</mat-label>
+
+  <!-- Material select, Ripple disabled on mobile because it causes flickering -->
+  <mat-select #inputField="ngModel" [(ngModel)]="_value" [disableRipple]="_handyNgLayoutService.isMobile" (ngModelChange)="updateChanges()" [disabled]="_isDisabled" multiple (focus)="onTouched()">
+    <ng-container *ngFor="let option of _options">
+
+      <!-- Simple options -->
+      <mat-option *ngIf="!option['label']" [value]="option['value']" [disabled]="option.disabled || lastDisabled(option['value'])">
+        {{ option['displayValue'] }}
+      </mat-option>
+
+      <!-- Grouped options -->
+      <mat-optgroup *ngIf="option['label']" [label]="option['label']" [disabled]="option.disabled">
+
+        <mat-option *ngFor="let childOption of option['options']" [value]="childOption['value']"
+          [disabled]="childOption.disabled || lastDisabled(option['value'])">
+          {{ childOption['displayValue'] }}
+        </mat-option>
+
+      </mat-optgroup>
+
+    </ng-container>
+
+  </mat-select>
+
+  <handy-icon *ngIf="_prefixIcon && _fieldStatus !== 'PENDING' && !_pinningState" (click)="triggerPrefixClick()"
+    matPrefix [brandIcon]="_brandedPrefixIcon" [size]="_prefixAndSufixIconSize" [icon]="_prefixIcon"></handy-icon>
+  <handy-icon *ngIf="_sufixIcon && _fieldStatus !== 'PENDING' && !_pinningState" (click)="triggerSufixClick()" matSuffix
+    [brandIcon]="_brandedSufixIcon" [size]="_prefixAndSufixIconSize" [icon]="_sufixIcon"></handy-icon>
+
+  <!-- Pin button -->
+  <button *ngIf="_handyNgUserService.loggedInStatus && _pinningState && !_disableFieldPin" mat-icon-button
+    (click)="handlePinClick()" matSuffix>
+    <handy-icon [size]="16" [icon]="(_hasPinnedVal) ? 'lock' : 'lock-open'"></handy-icon>
+  </button>
+
+  <span *ngIf="_prefixText && _fieldStatus !== 'PENDING' && !_pinningState" matPrefix
+    (click)="triggerPrefixClick()">{{ _prefixText }}</span>
+  <span *ngIf="_sufixText && _fieldStatus !== 'PENDING' && !_pinningState" matSuffix
+    (click)="triggerSufixClick()">{{ _sufixText }}</span>
+
+  <mat-progress-spinner *ngIf="_fieldStatus === 'PENDING' && !_pinningState" matSuffix [diameter]="16" color="primary"
+    mode="indeterminate">
+  </mat-progress-spinner>
+
+  <mat-hint *ngIf="_startHint" align="start">{{ _startHint }}</mat-hint>
+  <mat-hint *ngIf="_endHint" align="end">{{ _endHint }}</mat-hint>
+
+  <mat-error *ngIf="_fieldErr" [matTooltip]="_fieldErr">{{ _fieldErr | truncate }}</mat-error>
+
+</mat-form-field>

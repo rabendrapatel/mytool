@@ -1,0 +1,38 @@
+<div class="date-overlay-wrapper mat-elevation-z8">
+
+  <div class="date-calendar-handy">
+    <p *ngIf="showTimeZone">{{ timeZone | handyTimezone }}</p>
+    <mat-calendar #calendar class="datepicker-input-calendar" (selectedChange)="selectedChange($event)"
+      [startAt]="startingDate" [minDate]="minDate" [maxDate]="maxDate" [dateFilter]="dateFilter"
+      [dateClass]="dateClass">
+    </mat-calendar>
+
+  </div>
+
+  <div class="time-zone">
+
+    <div class="time-zone-data-picker">
+      <handy-select-input *ngIf="selectableTimezone" [(ngModel)]="timeZone" [hasEmptyOption]="false"
+        (valueChange)="changeTimeZone($event)" [options]="timeZonesList"></handy-select-input>
+    </div>
+
+    <div *ngIf="getTime" class="time time-data-picker">
+
+      <handy-time-input valueType="seconds" 
+        [min]="minTime" 
+        [max]="maxTime" 
+        [(ngModel)]="time">
+      </handy-time-input>
+
+    </div>
+  </div>
+
+  <div *ngIf="getTime || multiSelect" class="confirm-btn" fxLayout="row" fxLayoutAlign="space-between flex-end">
+
+    <stroked-btn color="warn" icon="refresh" (click)="resetClick()">Reset</stroked-btn>
+
+    <raised-btn (click)="confirmClick()" color="primary" icon="check">Confirm</raised-btn>
+
+  </div>
+
+</div>

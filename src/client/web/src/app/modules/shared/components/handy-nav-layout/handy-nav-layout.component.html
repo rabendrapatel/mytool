@@ -1,0 +1,47 @@
+<handy-nav-bar *ngIf="handyNgLayoutService.sidenavPosition === 'side'"></handy-nav-bar>
+<handy-nav-bar *ngIf="handyNgLayoutService.sidenavPosition === 'over'" [ngClass]="{'nav-bar-over-not-pinned':(handyNgLayoutService.sidenavPined), 'nav-bar-over-pinned':
+    !(handyNgLayoutService.sidenavPined),
+    'nav-bar-over-pinned-close': !(handyNgLayoutService.sidenavPined) &&
+    !(handyNgLayoutService.sidenavOpenState),
+    'nav-bar-over-not-pinned-open': (handyNgLayoutService.sidenavPined) && (handyNgLayoutService.sidenavOpenState)}">
+</handy-nav-bar>
+
+
+<mat-sidenav-container [@.disabled]="true">
+   <mat-sidenav class="mat-elevation-z6" #sideNav [fixedInViewport]="true"
+     [fixedTopGap]="handyNgLayoutService.sidenavTopGap" [autoFocus]="false"
+     (openedChange)="handyNgLayoutService.handleSidenavOpenChange(sideNav)"
+     [opened]="handyNgLayoutService.sidenavOpenState" [mode]="handyNgLayoutService.sidenavMode"
+     [disableClose]="handyNgLayoutService.sidenavMode === 'side'" [ngClass]="{'side-nav-was-pinned-translate':(handyNgLayoutService.sidenavPined),
+    'side-nav-was-not-pinned-translate':!(handyNgLayoutService.sidenavPined),'do-not-display': handyNgLayoutService.isFullScreenForm}">
+   </mat-sidenav>
+  <mat-sidenav-content
+  [@.disabled]="true"
+    [ngClass]="{'side-nav-was-pinned':!(handyNgLayoutService.sidenavPined), 'tran-side-content':
+    (handyNgLayoutService.sidenavPined), 'piped-and-close': !(handyNgLayoutService.sidenavPined) &&
+    !(handyNgLayoutService.sidenavOpenState), 'not-piped-open': (handyNgLayoutService.sidenavPined) &&
+    (handyNgLayoutService.sidenavOpenState), 'remove-all-margin': handyNgLayoutService.isFullScreenForm }"
+    >
+    
+    <div class="main-content">
+      <ng-content></ng-content>
+    </div>
+    
+    <mat-toolbar class="handy-footer" color="primary" [ngClass]="{'do-not-display': handyNgLayoutService.isFullScreenForm}">
+      <p> Powered by <a href="https://handyapps.ie/about" target="_blank" color="warm">HandyApps</a> ©
+        {{dateFooter}} </p>
+    </mat-toolbar>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<!-- reapeat here with handy-sidenav -->
+<mat-sidenav class="mat-elevation-z6" #sideNav [fixedInViewport]="true"
+  [fixedTopGap]="handyNgLayoutService.sidenavTopGap" [autoFocus]="false"
+  (openedChange)="handyNgLayoutService.handleSidenavOpenChange(sideNav)"
+  [opened]="handyNgLayoutService.sidenavOpenState" [mode]="handyNgLayoutService.sidenavMode"
+  [disableClose]="handyNgLayoutService.sidenavMode === 'side'" [ngClass]="{'side-nav-was-pinned-translate':(handyNgLayoutService.sidenavPined),
+    'side-nav-was-not-pinned-translate':!(handyNgLayoutService.sidenavPined), 'do-not-display': handyNgLayoutService.isFullScreenForm}">
+  <handy-sidenav ></handy-sidenav>
+</mat-sidenav>

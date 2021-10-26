@@ -1,0 +1,19 @@
+.pinned-nested-nav-button {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  mat-divider {
+    width: 100%;
+  }
+
+}
+
+.active-btn {
+  background-color: indigo;
+}

@@ -1,0 +1,15 @@
+import { SocketNamespaceController } from "@handy/core";
+import { NextFn, HandySocket } from "@handy/types";
+import { HandySocketController } from "@socketControllers";
+
+@SocketNamespaceController({
+  namespace: '{{namespace}}',
+  routable: {{routable}},
+})
+export class {{controllerName}}SocketController extends HandySocketController {
+
+  constructor () {
+    super();
+  }
+
+}

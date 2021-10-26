@@ -1,0 +1,51 @@
+/*=============================================
+=            General            =
+=============================================*/
+
+html,
+body {
+  min-height: 100vh;
+  min-width: 320px;
+}
+
+
+.hidden {
+  display: none;
+}
+
+/*=====  End of General  ======*/
+
+@font-face {
+  font-family: segoe-ui;
+  src: url("assets/fonts/segoe-ui/Segoe\ UI.ttf");
+}
+
+@font-face {
+  font-family: segoe-ui;
+  src: url("assets/fonts/segoe-ui/Segoe\ UI\ Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: segoe-ui;
+  src: url("assets/fonts/segoe-ui/Segoe\ UI\ Italic.ttf");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: segoe-ui;
+  src: url("assets/fonts/segoe-ui/Segoe\ UI\ Bold\ Italic.ttf");
+  font-weight: bold;
+  font-style: italic;
+
+}
+
+.full-w-inp {
+  width: 100%;
+}
+
+.full-radio-wrapper {
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 16px;
+}

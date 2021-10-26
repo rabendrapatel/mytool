@@ -1,0 +1,52 @@
+.date-overlay-wrapper {
+  width: 300px;
+  padding: .1rem 0 .5rem;
+}
+
+.datepicker-input-calendar {
+  width: 100%;
+}
+
+.confirm-btn {
+  // padding-top: 1rem;
+  padding-bottom: .2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+button {
+  mat-icon {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+
+.date-calendar-handy {
+  position: relative;
+  padding-bottom: 1rem;
+
+  &>p {
+    position: absolute;
+    top: 0.65rem;
+    left: 95px;
+    min-width: 130px;
+    text-align: center;
+    transition: 250ms;
+  }
+
+}
+
+.time-zone {
+  padding: 0 1rem;
+  padding-bottom: .2rem;
+}
+
+.time-zone-data-picker {
+  margin-top: -.5rem;
+}
+
+.time-data-picker {
+  margin-top: -.5rem;
+  margin-bottom: .4rem;
+}

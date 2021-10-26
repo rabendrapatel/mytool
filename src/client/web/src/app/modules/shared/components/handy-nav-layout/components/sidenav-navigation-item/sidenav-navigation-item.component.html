@@ -1,0 +1,51 @@
+<div>
+
+  <div *ngIf="!_isSeparator">
+
+    <!-- Small version -->
+    <div *ngIf="!handyNgLayoutService.sidenavPined && !_isChildren" [matTooltip]="_text"
+      class="sidneav-navigation-item-non-pined">
+      <handy-icon *ngIf="!parentData.hasChildren"
+        (click)="handleClick()"
+        [routerLinkActive]="(_link === 'defaultNonExistingLink') ? 'not-a-link' : 'active'" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="_link" [size]="32" placement="sidenav" [icon]="_icon"></handy-icon>
+      <non-pinned-menu *ngIf="parentData.hasChildren" [parent]="true" [menuData]="getNestedMenuStructure()">
+      </non-pinned-menu>
+    </div>
+
+    <!-- Wide pinned version -->
+    <!-- The router link conditions are there to make sure the
+    router link active works event if there is no link and doesn't 
+    match every as active on homepage -->
+    <div class="sidneav-navigation-item-pined" (click)="handleClick()"
+      [routerLink]="(_link === 'defaultNonExistingLink') ? [] : _link"
+      [routerLinkActive]="(_link === 'defaultNonExistingLink') ? 'not-a-link' : 'active'"
+      [routerLinkActiveOptions]="{ exact: true }" *ngIf="handyNgLayoutService.sidenavPined" 
+      [ngClass]="{parent: parentData.hasChildren && (_childrenVisible || activeChildren)}">
+
+      <handy-icon class="wide-icon" [size]="32" placement="sidenav" [icon]="_icon">
+      </handy-icon>
+      <span class="wide-text">{{ _text }}</span>
+
+      <handy-icon *ngIf="parentData.hasChildren" [size]="16" placement="sidenav-right"
+        [icon]="(_childrenVisible) ? 'expand_more' : 'chevron_left'"></handy-icon>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="_isSeparator && handyNgLayoutService.sidenavPined" class="separator">
+
+    <span class="mat-small">{{_text}}</span>
+    <mat-divider></mat-divider>
+
+  </div>
+
+  <div *ngIf="_isSeparator && !handyNgLayoutService.sidenavPined && !_isChildren" class="separator">
+
+    <mat-divider></mat-divider>
+
+  </div>
+
+</div>
+
+<ng-content *ngIf="parentData.hasChildren && _childrenVisible"></ng-content>

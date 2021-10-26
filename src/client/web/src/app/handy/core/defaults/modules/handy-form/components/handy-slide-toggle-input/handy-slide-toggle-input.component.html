@@ -1,0 +1,21 @@
+<div [class]="_extraClass">
+
+  <mat-slide-toggle #inputField="ngModel" [disabled]="_isDisabled" matInput [(ngModel)]="_value"
+    [color]="_color" (ngModelChange)="updateChanges()" (focus)="onTouched()" [labelPosition]="_labelPosition">
+    <ng-content></ng-content>
+  </mat-slide-toggle>
+  
+  <!-- Pin button -->
+  <button *ngIf="_handyNgUserService.loggedInStatus && _pinningState && !_disableFieldPin" mat-icon-button
+    (click)="handlePinClick()" matSuffix>
+    <handy-icon [size]="16" [icon]="(_hasPinnedVal) ? 'lock' : 'lock-open'"></handy-icon>
+  </button>
+  
+  <span *ngIf="_prefixText && _fieldStatus !== 'PENDING' && !_pinningState" matPrefix
+    (click)="triggerPrefixClick()">{{ _prefixText }}</span>
+  <span *ngIf="_sufixText && _fieldStatus !== 'PENDING' && !_pinningState" matSuffix
+    (click)="triggerSufixClick()">{{ _sufixText }}</span>
+  
+  <mat-error *ngIf="_fieldErr" [matTooltip]="_fieldErr">{{ _fieldErr | truncate }}</mat-error>
+
+</div>

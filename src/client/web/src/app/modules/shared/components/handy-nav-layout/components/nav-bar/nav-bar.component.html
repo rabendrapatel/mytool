@@ -1,0 +1,52 @@
+<mat-toolbar color="primary" class="mat-elevation-z6" [ngClass]="{'do-not-display': handyNgLayoutService.isFullScreenForm}">
+
+  <button mat-icon-button
+    [matTooltip]="(handyNgLayoutService.sidenavOpenState) ? 'Close navigation' : 'Open navigation'">
+    <handy-icon placement="mat-icon-button" (click)="handyNgLayoutService.toggleSidenav(true)" icon="menu"></handy-icon>
+  </button>
+
+  <span class="top-nav-title">
+    {{ handyNgLayoutService.title }}
+  </span>
+  <div class="navbar-nav-right-side" *viewPorts="['sm', 'md', 'lg', 'xl']">
+    <!-- Just for show -->
+    <!-- <button mat-icon-button>
+      <handy-icon placement="mat-icon-button" badge="15" badgeColor="accent" size="0.875rem" icon="email">
+      </handy-icon>
+    </button> -->
+
+    <!-- Just for show with the properties-->
+    <!-- <button mat-icon-button>
+      <handy-icon placement="mat-icon-button" badge="7" badgeColor="warn" size="0.875rem" icon="bell">
+
+      </handy-icon>
+
+    </button> -->
+
+    <!-- The show menu -->
+    <icon-btn [matMenuTriggerFor]="appMenu" class="top-nav-icon-setings" icon="person"></icon-btn>
+
+    <mat-menu #appMenu="matMenu">
+
+      <!-- Accoutn menu -->
+        <div class="sidebar-nav-title">Account</div>
+
+        <!-- Not logged in -->
+        <button mat-menu-item class="btn-with-icon toolbar-menu-btn" *notLoggedIn routerLinkActive="active" routerLink="/login"><handy-icon icon="login"></handy-icon>Log in</button>
+        <button mat-menu-item class="btn-with-icon toolbar-menu-btn" *ngIf="!handyNgUserService.loggedInStatus && handyNgConfigService.data.userRegistration.openRegistration" routerLinkActive="active" routerLink="/register"><handy-icon icon="person_add"></handy-icon>Register</button>
+        
+        <!-- Logged in -->
+        <button mat-menu-item [matMenuTriggerFor]="accountMenu" class="btn-with-icon toolbar-menu-btn" *loggedIn><handy-icon icon="settings"></handy-icon>Settings</button>
+        <mat-menu #accountMenu="matMenu">
+
+          <button mat-menu-item class="btn-with-icon toolbar-menu-btn" routerLinkActive="active" routerLink="/user/profile"><handy-icon icon="account_box"></handy-icon>Profile</button>
+          <button mat-menu-item [disabled]="disablePreferencesBtn" class="btn-with-icon toolbar-menu-btn" (click)="openPreferencesDialog()"><handy-icon icon="palette"></handy-icon>Preferences</button>
+          
+        </mat-menu>
+
+        <button mat-menu-item class="btn-with-icon toolbar-menu-btn" *loggedIn routerLink="/logout"><handy-icon icon="exit_to_app"></handy-icon>Log out</button>
+      <!-- End of account menu -->
+
+    </mat-menu>
+  </div>
+</mat-toolbar>

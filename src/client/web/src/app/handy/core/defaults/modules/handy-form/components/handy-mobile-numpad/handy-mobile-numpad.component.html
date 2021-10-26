@@ -1,0 +1,35 @@
+<div class="numpad">
+
+  <div class="keypad-keys">
+    <button mat-raised-button (click)="keyDownEmit('1')" (press)="pressEvent('1')" (pressup)="pressRelease()" type="button">1</button>
+    <button mat-raised-button (click)="keyDownEmit('2')" (press)="pressEvent('2')" (pressup)="pressRelease()" type="button">2</button>
+    <button mat-raised-button (click)="keyDownEmit('3')" (press)="pressEvent('3')" (pressup)="pressRelease()" type="button">3</button>
+
+    <button mat-raised-button (click)="keyDownEmit('4')" (press)="pressEvent('4')" (pressup)="pressRelease()" type="button">4</button>
+    <button mat-raised-button (click)="keyDownEmit('5')" (press)="pressEvent('5')" (pressup)="pressRelease()" type="button">5</button>
+    <button mat-raised-button (click)="keyDownEmit('6')" (press)="pressEvent('6')" (pressup)="pressRelease()" type="button">6</button>
+
+    <button mat-raised-button (click)="keyDownEmit('7')" (press)="pressEvent('7')" (pressup)="pressRelease()" type="button">7</button>
+    <button mat-raised-button (click)="keyDownEmit('8')" (press)="pressEvent('8')" (pressup)="pressRelease()" type="button">8</button>
+    <button mat-raised-button (click)="keyDownEmit('9')" (press)="pressEvent('9')" (pressup)="pressRelease()" type="button">9</button>
+
+    <button mat-raised-button (click)="keyDownEmit('-')" type="button" color="accent">-</button>
+    <button mat-raised-button (click)="keyDownEmit('0')" (press)="pressEvent('0')" (pressup)="pressRelease()" type="button">0</button>
+    <button mat-raised-button (click)="keyDownEmit('.')" type="button">.</button>
+  </div>
+
+  <div class="numpad-bottom-btns">
+
+    <button mat-raised-button (click)="keyDownEmit('Backspace')" (press)="pressEvent('Backspace')" (pressup)="pressRelease()" type="button" color="warn">
+      <mat-icon fontSet="fas" fontIcon="fa-backspace"></mat-icon>
+      Backspace
+    </button>
+
+    <button mat-raised-button (click)="closeEmit()" type="button" color="primary">
+      <mat-icon fontSet="fas" fontIcon="fa-check"></mat-icon>
+      Done
+    </button>
+
+  </div>
+
+</div>

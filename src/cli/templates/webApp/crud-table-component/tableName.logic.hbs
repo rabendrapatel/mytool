@@ -1,0 +1,279 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { HandyDataTable } from '@handy-ng/extenders/handy-datatable';
+import { HandyNgUserService } from '@handy-ng/services/handy-ng-user.service';
+import { HandyDataTableResult, HandyNgSelectOptions, FilterQuery, MongooseSortingOptions } from '@handy-ng/types';
+import { FormGroup, FormControl } from '@angular/forms';
+
+import { {{UcFirst modelName}}NgModel } from '@handy-ng/models/{{ modelName }}.ng-model';
+import { {{UcFirst modelName}}ModelInterfaces } from '@server-models/{{ modelName }}/model.interface';
+{{#if forModule}}
+{{#if modalEntry}}
+import { {{UcFirst formName}}Component, {{UcFirst formName}}ComponentResolver } from '../{{filePath formName}}/{{filePath formName}}.component';
+import { MatDialog } from '@angular/material/dialog';
+{{/if}}
+{{/if}}
+
+@Component({
+  selector: '{{filePath tableName}}-table',
+  templateUrl: './{{filePath tableName}}.component.html',
+  styleUrls: ['./{{filePath tableName}}.component.scss']
+})
+export class {{UcFirst tableName}}Component extends HandyDataTable<TableDataType, FilterType, {{UcFirst modelName}}ModelInterfaces> implements OnInit, OnDestroy {
+
+  public modelFieldsToQuery: {{UcFirst modelName}}ModelInterfaces['allFields'][] = [{{{fieldsToQueryStr}}}];
+  public displayedColumns: string[] = [{{{displayedColsStr}}}];
+
+  public rememberTableState: boolean = {{ rememberTableState }}; 
+  public tableName: string = '{{tableName}}_table';
+
+  {{#if hasOptionalCols}}
+  /* ---------------------------- Optional columns ---------------------------- */
+  public optionalColumns: HandyNgSelectOptions[] = [
+    {{#each optionalCols}}
+    {
+      value: '{{this.name}}',
+      displayValue: '{{this.publicName}}'
+    },
+    {{/each}}
+  ];
+  {{/if}}
+  
+  {{#if hasSearch}}
+  /* ---------------------------- Searchable fileds --------------------------- */
+  public searchableFields: HandyNgSelectOptions[] = [
+    {{#each searchableFields}}
+    {
+      value: '{{this.name}}',
+      displayValue: '{{this.displayValue}}'
+    },
+    {{/each}}
+  ];
+  {{/if}}
+  
+  {{#if hasAdditionalFilters}}
+  /* -------------------------------------------------------------------------- */
+  /*                              Additional filter                             */
+  /* -------------------------------------------------------------------------- */
+    {{#each aditionalFilters}}
+  public {{this.name}}FilterOptions: HandyNgSelectOptions[] = [
+    {
+      value: null,
+      displayValue: 'Example value'
+    },
+  ];
+  
+    {{/each}}
+  {{/if}}
+
+  constructor (
+    {{#if forModule}}
+    {{#if modalEntry}}
+    public dialog: MatDialog, 
+    private formResolver: {{UcFirst formName}}ComponentResolver,
+    {{/if}}
+    {{/if}}
+    protected _handyNgUserService: HandyNgUserService, 
+    protected _model: {{UcFirst modelName}}NgModel) {
+
+    super(_handyNgUserService);
+    this.initExtender();
+
+  }
+
+  public createFilterForm(filterData: FilterType): void {
+
+    this.filterForm = new FormGroup({
+      {{#if hasSearch}}
+      search: new FormControl(filterData.search),
+      searchableFields: new FormControl(filterData.searchableFields),
+      {{/if}}
+      {{#if hasOptionalCols}}
+      displayedColumns: new FormControl(filterData.displayedColumns),
+      {{/if}}
+      {{#if hasAdditionalFilters}}
+      {{#each aditionalFilters}}
+      {{this.name}}: new FormControl(filterData.{{this.name}}),
+      {{/each}}
+      {{/if}}
+    })
+
+  }
+
+  public getData(filterData: FilterType, page: number, limit: number, sort: MongooseSortingOptions<TableDataType>): Promise<HandyDataTableResult<TableDataType>> {
+
+    return new Promise((resolve, reject) => {
+      {{#if hasSearch}}
+
+      let { search = '', searchableFields } = filterData;
+        
+      this._model.search(
+        search,
+        searchableFields,
+        { selectType: 'select', fields: this.modelFieldsToQuery },
+        this.getFindOptions(page, limit, sort),
+        this.getAdditionalSearchQueries(filterData),
+        this.getAdditionalFilterQueries(filterData)
+      )
+        .subscribe(result => {
+
+          let { docs, paginationData } = result.data;
+
+          return resolve({
+            dataSource: new MatTableDataSource(docs as any),
+            pageIndex: paginationData.page,
+            itemsCount: paginationData.totalRecordsCount
+          });
+
+        }, err => {
+
+          return reject(err);
+
+        })
+      {{/if}}      
+      {{#unless hasSearch}}
+        
+        this._model.find(
+          this.getFindQuery(filterData),
+          { selectType: 'select', fields: this.modelFieldsToQuery },
+          this.getFindOptions(page, limit, sort)
+        )
+          .subscribe(result => {
+
+            let { docs, paginationData } = result.data;
+
+            return resolve({
+              dataSource: new MatTableDataSource(docs as any),
+              pageIndex: paginationData.page,
+              itemsCount: paginationData.totalRecordsCount
+            });
+
+          }, err => {
+
+            return reject(err);
+
+          })
+      {{/unless}}
+
+    })
+
+  }
+
+  // For queries that are not included in default handy model search functionality
+  protected getAdditionalSearchQueries(filterData: FilterType): FilterQuery<{{UcFirst modelName}}ModelInterfaces['fullModelShape']>[] {
+    return [];
+  }
+
+  // For additional filters
+  protected getAdditionalFilterQueries(filterData: FilterType): FilterQuery<{{UcFirst modelName}}ModelInterfaces['fullModelShape']>[] {
+
+    let additionalFilterQueries: FilterQuery<{{UcFirst modelName}}ModelInterfaces['fullModelShape']>[] = [];
+    
+    {{#if hasAdditionalFilters}}
+    {{{ TableFilterDataObjDestroy aditionalFilters }}}
+      {{#each aditionalFilters}}
+
+      // {{this.publicName}} filter
+    if ({{this.name}} !== null && {{this.name}} !== undefined) {
+      additionalFilterQueries.push({
+        {{this.name}}
+      })
+    }
+      {{/each}}
+    {{/if}}
+    
+    return additionalFilterQueries;
+
+  }
+
+  {{#unless hasSearch}}        
+  protected getFindQuery(filterData: FilterType): FilterQuery<{{UcFirst modelName}}ModelInterfaces['fullModelShape']> {
+
+    return {};
+
+  }
+
+  {{/unless}}
+  {{#if forModule}}
+  /* -------------------------------------------------------------------------- */
+  /*                              Actions methods                               */
+  /* -------------------------------------------------------------------------- */
+  {{#if modalEntry}}
+  public editOrCreateAction(id?: {{#if autoIncrement}}number{{/if}}{{#unless autoIncrement}}string{{/unless}}): void {
+
+    if (id) {
+
+      this.formResolver.getItemData(id)
+        .then(formData => {
+
+        const dialogRef = this.dialog.open({{UcFirst formName}}Component, {
+          data: { formData }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(`Dialog result: ${result}`);
+          this.refreshTableData();
+        });
+
+      })
+
+      return;
+
+    }
+
+    const dialogRef = this.dialog.open({{UcFirst formName}}Component);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.refreshTableData();
+    });
+
+  }
+
+  {{/if}}
+  public removeEntryAction(id: {{#if autoIncrement}}number{{/if}}{{#unless autoIncrement}}string{{/unless}}): void {
+
+    this._model.deleteById(id).subscribe(deleteResult => {
+
+      // TODO do whatever you need to do after removing
+      this.refreshTableData();
+      console.log(deleteResult);
+
+    }, err => {
+      console.log(err);
+    })
+
+  }
+  {{/if}}
+  ngOnInit(): void {
+    super.ngOnInit();
+  }
+
+  ngOnDestroy(): void {
+    super.ngOnDestroy();
+  }
+
+}
+
+type ModelFieldsToQuery = Extract<{{UcFirst modelName}}ModelInterfaces['allFields'], {{{displayColumnsUnionStr}}}>;
+type TableDataType = Pick<{{UcFirst modelName}}ModelInterfaces['fullModelShape'], ModelFieldsToQuery> & {
+  {{#if hasActionsCol}}
+  actions: null,
+  {{/if}}
+}
+
+
+interface FilterType {
+  {{#if hasSearch}}
+  search: string,
+  searchableFields: {{UcFirst modelName}}ModelInterfaces['searchableFields'][],
+  {{/if}}
+  {{#if hasOptionalCols}}
+  displayedColumns: string[],
+  {{/if}}
+  {{#if hasAdditionalFilters}}
+  {{#each aditionalFilters}}
+  {{this.name}}: {{UcFirst ../modelName}}ModelInterfaces['fullModelShape']['{{this.name}}']
+  {{/each}}
+  {{/if}}
+}

@@ -1,0 +1,52 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@handy-ng/*": [
+        "src/app/handy/*"
+      ],
+      "@handy/*": [
+        "../../server/handy/*"
+      ],
+      "@server-types": [
+        "../../server/handy/types/client-shared-types"
+      ],
+      "@server/*": [
+        "../../server/*"
+      ],
+      "@handy-ng-models/*": [
+        "src/app/handy/models/*"
+      ],
+      "@server-models/*": [
+        "../../server/models/*"
+      ],
+      "@ng-shared/*": [
+        "src/app/modules/shared/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "allowEmptyCodegenFiles": false
+  },
+  "references": [
+    {
+      "path": "../../server"
+    }
+  ]
+}

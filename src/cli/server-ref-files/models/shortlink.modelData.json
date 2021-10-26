@@ -1,0 +1,28 @@
+{
+  "modelName": "Shortlink",
+  "autoIncrement": true,
+  "softDelete": false,
+  "fields": [
+    {
+      "inputType": "none",
+      "publicName": "Id",
+      "name": "_id",
+      "unique": "all",
+      "required": true
+    }
+  ],
+  "searchableFields": [
+    {
+      "name": "_id",
+      "displayValue": "ID"
+    },
+    {
+      "name": "finalUrl",
+      "displayValue": "Final url"
+    },
+    {
+      "name": "shortlinkHash",
+      "displayValue": "Hash"
+    }
+  ]
+}

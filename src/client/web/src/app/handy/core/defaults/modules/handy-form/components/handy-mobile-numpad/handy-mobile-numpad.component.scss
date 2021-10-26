@@ -1,0 +1,36 @@
+.numpad {
+  /* Has to be here to prevent zooming on mobile devices */
+  touch-action: manipulation;
+
+  button {
+    min-height: 2.7rem !important;
+
+  }
+}
+
+.keypad-keys {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: .4rem;
+
+
+
+}
+
+.numpad-bottom-btns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: .4rem;
+  margin-top: .4rem;
+
+  button {
+    mat-icon {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+}
+
+.numpad-value{
+  white-space: normal;
+}

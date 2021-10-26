@@ -1,0 +1,90 @@
+<ng-template #formContent>
+  <handy-form #formComp [formName]="formName" [formGroup]="form" [rememberState]="rememberFormState"
+    [defaultResetBtn]="true" [disablePin]="isUpdate" (validSubmitEvent)="onValidSubmit($event)"
+    (invalidSubmitEvent)="onInvalidSubmit($event)" (submitDisabledChange)="submitDisabledChange($event)">
+
+    <div fxLayout="row wrap" fxLayoutGap="8px">
+
+      <!-- Email -->
+      <handy-text-input class="handy-form-input" [formControl]="form.get('email')" fieldName="userCrudForm_email" label="Email"
+        placeholder="Email"></handy-text-input>
+
+      <!-- Name -->
+      <handy-text-input class="handy-form-input" [formControl]="form.get('name')" fieldName="userCrudForm_name" label="Name" placeholder="Name">
+      </handy-text-input>
+  
+      <!-- Roles -->
+      <handy-multi-select-input class="handy-form-input" [options]="rolesSelectOptions" [hasEmptyOption]="true" emptyOptionLabel="None"
+        [formControl]="form.get('roles')" fieldName="userCrudForm_roles" label="Roles" placeholder="Roles">
+      </handy-multi-select-input>
+  
+      <!-- Permissions -->
+      <handy-multi-select-input class="handy-form-input" [options]="permissionsSelectOptions" [hasEmptyOption]="true" emptyOptionLabel="None"
+        [formControl]="form.get('permissions')" fieldName="userCrudForm_permissions" label="Permissions"
+        placeholder="Permissions"></handy-multi-select-input>
+  
+      <!-- Company type -->
+      <div fxFlex="100%">
+  
+        <div *ngFor="let fControl of getArrayControls('groups'), let i = index">
+  
+          <handy-text-input [formControl]="fControl" fieldName="userCrudForm_groups" label="Company type"
+            placeholder="Company type"></handy-text-input>
+  
+          <button (click)="removeControlFromArray('groups', i)" mat-raised-button color="warn">Remove control</button>
+  
+        </div>
+  
+        <button (click)="addGroupsControl()" mat-raised-button color="primary">Add Company type control</button>
+  
+      </div>
+  
+      <!-- Banned -->
+      <handy-check-box class="handy-form-input" labelPosition="after" [formControl]="form.get('banned')" fieldName="userCrudForm_banned"> Banned
+      </handy-check-box>
+
+      <form-actions-bar *ngIf="!inDialog">
+
+        <raised-btn color="primary" [disabled]="submitDisabled" (click)="triggerSubmit()">Submit
+        </raised-btn>
+
+      </form-actions-bar>
+
+    </div>
+
+
+  </handy-form>
+</ng-template>
+
+<!-- For handling both, as regular component and as dialog -->
+<ng-container *ngIf="!inDialog">
+
+  <div class="handy-form-page-wrapper">
+
+    <div class="handy-form-wrapper">
+
+      <basic-btn icon="chevron_left" [routerLink]="[(isUpdate) ? '../../' : '../']">Back to all</basic-btn>
+      <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+    </div>
+
+  </div>
+
+</ng-container>
+
+<ng-container *ngIf="inDialog">
+
+  <mat-dialog-content class="mat-typography">
+
+    <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <basic-btn icon="close" (click)="dialogRef.close()">Cancel</basic-btn>
+    <raised-btn color="primary" [disabled]="submitDisabled" (click)="triggerSubmit()">Submit</raised-btn>
+  </mat-dialog-actions>
+
+</ng-container>
+
+<handy-number-input [(ngModel)]="sample"></handy-number-input>

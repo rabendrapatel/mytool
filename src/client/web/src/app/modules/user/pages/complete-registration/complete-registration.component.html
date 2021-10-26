@@ -1,0 +1,95 @@
+<ng-template #formContent>
+
+  <div>
+
+    <handy-form #formComp [formName]="formName" [formGroup]="form" [rememberState]="rememberFormState"
+    [defaultResetBtn]="false" [disablePin]="true" (validSubmitEvent)="onValidSubmit($event)" [hideFormOptions]="true"
+    (invalidSubmitEvent)="onInvalidSubmit($event)" (submitDisabledChange)="submitDisabledChange($event)">
+    
+    <div fxLayout="column" fxLayoutGap="8px" class="handy-complete-reg-form-content">
+      
+      <h1 class="handy-complete-reg-form-title">Complete your registration</h1>
+      <mat-vertical-stepper #stepper linear (selectionChange)="stepChange($event)" [selectedIndex]="stepIndex">
+
+          <!-- First step -->
+          <mat-step [stepControl]="form.get('preferences')">
+            <ng-template matStepLabel>Preferences</ng-template>
+
+            <user-preferences-form [isInCompleteRegistrationsSteps]="true"></user-preferences-form>
+
+            <div>
+              <!-- <basic-btn icon="chevron_right" (click)="stepper.next()">Next step</basic-btn> -->
+              <flat-btn icon="chevron_right" (click)="stepper.next()">Next step</flat-btn>
+
+            </div>
+
+          </mat-step>
+
+          <!-- Second step -->
+          <mat-step [stepControl]="form.get('userProfile')" formGroupName="userProfile">
+            <ng-template matStepLabel>Profile details</ng-template>
+
+            <!-- Name -->
+            <handy-text-input formControlName="name" fieldName="completeRegistration_name" label="Name"
+              placeholder="Name"></handy-text-input>
+
+            <div>
+
+              <!-- <basic-btn icon="chevron_left" (click)="stepper.previous()">Step back</basic-btn> -->
+              <div class="handy-complet-registration-form-actions">
+                <flat-btn icon="chevron_left" (click)="stepper.previous()">Step back</flat-btn>
+                <flat-btn *ngIf="!inDialog" icon="check_circle" color="primary" [disabled]="submitDisabled"
+                  (click)="triggerSubmit()">Complete registration</flat-btn>
+              </div>
+            </div>
+
+          </mat-step>
+
+        </mat-vertical-stepper>
+
+        <!-- <raised-btn *ngIf="!inDialog" icon="exit_to_app" color="warn" routerLink="/logout">Log out</raised-btn> -->
+        <div fxLayout="row" fxLayoutAlign="center center">
+        <stroked-btn *ngIf="!inDialog" icon="exit_to_app" color="warn" routerLink="/logout" class="auth-home-page">Log
+          out</stroked-btn>
+        </div>
+
+
+      </div>
+
+    </handy-form>
+
+  </div>
+
+</ng-template>
+
+
+<!-- For handling both, as regular component and as dialog -->
+<ng-container *ngIf="!inDialog">
+
+  <div fxLayout="row" fxLayoutAlign="center center" class="complete-registration-page-wrapper">
+
+    <div class="complete-registration-form-wrapper">
+
+      <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+    </div>
+
+  </div>
+
+</ng-container>
+
+<ng-container *ngIf="inDialog">
+
+  <mat-dialog-content class="mat-typography">
+
+    <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <raised-btn icon="exit_to_app" color="warn" (click)="dialogRef.close()" routerLink="/logout">Log out</raised-btn>&nbsp;
+    <raised-btn icon="check_circle" color="primary" [disabled]="submitDisabled" (click)="triggerSubmit()">Complete
+      registration</raised-btn>
+  </mat-dialog-actions>
+
+</ng-container>

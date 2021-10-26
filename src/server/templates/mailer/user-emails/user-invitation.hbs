@@ -1,0 +1,28 @@
+{{!-- <h2>Welcome, you are almost all set. </h2>
+<a href="{{passwordResetLink}}">Click here</a> to set your password and login. --}}
+
+{{> email-header }}
+
+<p>Hi there,</p>
+<p>Welcome, you are almost all set. Click below to set your password and login</p>
+
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+  <tbody>
+    <tr>
+      <td align="left">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td> <a href="{{passwordResetLink}}" target="_blank">Set password and log in</a> </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If the link above does not work, please copy and paste the following URL into your browser: </p>
+<p>{{passwordResetLink}}</p>
+
+{{> email-footer }}

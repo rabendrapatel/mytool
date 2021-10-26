@@ -1,0 +1,128 @@
+{
+  "modelName": "User",
+  "autoIncrement": true,
+  "softDelete": true,
+  "fields": [
+    {
+      "inputType": "none",
+      "publicName": "Id",
+      "name": "_id",
+      "unique": "all",
+      "required": true
+    },
+    {
+      "name": "email",
+      "publicName": "Email",
+      "inputType": "text",
+      "unique": "all",
+      "required": true
+    },
+    {
+      "name": "password",
+      "publicName": "Password",
+      "inputType": "password",
+      "unique": false,
+      "required": false
+    },
+    {
+      "name": "name",
+      "publicName": "Name",
+      "inputType": "text",
+      "unique": false,
+      "required": false
+    },
+    {
+      "name": "roles",
+      "publicName": "Roles",
+      "inputType": "multi-select",
+      "unique": false,
+      "required": false
+    },
+    {
+      "name": "permissions",
+      "publicName": "Permissions",
+      "inputType": "multi-select",
+      "unique": false,
+      "required": false
+    },
+    {
+      "name": "hasVerifiedEmail",
+      "publicName": "Verified email",
+      "inputType": "check-box",
+      "unique": false,
+      "required": false
+    },
+    {
+      "name": "newEmail",
+      "publicName": "New email",
+      "inputType": "text",
+      "unique": false,
+      "required": false
+    },
+    {
+      "name": "banned",
+      "publicName": "Banned",
+      "inputType": "check-box",
+      "unique": false,
+      "required": false
+    }
+  ],
+  "searchableFields": [
+    {
+      "name": "_id",
+      "displayValue": "ID"
+    },
+    {
+      "name": "email",
+      "displayValue": "Email"
+    },
+    {
+      "name": "password",
+      "displayValue": "Password"
+    },
+    {
+      "name": "name",
+      "displayValue": "Name"
+    },
+    {
+      "name": "roles",
+      "displayValue": "Roles"
+    },
+    {
+      "name": "permissions",
+      "displayValue": "Permissions"
+    },
+    {
+      "name": "emailVerificationHash",
+      "displayValue": "Email verification hash"
+    },
+    {
+      "name": "groupId",
+      "displayValue": "Company id"
+    },
+    {
+      "name": "groups",
+      "displayValue": "Company type"
+    },
+    {
+      "name": "newEmail",
+      "displayValue": "New email"
+    },
+    {
+      "name": "lockedUntil",
+      "displayValue": "Locked untill"
+    },
+    {
+      "name": "unlockedAt",
+      "displayValue": "Last time unlocked"
+    },
+    {
+      "name": "unLockHash",
+      "displayValue": "Unlock Hash"
+    },
+    {
+      "name": "passwordResetHash",
+      "displayValue": "Password reset hash"
+    }
+  ]
+}

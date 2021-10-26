@@ -1,0 +1,27 @@
+<div [class]="_extraClass">
+
+    <mat-slider 
+      #inputField="ngModel" 
+      [(ngModel)]="_value" 
+      (ngModelChange)="updateChanges()" 
+      (focus)="onTouched()" 
+      [disabled]="_isDisabled" 
+      [invert]="_invert" 
+      [max]="_max" 
+      [min]="_min" 
+      [displayWith]="_displayWith"
+      [step]="_step"
+      [color]="_color"
+      [thumbLabel]="_thumbLabel" 
+      [tickInterval]="tickInterval" 
+      [vertical]="_vertical">
+    </mat-slider>
+
+    <!-- Pin button -->
+    <button *ngIf="_handyNgUserService.loggedInStatus && _pinningState && !_disableFieldPin" mat-icon-button (click)="handlePinClick()" matSuffix>
+      <handy-icon [size]="16" [icon]="(_hasPinnedVal) ? 'lock' : 'lock_open'"></handy-icon>
+    </button>
+
+  <mat-error *ngIf="_fieldErr" [matTooltip]="_fieldErr">{{ _fieldErr | truncate }}</mat-error>
+  
+  </div>

@@ -1,0 +1,5 @@
+<button mat-button [type]="_type" [ngClass]="btnWithIconClass" [disabled]="_disabled" [disableRipple]="_disableRipple" [color]="_color">
+  <handy-icon *ngIf="btnWithIconClass && _iconPosition === 'left'" [icon]="_icon" placement="btn-left-icon" ></handy-icon>
+  <ng-content></ng-content>
+  <handy-icon *ngIf="btnWithIconClass && _iconPosition === 'right'" [icon]="_icon" placement="btn-right-icon" ></handy-icon>
+</button>

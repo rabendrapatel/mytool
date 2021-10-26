@@ -1,0 +1,176 @@
+import { HandyAutoCompleteData, HandyNgSelectOptionsData, HandyNgRadioGroupOptionsData, HandyNgSelectOptions } from '@handy-ng/types';
+import { HandyNgUserService, HandyNgUtilsService } from '@handy-ng/services';
+import { Component, OnInit, Optional, Inject } from '@angular/core';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { HandyMemoryStateForm } from '@handy-ng/extenders/handy-memory-state-form';
+
+import { Injectable } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+{{#if includeResolver}}
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve, ActivatedRoute } from '@angular/router';
+{{/if}}
+
+import { required } from '@ng-shared/form-validators';
+
+@Component({
+  selector: '{{filePath formName}}-form',
+  templateUrl: './{{filePath formName}}.component.html',
+  styleUrls: ['./{{filePath formName}}.component.scss']
+})
+export class {{UcFirst formName}}Component extends HandyMemoryStateForm<FormDataShape> implements OnInit {
+
+  public form: FormGroup;
+  public formName = '{{ formName }}';
+  public rememberFormState: boolean = {{ rememberFormState }};
+
+  constructor (
+    {{#if includeResolver}}
+    @Optional() protected route: ActivatedRoute,
+    {{/if}}
+    @Optional() public dialogRef: MatDialogRef<{{UcFirst formName}}Component>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public dialogData: DialogData,
+    protected _handyNgUserService: HandyNgUserService, 
+    public handyNgUtilsService: HandyNgUtilsService, ) {
+    
+    super(_handyNgUserService, handyNgUtilsService{{#if includeResolver}}, dialogRef, dialogData, route{{/if}});
+    
+    this.initExtender();
+
+  }
+
+  ngOnInit(): void {
+  }
+
+  public onValidSubmit(formData: FormDataShape): void {
+
+    // Do whatever is needed after submit
+
+  }
+  
+  public onInvalidSubmit(formData: FormDataShape): void {
+    // console.log(formData)
+  }
+
+  {{#if includeResolver}}
+  protected getFormInitData(resolverData: Partial<FormDataShape>): Partial<FormDataShape> {
+
+    return resolverData;
+
+  }
+  {{/if}}
+  {{#unless includeResolver}}
+  getFormInitData(): Partial<FormDataShape> {
+    
+    return {};
+
+  }
+  {{/unless}}
+  
+  createForm(formInitData: Partial<FormDataShape>): FormGroup {
+
+    let fg: FormGroup = new FormGroup({
+      // form fields
+    })  
+
+    return fg;
+  
+  }
+
+}
+
+{{#if includeResolver}}
+/* -------------------------------------------------------------------------- */
+/*                                Form resolver                               */
+/* -------------------------------------------------------------------------- */
+
+@Injectable({
+  providedIn: 'root'
+})
+export class {{UcFirst formName}}ComponentResolver implements Resolve<Partial<FormDataShape>>{
+
+  constructor () {}
+
+  // Can be used for modal integration
+  public getItemData(paramName: any): Promise<Partial<FormDataShape>> {
+
+    return new Promise((resolve, reject) => {
+
+      return resolve(null); // resolve Partial<FormDataShape> form data...
+
+    })
+
+  }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Partial<FormDataShape>> {
+
+    return this.getItemData(route.params['paramName']);
+
+  }
+
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Resolver usage                               */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------- Via route ------------------------------- */
+/*
+  ...
+  import { {{UcFirst formName}}Component, {{UcFirst formName}}ComponentResolver } from 'path to this file..';
+  ...
+
+  ...
+  {
+    path: 'route-path/:paramName',
+    component: {{UcFirst formName}}Component,
+    resolve: {
+      formData: {{UcFirst formName}}ComponentResolver
+    }
+  },
+  ...
+
+*/
+
+/* ------------------------------- Via dialog ------------------------------- */
+
+/* 
+
+  ...
+  import { {{UcFirst formName}}Component, {{UcFirst formName}}ComponentResolver } from 'path to this file..';
+  import { MatDialog } from '@angular/material/dialog';
+  ...
+
+  ...
+  constructor (public dialog: MatDialog, private formResolver: {{UcFirst formName}}ComponentResolver) { }
+  ...
+
+  openDialog(paramName?: any) {
+
+    this.formResolver.getItemData(paramName)
+      .then(formData => {
+
+      const dialogRef = this.dialog.open({{UcFirst formName}}Component, {
+        data: { formData }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+
+    })
+    .catch(err => {
+      // Handle error
+    })
+
+  }
+*/
+
+{{/if}}
+type FormDataShape = {
+
+  // Form data interface
+
+}
+type DialogData = {
+  formData: Partial<FormDataShape>
+}

@@ -1,0 +1,59 @@
+<ng-template #formContent>
+  <handy-form #formComp [allowFullScreen]="!inDialog" [formName]="formName" [formGroup]="form"
+    [rememberState]="rememberFormState" [defaultResetBtn]="false" [disablePin]="true" [hideFormOptions]="true"
+    (validSubmitEvent)="onValidSubmit($event)" (invalidSubmitEvent)="onInvalidSubmit($event)"
+    (submitDisabledChange)="submitDisabledChange($event)">
+
+
+    <!-- Input fields -->
+    <h3 *ngIf="!isInCompleteRegistrationsSteps">Preferences</h3>
+    <div class="handy-user-preference-elements">
+      <handy-slide-toggle formControlName="webDarkTheme" (valueChange)="handyNgLayoutService.switchTheme(true, $event)"
+        labelPosition="before">Dark theme
+      </handy-slide-toggle>
+
+      <handy-radio-group-input formControlName="webSidenavPosition" label="Side navigation position"
+        (valueChange)="handyNgLayoutService.switchSidenavPosition($event)" [groupOptions]="sidenavPositionRadioBtns">
+      </handy-radio-group-input>
+
+      <handy-radio-group-input formControlName="notificationHorizontalPosition"
+        label="Notifications horizontal position" (valueChange)="notificationPositionPreferenceChange()"
+        [groupOptions]="notificationHozizontalPositionRadioBtns">
+      </handy-radio-group-input>
+
+      <handy-radio-group-input formControlName="notificationVerticalPosition" label="Notifications vertical position"
+        (valueChange)="notificationPositionPreferenceChange()" [groupOptions]="notificationVerticalPositionRadioBtns">
+      </handy-radio-group-input>
+      <div>
+        <mat-label>Notifications duration {{form.get('notificationDuration').value}} seconds</mat-label>
+        <handy-slider-input color="primary" (valueChange)="notificationPositionPreferenceChange()"
+          [displayWith]="notificationDurationInputLabel" formControlName="notificationDuration" [min]="2" [max]="15">
+        </handy-slider-input>
+      </div>
+    </div>
+    <raised-btn *ngIf="!inDialog && !isInCompleteRegistrationsSteps" color="primary" [disabled]="submitDisabled"
+      (click)="triggerSubmit()">Submit</raised-btn> &nbsp;
+
+  </handy-form>
+</ng-template>
+
+<!-- For handling both, as regular component and as dialog -->
+<ng-container *ngIf="!inDialog">
+
+  <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+</ng-container>
+
+<ng-container *ngIf="inDialog">
+
+  <mat-dialog-content class="mat-typography">
+
+    <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <flat-btn (click)="dialogRef.close()" color="primary" icon="check_circle">Done</flat-btn>
+  </mat-dialog-actions>
+
+</ng-container>

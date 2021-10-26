@@ -1,0 +1,24 @@
+node_modules/
+/package-lock.json
+
+# Obvious
+node_modules/
+
+# Necessary to make sure dependencies work on each platform mac/win/linux
+/package-lock.json
+
+# Not moving logs 
+/src/server/handy/logs/
+
+# Makes sure that doesn't transfer uploads data 
+/src/server/uploads/
+
+/magic-box/
+/handy_env/
+
+# To keep some necessary empty folders
+!.gitkeep
+
+# production Flags
+/prod.flag
+/stag.flag

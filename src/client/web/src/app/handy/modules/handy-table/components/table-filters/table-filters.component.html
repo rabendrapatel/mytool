@@ -1,0 +1,17 @@
+<mat-accordion>
+
+  <mat-expansion-panel [expanded]="expanded" class="mat-elevation-z0">
+
+    <div fxFlex="100%" fxLayout="column" fxLayoutAlign="flex-start stretch">
+
+      <h3 class="filters-headline">Advanced filters</h3>
+      
+      <div fxLayout="row wrap" fxLayoutGap="1%" fxLayoutGap.sm="1.25%" fxLayoutGap.md="2.5%">
+        <ng-content></ng-content>
+      </div>
+
+    </div>
+
+  </mat-expansion-panel>
+
+</mat-accordion>

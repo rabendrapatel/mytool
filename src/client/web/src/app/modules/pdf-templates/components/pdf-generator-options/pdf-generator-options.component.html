@@ -1,0 +1,71 @@
+<ng-template #formContent>
+  <handy-form #formComp 
+    [formName]="formName" 
+    [formGroup]="form" 
+    [rememberState]="true" 
+    [defaultResetBtn]="true" 
+    [disablePin]="true"
+    [allowFullScreen]="false"
+    (validSubmitEvent)="onValidSubmit($event)" 
+    (invalidSubmitEvent)="onInvalidSubmit($event)"
+    (submitDisabledChange)="submitDisabledChange($event)">
+
+    <div fxLayout="column wrap" style="width: 500px;" fxLayoutAlign="center center" fxLayoutGap="8px">
+
+      <div fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="8px">
+
+        <h3 style="text-align: center;">Paper options</h3>
+
+        <handy-select-input [formControl]="form.get('format')" [hasEmptyOption]="false" [options]="formatOptions" label="Paper size"></handy-select-input>
+        <handy-slide-toggle [formControl]="form.get('landscape')">Landscape orientation</handy-slide-toggle>
+        <handy-slide-toggle [formControl]="form.get('displayHeaderFooter')">Print header and footer</handy-slide-toggle>
+
+      </div>
+  
+  
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="8px" formGroupName="margin">
+  
+        <h3 fxFlex="100%" style="text-align: center;" >Margins in cm</h3>
+        <handy-number-input [step]="0.1" formControlName="top" [min]="(form.get('displayHeaderFooter').value === true) ? 0.7 : 0" [max]="1" label="Top"></handy-number-input>
+        <handy-number-input [step]="0.1" formControlName="bottom" [min]="(form.get('displayHeaderFooter').value === true) ? 0.7 : 0" [max]="1" label="Bottom"></handy-number-input>
+        <handy-number-input [step]="0.1" formControlName="left" [min]="0" [max]="1" label="Left"></handy-number-input>
+        <handy-number-input [step]="0.1" formControlName="right" [min]="0" [max]="1" label="Right"></handy-number-input>
+  
+      </div>
+
+      <stroked-btn *ngIf="!inDialog" color="primary" [disabled]="submitDisabled" (click)="emitOutputChange()">Reflect changes</stroked-btn>
+
+    </div>
+
+  </handy-form>
+</ng-template>
+
+<!-- For handling both, as regular component and as dialog -->
+<ng-container *ngIf="!inDialog">
+
+  <div class="handy-form-page-wrapper">
+  
+    <div class="handy-form-wrapper">
+  
+      <ng-container *ngTemplateOutlet="formContent"></ng-container>
+  
+    </div>
+  
+  </div>
+
+</ng-container>
+
+<ng-container *ngIf="inDialog">
+
+  <mat-dialog-content class="mat-typography">
+
+    <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <basic-btn icon="close" (click)="dialogRef.close()">Cancel</basic-btn>
+    <raised-btn color="primary" [disabled]="submitDisabled" (click)="triggerSubmit()">Submit</raised-btn>
+  </mat-dialog-actions>
+
+</ng-container>

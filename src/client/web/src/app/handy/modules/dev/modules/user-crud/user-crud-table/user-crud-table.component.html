@@ -1,0 +1,214 @@
+<div class="crud-table-page-wrapper">
+  <div [class]="(expanded) ? 'expanded-crud-table-wrapper' : 'crud-table-wrapper'">
+
+    <div class="crud-table-actions-bar">
+
+      <raised-btn icon="add" color="primary" routerLink="./new">New entry</raised-btn>
+
+
+      <handy-form #tableFilter class="crud-table-filters-form" [hideFormOptions]="true">
+        <div class="crud-table-search-bar">
+
+          <handy-text-input #searchInput class="crud-table-search-input" [formControl]="filterForm.get('search')"
+            label="Search" placeholder="Search">
+          </handy-text-input>
+
+          <handy-multi-select-input #searchableFieldsSelect class="crud-table-searchable-fields-input"
+            [formControl]="filterForm.get('searchableFields')" label="Search fields" placeholder="Search fields">
+          </handy-multi-select-input>
+
+          <div class="crud-table-filters-btns-wrapper">
+
+            <div class="crud-table-filters-btns">
+
+              <stroked-btn #filtersToggle color="primary" icon="filter_list">{{ (filtersToggleState) ? 'Hide' : 'Show'}}
+                filters</stroked-btn>
+              <stroked-btn #clearFilters color="warn" icon="refresh">Reset filters</stroked-btn>
+
+            </div>
+
+          </div>
+
+        </div>
+        <handy-table-filters>
+          <handy-multi-select-input #optionalColumnsSelect class="crud-table-filter-input"
+            [formControl]="filterForm.get('displayedColumns')" label="Diplay columns" placeholder="Diplay columns">
+          </handy-multi-select-input>
+
+          <handy-select-input class="crud-table-filter-input" [formControl]="filterForm.get('_id')" label="Id"
+            placeholder="Id" [options]="_idFilterOptions" [hasEmptyOption]="true" emptyOptionLabel="Any">
+          </handy-select-input>
+
+          <handy-select-input class="crud-table-filter-input" [formControl]="filterForm.get('email')" label="Email"
+            placeholder="Email" [options]="emailFilterOptions" [hasEmptyOption]="true" emptyOptionLabel="Any">
+          </handy-select-input>
+
+          <handy-select-input class="crud-table-filter-input" [formControl]="filterForm.get('password')"
+            label="Password" placeholder="Password" [options]="passwordFilterOptions" [hasEmptyOption]="true"
+            emptyOptionLabel="Any"></handy-select-input>
+
+          <handy-select-input class="crud-table-filter-input" [formControl]="filterForm.get('name')" label="Name"
+            placeholder="Name" [options]="nameFilterOptions" [hasEmptyOption]="true" emptyOptionLabel="Any">
+          </handy-select-input>
+
+          <handy-select-input class="crud-table-filter-input" [formControl]="filterForm.get('roles')" label="Roles"
+            placeholder="Roles" [options]="rolesFilterOptions" [hasEmptyOption]="true" emptyOptionLabel="Any">
+          </handy-select-input>
+
+          <handy-select-input class="crud-table-filter-input" [formControl]="filterForm.get('permissions')"
+            label="Permissions" placeholder="Permissions" [options]="permissionsFilterOptions" [hasEmptyOption]="true"
+            emptyOptionLabel="Any"></handy-select-input>
+
+          <handy-select-input class="crud-table-filter-input" [formControl]="filterForm.get('hasVerifiedEmail')"
+            label="Verified email" placeholder="Verified email" [options]="hasVerifiedEmailFilterOptions"
+            [hasEmptyOption]="true" emptyOptionLabel="Any"></handy-select-input>
+
+          <handy-select-input class="crud-table-filter-input" [formControl]="filterForm.get('newEmail')"
+            label="New email" placeholder="New email" [options]="newEmailFilterOptions" [hasEmptyOption]="true"
+            emptyOptionLabel="Any"></handy-select-input>
+
+          <handy-select-input class="crud-table-filter-input" [formControl]="filterForm.get('banned')" label="Banned"
+            placeholder="Banned" [options]="bannedFilterOptions" [hasEmptyOption]="true" emptyOptionLabel="Any">
+          </handy-select-input>
+
+        </handy-table-filters>
+
+      </handy-form>
+
+
+
+    </div>
+
+    <handy-table>
+
+      <mat-table [dataSource]="dataSource" matSort cdkDropList cdkDropListOrientation="horizontal"
+        (cdkDropListDropped)="drop($event)">
+
+        <ng-container matColumnDef="_id">
+
+          <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" mat-sort-header><span *cdkDragPreview>
+              <basic-btn icon="swap_horiz">Id</basic-btn>
+            </span>Id</mat-header-cell>
+
+          <mat-cell *matCellDef="let element">{{element._id}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+
+          <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" mat-sort-header><span *cdkDragPreview>
+              <basic-btn icon="swap_horiz">Email</basic-btn>
+            </span>Email</mat-header-cell>
+
+          <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="password">
+
+          <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" mat-sort-header><span *cdkDragPreview>
+              <basic-btn icon="swap_horiz">Password</basic-btn>
+            </span>Password</mat-header-cell>
+
+          <mat-cell *matCellDef="let element">{{element.password}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+
+          <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" mat-sort-header><span *cdkDragPreview>
+              <basic-btn icon="swap_horiz">Name</basic-btn>
+            </span>Name</mat-header-cell>
+
+          <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="roles">
+
+          <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" mat-sort-header><span *cdkDragPreview>
+              <basic-btn icon="swap_horiz">Roles</basic-btn>
+            </span>Roles</mat-header-cell>
+
+          <mat-cell *matCellDef="let element">{{element.roles}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="permissions">
+
+          <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" mat-sort-header><span *cdkDragPreview>
+              <basic-btn icon="swap_horiz">Permissions</basic-btn>
+            </span>Permissions</mat-header-cell>
+
+          <mat-cell *matCellDef="let element">{{element.permissions}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="hasVerifiedEmail">
+
+          <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" mat-sort-header><span *cdkDragPreview>
+              <basic-btn icon="swap_horiz">Verified email</basic-btn>
+            </span>Verified email</mat-header-cell>
+
+          <mat-cell *matCellDef="let element">{{element.hasVerifiedEmail}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="newEmail">
+
+          <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" mat-sort-header><span *cdkDragPreview>
+              <basic-btn icon="swap_horiz">New email</basic-btn>
+            </span>New email</mat-header-cell>
+
+          <mat-cell *matCellDef="let element">{{element.newEmail}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="banned">
+
+          <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" mat-sort-header><span *cdkDragPreview>
+              <basic-btn icon="swap_horiz">Banned</basic-btn>
+            </span>Banned</mat-header-cell>
+
+          <mat-cell *matCellDef="let element">{{element.banned}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+
+          <mat-header-cell *matHeaderCellDef class="crud-table-actions-col" cdkDrag cdkDragLockAxis="x" mat-sort-header>
+            <span *cdkDragPreview>
+              <basic-btn icon="swap_horiz">Actions</basic-btn>
+            </span>Actions</mat-header-cell>
+
+          <mat-cell class="crud-table-actions-col" *matCellDef="let element">
+
+            <div fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="8px">
+              <stroked-btn icon="edit" color="primary" [routerLink]="['./edit/' + element._id]">Edit</stroked-btn>
+              <stroked-btn icon="delete_forever" color="warn" (confirmClick)="removeEntryAction(element._id)">Remove
+              </stroked-btn>
+
+            </div>
+
+          </mat-cell>
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+
+    </handy-table>
+
+    <handy-table-paginator></handy-table-paginator>
+
+    <div fxHide.lt-lg class="table-expand-btn">
+
+      <icon-btn (click)="toogleExpandedState()" [matTooltip]="(expanded) ? 'Shrink table' : 'Expand table'"
+        [icon]="(expanded) ? 'west' : 'east'"></icon-btn>
+
+    </div>
+
+  </div>
+</div>

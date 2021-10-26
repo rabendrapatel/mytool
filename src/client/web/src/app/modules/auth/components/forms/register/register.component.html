@@ -1,0 +1,49 @@
+<ng-template #formContent>
+
+  <h1 class="handy-form-title">Create account</h1>
+
+  <handy-form #formComp [formName]="formName" [formGroup]="form" [rememberState]="rememberFormState"
+    [defaultResetBtn]="false" [disablePin]="true" (validSubmitEvent)="onValidSubmit($event)"
+    (invalidSubmitEvent)="onInvalidSubmit($event)" [hideFormOptions]="true"
+    (submitDisabledChange)="submitDisabledChange($event)">
+
+    <!-- Input fields -->
+
+    <handy-text-input [formControl]="form.get('registrationEmail')" fieldName="registration-email" label="Account Email"
+      placeholder="your@email.com"></handy-text-input>
+
+    <handy-password-input [autofill]="false" [formControl]="form.get('password')" label="Password"
+      (passwordStrength)="passwordStrengthHelp = $event"></handy-password-input>
+
+    <password-hint (generatedPassword)="asignGeneratedPassword($event)" [passwordStrengt]="passwordStrengthHelp"
+      color="primary" class="handy-form-password-hint"></password-hint>
+
+    <div class="handy-form-register-actions">
+      <raised-btn *ngIf="!inDialog" color="primary" icon="person_add" [disabled]="submitDisabled"
+        (click)="triggerSubmit()" class="handy-single-button-form">Create account</raised-btn>
+      <stroked-btn routerLink="/login" color="primary" icon="login" class="handy-single-button-form">Login
+      </stroked-btn>
+    </div>
+  </handy-form>
+</ng-template>
+
+<!-- For handling both, as regular component and as dialog -->
+<ng-container *ngIf="!inDialog">
+  <ng-container *ngTemplateOutlet="formContent"></ng-container>
+</ng-container>
+
+<ng-container *ngIf="inDialog">
+
+  <mat-dialog-content class="mat-typography">
+
+    <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <flat-btn (click)="dialogRef.close()">Cancel</flat-btn>
+    <raised-btn color="primary" icon="person_add" [disabled]="submitDisabled" (click)="triggerSubmit()">Create account
+    </raised-btn>
+  </mat-dialog-actions>
+
+</ng-container>

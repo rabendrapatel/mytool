@@ -1,0 +1,55 @@
+<!-- First level item in sidenav -->
+<handy-icon *ngIf="!data.isSeparator && isParent" [ngClass]="{active: activeChildren}" [size]="32" 
+  [matMenuTriggerFor]="main_menu" placement="sidenav" [icon]="data.icon">
+</handy-icon>
+
+<!-- Separator -->
+<div class="separator" *ngIf="data.isSeparator">
+
+  <span class="mat-small">{{ data.text }}</span>
+  <mat-divider></mat-divider>
+
+</div>
+
+<!-- Final button for nested children -->
+<button [routerLink]="data.link" routerLinkActive="active-btn" *ngIf="!isParent && !data.hasChildren" mat-menu-item class="pinned-nested-nav-button">
+
+  <handy-icon *ngIf="data.icon" [icon]="data.icon" ></handy-icon>
+  <span>{{ data.text }}</span>
+
+</button>
+
+<!-- Parent buton for nested children -->
+<button *ngIf="!isParent && data.hasChildren" [matMenuTriggerFor]="main_menu" mat-menu-item
+  class="pinned-nested-nav-button">
+
+  <handy-icon *ngIf="data.icon" [icon]="data.icon" ></handy-icon>
+  <span>{{ data.text }}</span>
+
+</button>
+
+<!-- Nested menu -->
+<mat-menu #main_menu="matMenu" >
+
+  <ng-container *ngFor="let mainItem of data.children">
+
+    <!-- Separator -->
+    <div class="separator" *ngIf="mainItem.isSeparator">
+
+      <span class="mat-small">{{ mainItem.text }}</span>
+      <mat-divider></mat-divider>
+
+    </div>
+
+    <!-- Final button with link -->
+    <button [routerLink]="mainItem.link" (click)="handleClick()" routerLinkActive="active-btn" *ngIf="!mainItem.isSeparator && !mainItem.hasChildren" mat-menu-item class="pinned-nested-nav-button">
+      <handy-icon *ngIf="mainItem.icon" [icon]="mainItem.icon" ></handy-icon>
+      <span>{{ mainItem.text }}</span>
+    </button>
+
+    <!-- Nested sub menu -->
+    <non-pinned-menu *ngIf="!mainItem.isSeparator && mainItem.hasChildren" [menuData]="mainItem"></non-pinned-menu>
+
+  </ng-container>
+
+</mat-menu>

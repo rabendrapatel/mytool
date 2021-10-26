@@ -1,0 +1,79 @@
+<handy-nav-layout *ngIf="!printId">
+
+  <div fxLayout="row wrap" class="no-print" fxLayoutAlign="center">
+
+    <div fxFlex="100%" fxLayout fxLayoutAlign="center" style="padding-top: 20px;">
+
+      <pdf-generator-options-form (reflect)="reflectPaperChanges($event)"></pdf-generator-options-form>
+
+    </div>
+
+    <div fxFlex="100%" fxLayout="column" fxLayoutAlign="center center" style="padding-top: 20px;">
+
+      <h4>For page break use "page-break" class on element after which page should break</h4>
+
+      <div style="height: 10px;"></div>
+
+      <raised-btn icon="picture_as_pdf" (click)="generateTestPdf()" color="primary">Generate testing pdf</raised-btn>
+
+      <div style="height: 10px;"></div>
+
+      <a *ngIf="generatedFile" target="_blanc" [href]="generatedFile">{{ generatedFile }}</a>
+
+      <div style="height: 10px;"></div>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center flex-start" class="mat-elevation-z12">
+
+      <mat-card fxLayout="row" fxLayoutAlign="center flex-start">
+
+        <div [ngStyle]="{
+            'width': margin.left + 'cm',
+            'height': '100%'
+          }">
+
+        </div>
+
+        <!-- <div #preview [class]="format + ' print'">     -->
+        <div #preview [ngStyle]="{
+          'margin-top':  margin.top + 'cm',
+          'margin-bottom':  margin.bottom + 'cm',
+          'width': paperWidth + 'mm',
+          'min-height': 'calc(' + paperHeight + 'mm - ' + margin.top + 'cm - ' + margin.bottom + 'cm)'
+        }">
+
+          <ng-container *ngTemplateOutlet="printContent"></ng-container>
+
+        </div>
+
+        <div [ngStyle]="{
+          'width': margin.right + 'cm',
+          'height': '100%'
+        }"></div>
+
+      </mat-card>
+
+
+    </div>
+
+  </div>
+
+</handy-nav-layout>
+
+<!-- Required to validate print... -->
+<div *ngIf="printId" [ngStyle]="{
+  'border': 'none !important',
+  'width': paperWidth + 'mm',
+  'padding': '0 !Important'
+  }">
+  <ng-container *ngTemplateOutlet="printContent"></ng-container>
+</div>
+
+<span *ngIf="printId" class="no-print" [id]="printId">{{ printId }}</span>
+<ng-template #printContent>
+
+  <!-- Router outlet goes here -->
+  <router-outlet></router-outlet>
+
+</ng-template>

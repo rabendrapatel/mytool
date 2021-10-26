@@ -1,0 +1,15 @@
+<div fxLayout="column" fxLayoutAlign="flex-start stretch">
+
+  <h4 *ngIf="actionName" class="handy-notif-error">{{ actionName }} {{ code }}</h4>
+  <h4 *ngIf="headline">{{ headline }}</h4>
+  <p *ngIf="msg">{{ msg }}</p>
+  
+  <p *ngIf="refCode" matTooltip="Reffer to this code when contacting support">Reference code: <strong>{{ refCode }}</strong></p>
+
+</div>
+
+<div fxLayout="row" fxLayoutAlign="flex-end flex-end">
+  <!-- <raised-btn (click)="closeSnackbar()">{{ dismissBtnLabel }}</raised-btn> -->
+  <flat-btn (click)="closeSnackbar()">{{ dismissBtnLabel }}</flat-btn>
+
+</div>

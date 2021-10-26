@@ -1,0 +1,216 @@
+/*=============================================
+ =            handy pallete            =
+ =============================================*/
+$mat-gray-handy: (50: #eeeeee,
+  100: #d2d5d8,
+  200: #b4b9c0,
+  300: #949ea8,
+  400: #7d8996,
+  500: #667585,
+  600: #5a6775,
+  700: #49535e,
+  800: #3a4149,
+  900: #282d32,
+
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  ));
+
+$mat-primary-blue-handy: (50: #dff3f9,
+  100: #afdff0,
+  200: #7bcae7,
+  300: #49b6dd,
+  400: #20a7d8,
+  500: #0098d3,
+  600: #008bc5,
+  700: #0079b2,
+  800: #00699f,
+  900: #004a7f,
+  A100: #afdff0,
+  A200: #49b6dd,
+  A400: #20a7d8,
+  A700: #0079b2,
+
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ));
+
+$mat-accent-yellow-handy: (50: #fff8e1,
+  100: #ffecb3,
+  200: #ffe082,
+  300: #ffd54f,
+  400: #ffca28,
+  500: #ffc107,
+  600: #ffb300,
+  700: #ffa000,
+  800: #ff8f00,
+  900: #ff6f00,
+  A100: #ffecb3,
+  A200: #ffe082,
+  A400: #ffc107,
+  A700: #ffa000,
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  ));
+
+$mat-warn-red-handy: (50: #ffeaee,
+  100: #ffcbd0,
+  200: #fe9695,
+  300: #f86b6b,
+  400: #ff4343,
+  500: #ff2f24,
+  600: #f82126,
+  700: #e60f21,
+  800: #d80019,
+  900: #c8000a,
+  A100: #ffcbd0,
+  A200: #fe9695,
+  A400: #ff4343,
+  A700: #e60f21,
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ));
+
+
+/*=====  End of handy pallete  ======*/
+
+
+
+// Background palette for light themes.
+$mat-light-theme-background: (status-bar: map_get($mat-gray-handy, 300),
+  app-bar: map_get($mat-gray-handy, 100),
+  background: map_get($mat-gray-handy, 50),
+  hover: rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  card: white,
+  dialog: map_get($mat-gray-handy, 50),
+  disabled-button: rgba(black, 0.12),
+  raised-button: map_get($mat-gray-handy, 100),
+  focused-button: $dark-focused,
+  selected-button: map_get($mat-gray-handy, 300),
+  selected-disabled-button: map_get($mat-gray-handy, 400),
+  disabled-button-toggle: map_get($mat-gray-handy, 200),
+  unselected-chip: map_get($mat-primary-blue-handy, 300),
+  disabled-list-option: map_get($mat-gray-handy, 200),
+  tooltip: map_get($mat-gray-handy, 700),
+);
+
+// Background palette for dark themes.
+$mat-dark-theme-background: (status-bar: black,
+  app-bar: map_get($mat-primary-blue-handy, 800),
+  background: map_get($mat-gray-handy, 900),
+  hover: rgba(white, 0.04), // TODO(kara): check style with Material Design UX
+  card: map_get($mat-gray-handy, 800),
+  dialog: map_get($mat-gray-handy, 800),
+  disabled-button: rgba(white, 0.12),
+  raised-button: map_get($mat-gray-handy, 600),
+  focused-button: $light-focused,
+  selected-button: map_get($mat-gray-handy, 800),
+  selected-disabled-button: map_get($mat-gray-handy, 900),
+  disabled-button-toggle: black,
+  unselected-chip: map_get($mat-primary-blue-handy, 700),
+  disabled-list-option: black,
+  tooltip: map_get($mat-gray-handy, 700),
+);
+
+// Foreground palette for light themes.
+$mat-light-theme-foreground: (base: black,
+  divider: $dark-dividers,
+  dividers: $dark-dividers,
+  disabled: $dark-disabled-text,
+  disabled-button: rgba(black, 0.26),
+  disabled-text: $dark-disabled-text,
+  elevation: black,
+  hint-text: $dark-disabled-text,
+  secondary-text: $dark-secondary-text,
+  icon: map_get($mat-gray-handy, 800),
+  icons: map_get($mat-gray-handy, 800),
+  text: map_get($mat-gray-handy, 800),
+  slider-min: map_get($mat-gray-handy, 800),
+  slider-off: rgba(map_get($mat-gray-handy, 800), 0.26),
+  slider-off-active: rgba(map_get($mat-gray-handy, 800), 0.38),
+);
+
+// Foreground palette for dark themes.
+$mat-dark-theme-foreground: (base: white,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba(white, 0.3),
+  disabled-text: $light-disabled-text,
+  elevation: black,
+  hint-text: $light-disabled-text,
+  secondary-text: $light-secondary-text,
+  icon: map_get($mat-gray-handy, 300),
+  icons: map_get($mat-gray-handy, 300),
+  text: #fff,
+  slider-min: map_get($mat-gray-handy, 300),
+  slider-off: rgba(map_get($mat-gray-handy, 300), 0.3),
+  slider-off-active: rgba(map_get($mat-gray-handy, 300), 0.3),
+);
+
+// additional
+
+@mixin mat-dialog-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .mat-dialog-container {
+    @include _mat-theme-elevation(24, $theme);
+    background: mat-color($background, dialog);
+    color: mat-color($foreground, text);
+  }
+}
+
+@mixin mat-dialog-typography($config) {
+  .mat-dialog-title {
+    @include mat-typography-level-to-styles($config, title);
+  }
+}

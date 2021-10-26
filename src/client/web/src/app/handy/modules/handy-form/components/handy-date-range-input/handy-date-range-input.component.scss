@@ -1,0 +1,35 @@
+.data-range-elements {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.2rem;
+}
+
+.data-range-content {
+    position: relative;
+
+    &>button {
+        position: absolute;
+        top: .5rem;
+        right: -.8rem;
+    }
+}
+
+mat-progress-spinner {
+    position: absolute;
+    top: 0.5rem;
+    right: .3rem;
+}
+
+
+
+@media only screen and (max-width: 500px) {
+    .data-range-elements {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 0;
+
+    }
+}
+
+ :host {
+   display: block;
+ }

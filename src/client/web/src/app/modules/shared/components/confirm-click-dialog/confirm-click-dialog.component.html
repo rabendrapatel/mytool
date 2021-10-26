@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<mat-dialog-content class="mat-typography">
+
+  <p *ngIf="body">{{ body }}</p>
+
+</mat-dialog-content>
+<mat-dialog-actions fxLayout fxLayoutAlign="flex-end center" fxLayoutGap="8px">
+
+  <stroked-btn color="warn" (click)="cancel()">{{ cancelLabel }}</stroked-btn>
+  <flat-btn (click)="confirm()" color="primary">{{ confirmLabel }}</flat-btn>
+
+</mat-dialog-actions>

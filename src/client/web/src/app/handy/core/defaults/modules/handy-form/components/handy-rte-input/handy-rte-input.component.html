@@ -1,0 +1,25 @@
+<div class="quill-editor-handy-section">
+  <quill-editor *browser #inputField="ngModel" (ngModelChange)="updateChanges()" [(ngModel)]="_value"
+    (onFocus)="onTouched()" (onBlur)="onTouched()" [modules]="quillModules" [disabled]="_isDisabled"
+    class="mat-typography" [sanitize]="true" [placeholder]="_placeholder">
+    </quill-editor>
+
+  <mat-progress-spinner *ngIf="_fieldStatus === 'PENDING' && !_pinningState" matSuffix [diameter]="16" color="primary"
+    mode="indeterminate">
+  </mat-progress-spinner>
+  
+  <!-- Pin button -->
+  <button *ngIf="_handyNgUserService.loggedInStatus && _pinningState && !_disableFieldPin" mat-icon-button
+    (click)="handlePinClick()" matSuffix>
+    <handy-icon [size]="16" [icon]="(_hasPinnedVal) ? 'lock' : 'lock-open'"></handy-icon>
+  </button>
+
+</div>
+
+<mat-error *ngIf="_fieldErr" [matTooltip]="_fieldErr">{{ _fieldErr | truncate }}</mat-error>
+
+<!-- Just field content -->
+<quill-view-html [content]="_value" *server></quill-view-html>
+<!-- Has to stay here for unviresal rendering -->
+<input *server #inputField="ngModel" [disabled]="_isDisabled" [(ngModel)]="_value" [type]="'hidden'"
+  [placeholder]="_placeholder">

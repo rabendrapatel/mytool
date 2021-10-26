@@ -1,0 +1,25 @@
+import { ServerMiddleware, ServerRequest, ServerResponse, NextFn } from '@handy/types';
+import { HandyErrorService } from '@services';
+import { Application } from 'express';
+
+import { Middleware } from '@handy/core';
+
+@Middleware({
+  errorMiddleware: {{errorMiddleware}},
+})
+export class {{controllerName}}Middleware implements ServerMiddleware {
+
+  constructor () { }
+
+  middleware(app: Application): void {
+
+    // Middleware logic
+    // app.use((req: ServerRequest, res: ServerResponse, next: NextFn) => {
+
+    //   return next();
+
+    // })
+
+  }
+
+}

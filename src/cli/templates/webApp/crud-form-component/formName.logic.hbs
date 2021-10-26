@@ -1,0 +1,329 @@
+import { HandyAutoCompleteData, HandyNgSelectOptionsData, HandyNgRadioGroupOptionsData, HandyNgSelectOptions, HandyFileInputData } from '@handy-ng/types';
+import { HandyNgUserService, HandyNgUtilsService } from '@handy-ng/services';
+import { Component, OnInit, Optional, Inject } from '@angular/core';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { HandyMemoryStateForm } from '@handy-ng/extenders/handy-memory-state-form';
+
+import { {{UcFirst modelName}}NgModel } from '@handy-ng/models/{{ modelName }}.ng-model';
+import { {{UcFirst modelName}}ModelInterfaces } from '@server-models/{{ modelName }}/model.interface';
+import { Injectable } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+{{#if includeResolver}}
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve, ActivatedRoute } from '@angular/router';
+{{/if}}
+
+import { required } from '@ng-shared/form-validators';
+
+@Component({
+  selector: '{{filePath formName}}-form',
+  templateUrl: './{{filePath formName}}.component.html',
+  styleUrls: ['./{{filePath formName}}.component.scss']
+})
+export class {{UcFirst formName}}Component extends HandyMemoryStateForm<FormDataShape> implements OnInit {
+
+  public form: FormGroup;
+  public formName = '{{ formName }}';
+  public rememberFormState: boolean = {{ rememberFormState }};
+
+  public static fieldsToSelect: ModelFieldsFormWorksWith[] = [{{{fieldsArrStr}}}];
+
+  {{#if hasSelectOptionsFields}}
+  /* -------------------------------------------------------------------------- */
+  /*                          Options for select inputs                         */
+  /* -------------------------------------------------------------------------- */
+
+  {{#each selectOptionsFields}}
+  public {{this}}SelectOptions: HandyNgSelectOptions[] = [
+    {
+      value: null,
+      displayValue: 'Example value'
+    },
+  ];
+  
+    {{/each}}
+  {{/if}}
+
+  {{#if hasSelectOptionsFields}}
+
+  /* -------------------------------------------------------------------------- */
+  /*                          Radio groups btns                                 */
+  /* -------------------------------------------------------------------------- */
+  {{#each radioGroupOptionsFields}}
+  public {{this}}RadioBtns: HandyNgRadioGroupOptionsData[] = [
+    {
+      label: 'None',
+      value: null,
+      labelPosition: 'after',
+      color: 'primary',
+      disabled: false,
+      extraClass: 'any class name'
+    },
+  ];
+  
+    {{/each}}
+  {{/if}}
+
+  constructor (
+    {{#if includeResolver}}
+    @Optional() protected route: ActivatedRoute,
+    {{/if}}
+    @Optional() public dialogRef: MatDialogRef<{{UcFirst formName}}Component>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public dialogData: DialogData,
+    protected _handyNgUserService: HandyNgUserService, 
+    public handyNgUtilsService: HandyNgUtilsService, 
+    protected _model: {{UcFirst modelName}}NgModel) {
+    
+    super(_handyNgUserService, handyNgUtilsService{{#if includeResolver}}, dialogRef, dialogData, route{{/if}});
+    
+    this.initExtender();
+
+  }
+
+  ngOnInit(): void {
+  }
+
+  public onValidSubmit(formData: FormDataShape): void {
+
+    {{#if separateCrudMethods}}
+    let promise: Promise<void> = (this.isUpdate) ? this._updateEntry(formData) : this._createEntry(formData);
+
+    promise.then(() => {
+
+      // TODO Redirect or whatever needs to be done after update;
+
+      this.closeDialog({ ...formData, ...{ _id: this.updateEntryId }});
+
+    })
+    .catch(err => {
+      this._handyNgUserService.redirectToErrPageWithApiErr(err);
+    })
+    {{/if}}
+    {{#if createOnly}}
+    this._model.createOne(formData).subscribe(result => {
+
+      this.updateEntryId = result.data._id;
+
+      // TODO Redirect or whatever needs to be done after update;
+      
+      this.closeDialog({ ...formData, ...{ _id: this.updateEntryId }});
+      
+    }, err => {
+      this._handyNgUserService.redirectToErrPageWithApiErr(err);
+    })
+    {{/if}}
+    {{#if updateOnly}}
+    this._model.updatedOne({ _id: this.updateEntryId }, formData, { skipUpdateHistory: false, updateName: '{{UcFirst formName}} form update' })
+    .subscribe(result => {
+      
+      // TODO Redirect or whatever needs to be done after update;
+      
+      this.closeDialog({ ...formData, ...{ _id: this.updateEntryId }});
+
+    }, err => {
+      this._handyNgUserService.redirectToErrPageWithApiErr(err);
+    })
+    {{/if}}
+
+  }
+  
+  public onInvalidSubmit(formData: FormDataShape): void {
+    // console.log(formData)
+  }
+
+  {{#if separateCrudMethods}}
+  protected _createEntry(formData: FormDataShape): Promise<void> {
+
+    return new Promise((resolve, reject) => {
+
+      this._model.createOne(formData).subscribe(result => {
+
+        this.updateEntryId = result.data._id;
+        return resolve();
+
+      }, err => {
+        return reject(err);
+      })
+
+    })
+
+  } 
+
+  protected _updateEntry(formData: FormDataShape): Promise<void> {
+
+    return new Promise((resolve, reject) => {
+
+      this._model.updatedOne({ _id: this.updateEntryId }, formData, { skipUpdateHistory: false, updateName: '{{UcFirst formName}}Component form update' }).subscribe(result => {
+        return resolve();
+      }, err => {
+        return reject(err);
+      })
+
+    })
+
+  }
+  {{/if}}
+
+  {{#if includeResolver}}
+  protected getFormInitData(resolverData: Partial<FormDataShape>): Partial<FormDataShape> {
+
+    return resolverData;
+
+  }
+  {{/if}}
+  {{#unless includeResolver}}
+  getFormInitData(): Partial<FormDataShape> {
+    
+    return {};
+
+  }
+  {{/unless}}
+  
+  createForm(formInitData: Partial<FormDataShape>): FormGroup {
+
+    let fg: FormGroup = new FormGroup({
+      {{#each fields}}
+      {{{ FormFieldControl this }}}
+      {{/each}}
+    })
+
+  {{#if hasFormArraysFields}}
+  /* -------------------------------------------------------------------------- */
+  /*                          Form arrays handling                              */
+  /* -------------------------------------------------------------------------- */
+  {{#each formArraysFields}}
+  this.addBulkControlToFormArray(formInitData.{{this}}, this.add{{UcFirst this}}Control.bind(this), fg);
+  {{/each}}
+  {{/if}}    
+
+  return fg;
+  
+  }
+
+  {{#if hasFormArraysFields}}
+
+  /* -------------------------------------------------------------------------- */
+  /*              Methods for adding controls to form arrays                    */
+  /* -------------------------------------------------------------------------- */
+  
+  {{#each formArraysFields}}
+  public add{{UcFirst this}}Control(value: any = null, fg?: FormGroup): void {
+
+    let control: FormControl | FormArray | FormGroup = new FormControl(value, [/* Sync validators */], [/* Async validators */]);
+    this.addControlToFormArray('{{this}}', control, fg);
+
+  }
+  
+    {{/each}}
+  {{/if}}
+
+}
+
+{{#if includeResolver}}
+/* -------------------------------------------------------------------------- */
+/*                                Form resolver                               */
+/* -------------------------------------------------------------------------- */
+
+@Injectable({
+  providedIn: 'root'
+})
+export class {{UcFirst formName}}ComponentResolver implements Resolve<Partial<FormDataShape>>{
+
+  constructor (protected _model: {{UcFirst modelName}}NgModel) {}
+
+  // Can be used for modal integration
+  public getItemData(id: {{UcFirst modelName}}ModelInterfaces['idType']): Promise<Partial<FormDataShape>> {
+
+    if (id === undefined) {
+      return Promise.resolve(null);
+    }
+
+    return new Promise((resolve, reject) => {
+
+      this._model.findById(id, { selectType: 'select', fields: {{UcFirst formName}}Component.fieldsToSelect })
+        .subscribe(result => {
+
+          if (result.data.foundRecord) {
+            return resolve(result.data.doc);
+          } else {
+            return resolve(null);
+          }
+
+        }, err => {
+          return resolve(null);
+        })
+
+    })
+
+  }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Partial<FormDataShape>> {
+
+    return this.getItemData({{#if autoIncrement}}+{{/if}}route.params['id']);
+
+  }
+
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Resolver usage                               */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------- Via route ------------------------------- */
+/*
+  ...
+  import { {{UcFirst formName}}Component, {{UcFirst formName}}ComponentResolver } from 'path to this file..';
+  ...
+
+  ...
+  {
+    path: 'route-path/:id',
+    component: {{UcFirst formName}}Component,
+    resolve: {
+      formData: {{UcFirst formName}}ComponentResolver
+    }
+  },
+  ...
+
+*/
+
+/* ------------------------------- Via dialog ------------------------------- */
+
+/* 
+
+  ...
+  import { {{UcFirst formName}}Component, {{UcFirst formName}}ComponentResolver } from 'path to this file..';
+  import { MatDialog } from '@angular/material/dialog';
+  ...
+
+  ...
+  constructor (public dialog: MatDialog, private formResolver: {{UcFirst formName}}ComponentResolver) { }
+  ...
+
+  openDialog(id?: {{#if autoIncrement}}number{{/if}}{{#unless autoIncrement}}string{{/unless}}) {
+
+    this.formResolver.getItemData(id)
+      .then(formData => {
+
+      const dialogRef = this.dialog.open({{UcFirst formName}}Component, {
+        data: { formData }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+
+    })
+    .catch(err => {
+      // Handle error
+    })
+
+  }
+*/
+
+{{/if}}
+type ModelFieldsFormWorksWith = Extract<{{UcFirst modelName}}ModelInterfaces['allFields'], {{{fieldsUnionStr}}}>;
+type FormDataShape = Pick<{{UcFirst modelName}}ModelInterfaces['fullModelShape'], ModelFieldsFormWorksWith> & {
+}
+type DialogData = {
+  formData: Partial<FormDataShape>
+}

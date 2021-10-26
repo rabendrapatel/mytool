@@ -1,0 +1,24 @@
+<div [class]="(_options.extraClass) ? _options.extraClass : null">
+
+  <mat-label *ngIf="_label">{{ _label }}</mat-label>
+
+  <mat-radio-group style="width: 100%" #inputField="ngModel" [(ngModel)]="_value" (ngModelChange)="updateChanges()"
+    [disabled]="_isDisabled" (focus)="onTouched()">
+
+    <mat-radio-button *ngFor="let btn of _options.buttons"
+      [labelPosition]="(btn.labelPosition) ? btn.labelPosition : 'after'" [value]="btn.value"
+      [color]="(btn.color) ? btn.color : 'primary'" [class]="btn.extraClass" [disabled]="btn.disabled">
+      <div style="width: 100%" [innerHTML]="btn.label"></div>
+    </mat-radio-button>
+
+    <!-- Pin button -->
+    <button *ngIf="_handyNgUserService.loggedInStatus && _pinningState && !_disableFieldPin" mat-icon-button
+      (click)="handlePinClick()" matSuffix>
+      <handy-icon [size]="16" [icon]="(_hasPinnedVal) ? 'lock' : 'lock_open'"></handy-icon>
+    </button>
+
+  </mat-radio-group>
+
+  <mat-error *ngIf="_fieldErr" [matTooltip]="_fieldErr">{{ _fieldErr | truncate }}</mat-error>
+
+</div>

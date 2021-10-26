@@ -1,0 +1,88 @@
+<ng-template #formContent>
+
+  <handy-form #formComp [formName]="formName" [formGroup]="form" [rememberState]="rememberFormState"
+    [allowFullScreen]="true" [defaultResetBtn]="false" [disablePin]="true" (validSubmitEvent)="onValidSubmit($event)"
+    (invalidSubmitEvent)="onInvalidSubmit($event)" (submitDisabledChange)="submitDisabledChange($event)">
+
+    <div fxLayout="row wrap" fxLayoutGap="8px">
+      <h3 fxFlex="100%">Your profile</h3>
+
+      <div fxFlex="100%">
+
+        <!-- Email -->
+        <handy-text-input class="handy-form-input" formControlName="email" fieldName="userProfile_email" label="Email"
+          placeholder="Email"></handy-text-input>
+  
+        <div *ngIf="newEmail">
+  
+          <p>{{ newEmail }} has to be verified before being used as your account email.</p>
+
+          <div fxLayout fxLayoutGap="8px">
+            <stroked-btn icon="send" (click)="sendVerificationEmail()">Resend verification email</stroked-btn>
+            <stroked-btn color="warn" icon="close" (click)="cancelEmailChange()">Cancel email change</stroked-btn>
+          </div>
+  
+  
+        </div>
+        
+      </div>
+
+      <div fxFlex="100%" fxLayout="row wrap" fxLayoutGap.gt-xs="16px" fxLayoutAlign="flex-start flex-start">
+
+        <!-- Password -->
+        <handy-password-input class="handy-form-input" [autofill]="false" fieldName="userProfile_password" formControlName="password"
+          label="New password" (passwordStrength)="passwordStrengthHelp = $event" placeholder="Strong password">
+        </handy-password-input>
+  
+        <password-hint (generatedPassword)="asignGeneratedPassword($event)" [passwordStrengt]="passwordStrengthHelp">
+        </password-hint>
+
+      </div>
+
+
+      <!-- Name -->
+      <handy-text-input formControlName="name" fieldName="userProfile_name" label="Name" placeholder="Name">
+      </handy-text-input>
+
+      <form-actions-bar *ngIf="!inDialog">
+      
+        <raised-btn color="primary" [disabled]="submitDisabled" (click)="triggerSubmit()">Update profile
+        </raised-btn>
+      
+      </form-actions-bar>
+
+    </div>
+
+
+  </handy-form>
+</ng-template>
+
+<!-- For handling both, as regular component and as dialog -->
+<ng-container *ngIf="!inDialog">
+
+  <div class="handy-form-page-wrapper">
+  
+    <div class="handy-form-wrapper">
+  
+      <ng-container *ngTemplateOutlet="formContent"></ng-container>
+  
+    </div>
+  
+  </div>
+  
+</ng-container>
+
+<ng-container *ngIf="inDialog">
+
+  <mat-dialog-content class="mat-typography">
+
+    <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <flat-btn (click)="dialogRef.close()">Cancel</flat-btn>
+    <raised-btn color="primary" [disabled]="submitDisabled" (click)="triggerSubmit()">Update profile</raised-btn>
+  </mat-dialog-actions>
+
+</ng-container>

@@ -1,0 +1,25 @@
+import { HandyModelClass } from '@models';
+import { MongooseModel, Inject } from "@handy/core";
+import { {{modelName}}ModelDeclaration } from './model.declaration'
+import { {{modelName}}ModelInterfaces } from "./model.interface";
+
+@MongooseModel<{{modelName}}ModelInterfaces>({
+  name: '{{modelName}}',
+  modelDeclaration: {{modelName}}ModelDeclaration,
+  softDelete: {{softDelete}},
+  createdAt: {{createdAt}},
+  createdBy: {{createdBy}},
+  autoIncrement: {{autoIncrement}},
+  changesHistory: {{changesHistory}},
+  routable: {{routable}},
+  publicRoutable: {{publicRoutable}},
+})
+export class {{modelName}}Model extends HandyModelClass<{{modelName}}ModelInterfaces> {
+
+  constructor () {
+
+    super();
+
+  }
+
+}

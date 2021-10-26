@@ -1,0 +1,16 @@
+import { Service } from "@handy/core";
+import { HandyService, HandyErrorService } from "@services";
+
+@Service({
+  singleton: {{singleton}},
+  routable: {{routable}},
+})
+export class {{serviceName}}Service extends HandyService {
+
+  constructor (private __handyError: HandyErrorService) {
+
+    super();
+
+  }
+
+}

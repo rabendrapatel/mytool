@@ -1,0 +1,120 @@
+<div>
+
+  <h1 >Notifications triggers</h1>
+
+  <handy-date-input [(ngModel)]="emptyVal" ></handy-date-input>
+
+  <div class="btns-row">
+
+    <raised-btn color="primary" icon="bell" (click)="defaultNotification()">Default notification</raised-btn>&nbsp;
+
+    <raised-btn color="warn" icon="bug_report" (click)="errNotification()">Error notification</raised-btn>&nbsp;
+    <raised-btn color="warn" icon="bug_report" (click)="apiErrNotification()">Api error notification</raised-btn>&nbsp;
+
+    <raised-btn color="accent" icon="help" iconType="r" (confirmClick)="null">Confirm click</raised-btn>
+    &nbsp;
+
+  </div>
+
+  <h1 >Buttons</h1>
+
+  <!-- Basic -->
+  <div class="btns-row">
+
+    <h3 >Basic button </h3>
+    <p >Selector: "basic-btn"</p>
+
+    <basic-btn>Default</basic-btn>&nbsp;
+    <basic-btn color="primary">Primary</basic-btn>&nbsp;
+    <basic-btn color="accent">Accent</basic-btn>&nbsp;
+    <basic-btn color="warn">Warn</basic-btn>&nbsp;
+    <basic-btn icon="bug_report" [iconPosition]="'left'">Left icon</basic-btn>&nbsp;
+    <basic-btn icon="bug_report" [iconPosition]="'right'">Right icon</basic-btn>&nbsp;
+
+  </div>
+
+  <!-- Raised -->
+  <div class="btns-row">
+
+    <h3 >Raised button </h3>
+    <p >Selector: "raised-btn"</p>
+
+    <raised-btn>Default</raised-btn>&nbsp;
+    <raised-btn color="primary">Primary</raised-btn>&nbsp;
+    <raised-btn color="accent">Accent</raised-btn>&nbsp;
+    <raised-btn color="warn">Warn</raised-btn>&nbsp;
+    <raised-btn icon="bug_report" [iconPosition]="'left'">Left icon</raised-btn>&nbsp;
+    <raised-btn icon="bug_report" [iconPosition]="'right'">Right icon</raised-btn>&nbsp;
+
+  </div>
+
+  <!-- Stroked -->
+  <div class="btns-row">
+
+    <h3 >Stroked button </h3>
+    <p >Selector: "stroked-btn"</p>
+
+    <stroked-btn>Default</stroked-btn>&nbsp;
+    <stroked-btn color="primary">Primary</stroked-btn>&nbsp;
+    <stroked-btn color="accent">Accent</stroked-btn>&nbsp;
+    <stroked-btn color="warn">Warn</stroked-btn>&nbsp;
+    <stroked-btn icon="bug_report" [iconPosition]="'left'">Left icon</stroked-btn>&nbsp;
+    <stroked-btn icon="bug_report" [iconPosition]="'right'">Right icon</stroked-btn>&nbsp;
+
+  </div>
+
+  <!-- Flat -->
+  <div class="btns-row">
+
+    <h3 >Flat button </h3>
+    <p >Selector: "flat-btn"</p>
+
+    <flat-btn>Default</flat-btn>&nbsp;
+    <flat-btn color="primary">Primary</flat-btn>&nbsp;
+    <flat-btn color="accent">Accent</flat-btn>&nbsp;
+    <flat-btn color="warn">Warn</flat-btn>&nbsp;
+    <flat-btn icon="bug_report" [iconPosition]="'left'">Left icon</flat-btn>&nbsp;
+    <flat-btn icon="bug_report" [iconPosition]="'right'">Right icon</flat-btn>&nbsp;
+
+  </div>
+
+  <!-- Icon -->
+  <div class="btns-row">
+
+    <h3 >Icon button </h3>
+    <p >Selector: "icon-btn"</p>
+
+    <icon-btn icon="bug_report"></icon-btn>&nbsp;
+    <icon-btn icon="bug_report" color="primary"></icon-btn>&nbsp;
+    <icon-btn icon="bug_report" color="accent"></icon-btn>&nbsp;
+    <icon-btn icon="bug_report" color="warn"></icon-btn>&nbsp;
+
+  </div>
+
+  <!-- Fab -->
+  <div class="btns-row">
+
+    <h3 >Fab button </h3>
+    <p >Selector: "fab-btn"</p>
+
+    <fab-btn icon="bug_report"></fab-btn>&nbsp;
+    <fab-btn icon="bug_report" color="primary"></fab-btn>&nbsp;
+    <fab-btn icon="bug_report" color="accent"></fab-btn>&nbsp;
+    <fab-btn icon="bug_report" color="warn"></fab-btn>&nbsp;
+
+  </div>
+
+  <!-- Mini fab -->
+  <div class="btns-row">
+
+    <h3 >Fab button </h3>
+    <p >Selector: "mini-fab-btn"</p>
+
+    <mini-fab-btn icon="bug_report"></mini-fab-btn>&nbsp;
+    <mini-fab-btn icon="bug_report" color="primary"></mini-fab-btn>&nbsp;
+    <mini-fab-btn icon="bug_report" color="accent"></mini-fab-btn>&nbsp;
+    <mini-fab-btn icon="bug_report" color="warn"></mini-fab-btn>&nbsp;
+
+  </div>
+
+</div>

@@ -1,0 +1,473 @@
+@mixin colorTheme($handyMainColor, $handyNavIconColor, $handyActiveItemNav, $handyColorTextLink,
+    $handyActiveIcon, $handyBackgroundColorActive, $handyBorderColor,
+    $handyColorWhite,
+    $handyOverflow,
+    $handyTitleSectionSideNav,
+    $handyBlackLight, $handyBackfooter, $handyFooterText, $handyFooterBorder, $handyBackGroundColorCardHeader) {
+
+    .logo-top-bar-pined,
+    .logo-top-bar,
+    .logo-side-nav {
+        background-color: $handyColorWhite;
+    }
+
+    .sidebar-nav-title {
+        color: $handyNavIconColor;
+    }
+
+
+    // .mat-drawer-container {
+    //     // background-color: $handyContentBack;
+
+    // }
+
+    .mat-drawer {
+        background-color: $handyMainColor;
+        color: $handyColorTextLink;
+    }
+
+    .mat-drawer mat-icon {
+        color: $handyNavIconColor;
+    }
+
+    handy-sidenav sidenav-nav-item sidenav-nav-item .sidneav-navigation-item-pined {
+        background-color: $handyActiveItemNav;
+
+    }
+
+    // handy-sidenav .sidneav-navigation-item-pined.active {
+    //     background-color: $handyBackgroundColorActive;
+    // }
+
+    handy-sidenav .sidneav-navigation-item-pined.active,
+    handy-sidenav .sidneav-navigation-item-pined.parent,
+    handy-sidenav sidenav-nav-item>sidenav-nav-item .sidneav-navigation-item-pined {
+        // background-color: $handyActiveItemNav;
+        background-color: $handyBorderColor;
+
+    }
+
+    handy-sidenav sidenav-nav-item>sidenav-nav-item .sidneav-navigation-item-pined.active {
+        // background-color: $handyMainColor;
+        background-color: $handyBackgroundColorActive;
+
+        .mat-icon {
+            color: $handyColorWhite;
+
+        }
+    }
+
+    handy-sidenav .sidneav-navigation-item-pined.active .wide-text,
+    handy-sidenav .sidneav-navigation-item-pined:hover .wide-text {
+        color: $handyColorWhite;
+
+    }
+
+
+    handy-sidenav .sidneav-navigation-item-pined.active mat-icon,
+    handy-sidenav .sidneav-navigation-item-pined.parent .wide-icon mat-icon {
+        color: $handyActiveIcon;
+        // color: $handyColorWhite;
+
+    }
+
+    handy-sidenav .sidneav-navigation-item-pined.active.parent mat-icon {
+        color: $handyNavIconColor;
+    }
+
+    handy-sidenav .sidneav-navigation-item-pined.active.parent:hover mat-icon,
+    handy-sidenav .sidneav-navigation-item-pined.parent:hover .wide-icon mat-icon {
+        color: $handyColorWhite;
+    }
+
+
+
+    handy-sidenav .sidneav-navigation-item-pined:hover {
+        background-color: $handyBackgroundColorActive;
+    }
+
+    handy-sidenav .sidneav-navigation-item-pined:hover mat-icon {
+        color: $handyColorWhite;
+    }
+
+    .side-nav-content-bottom {
+        background-color: $handyActiveItemNav;
+        border-top: 1px solid $handyBorderColor;
+    }
+
+    .side-nav-content-bottom:hover {
+        background-color: $handyBlackLight;
+    }
+
+    .side-nav-content-bottom:hover mat-icon {
+        color: $handyColorWhite;
+
+    }
+
+    // .sidneav-navigation-item-pined,
+    // .sidneav-navigation-item-non-pined,
+    // handy-sidenav sidenav-nav-item {
+    //     outline: 0px !important;
+    // }
+
+    // Title side Nav
+
+    .sidebar-nav-title {
+        color: $handyNavIconColor;
+    }
+
+
+
+    // not-pinned 
+
+    .non-pinned .sidneav-navigation-item-non-pined handy-icon.active {
+        background-color: $handyActiveItemNav;
+        transition: background-color $transitionSec;
+    }
+
+    .non-pinned .sidneav-navigation-item-non-pined:hover handy-icon.active,
+    .non-pinned .sidneav-navigation-item-non-pined:hover {
+        background-color: $handyBackgroundColorActive;
+    }
+
+    .non-pinned .sidneav-navigation-item-non-pined {
+        transition: background-color $transitionSec;
+    }
+
+    .non-pinned .sidneav-navigation-item-non-pined handy-icon.active mat-icon {
+        color: $handyActiveIcon;
+        transition: color $transitionSec;
+
+    }
+
+    .non-pinned .sidneav-navigation-item-non-pined:hover handy-icon.activemat-icon,
+    .non-pinned .sidneav-navigation-item-non-pined:hover handy-icon mat-icon {
+        color: $handyColorWhite;
+    }
+
+
+    // Footer
+
+    .handy-footer {
+        // background-color: $handyMainColor;
+        border-top: 1px solid $handyFooterBorder;
+
+        p {
+
+            // color: $handyColorTextLink;
+            color: $handyFooterText;
+
+            a {
+                color: $handyActiveIcon;
+
+                // &:hover {
+                //     color: $handyColorWhite;
+                // }
+            }
+        }
+    }
+
+
+
+    // mat sidenav
+
+    .mat-sidenav {
+        box-shadow: none !important;
+        border-right: 1px solid $handyBorderColor !important;
+    }
+
+    // mat-sidenav-content {
+    //     background-color: $handyContentBack;
+    // }
+
+
+    .mat-toolbar-row,
+    .mat-toolbar-single-row {
+        background-color: $handyMainColor !important;
+        border-bottom: 1px solid $handyBorderColor !important;
+        box-shadow: none !important;
+    }
+
+    .mat-toolbar.handy-footer.mat-toolbar-single-row {
+        background-color: $handyBackfooter !important;
+        border-bottom: none !important;
+    }
+
+    // general color for text
+
+    .mat-toolbar.mat-primary {
+        color: $handyColorTextLink;
+    }
+
+    // .mat-badge-content {
+    //     color: $handyColorTextLink;
+    // }
+
+    // title side navnav
+    .sidebar-nav-title {
+        color: $handyTitleSectionSideNav;
+    }
+
+
+    // top nav
+    // .mat-badge-warn .mat-badge-content {
+    //     color: $handyBorderColor !important;
+    //     background: $handyActiveIcon !important;
+    // }
+
+    // button:hover .mat-icon {
+    //     color: $handyColorWhite;
+    // }
+
+
+    // logo
+
+    .logo-side-nav {
+        background-color: $handyColorWhite;
+    }
+
+    // overflow
+    .mat-drawer-backdrop.mat-drawer-shown {
+        background-color: $handyOverflow;
+    }
+
+    // subnav
+    .mat-menu-panel {
+        background: $handyMainColor;
+
+    }
+
+
+    .mat-drawer-side {
+        border-right: none;
+    }
+
+    .mat-menu-panel {
+        -webkit-box-shadow: 0px 0px 0px 1px $handyBorderColor;
+        -moz-box-shadow: 0px 0px 0px 1px $handyBorderColor;
+        box-shadow: 0px 0px 0px 1px $handyBorderColor;
+    }
+
+    // style
+    .mat-menu-item .mat-icon {
+        color: $handyNavIconColor;
+    }
+
+    .mat-menu-item {
+        color: $handyColorTextLink;
+    }
+
+    .mat-menu-item:hover:not([disabled]) {
+        background-color: $handyBackgroundColorActive;
+        color: $handyColorWhite;
+
+    }
+
+    .cdk-overlay-container button.active-btn {
+        background-color: $handyBackgroundColorActive;
+        color: $handyColorWhite;
+    }
+
+    .cdk-overlay-container button.active-btn .mat-icon {
+        color: $handyColorWhite;
+
+    }
+
+    // tooltip
+    .mat-tooltip {
+        background-color: $handyBorderColor;
+        // $handyActiveItemNav;
+        border-radius: 2px;
+    }
+
+    // // backgroundcolor
+    // .mat-app-background {
+    //     background-color: red;
+    //         // $handyContentBack !important;
+    // }
+
+    //  Card Title   // 
+    .mat-card-header {
+        padding: .5rem;
+        border-bottom: 1px solid $handyFooterBorder;
+        background-color: $handyBackGroundColorCardHeader;
+    }
+
+    /*=============================================
+=            General color RTE Input            =
+=============================================*/
+
+    .ql-snow.ql-toolbar button:hover .ql-fill,
+    .ql-snow .ql-toolbar button:hover .ql-fill,
+    .ql-snow.ql-toolbar button:focus .ql-fill,
+    .ql-snow .ql-toolbar button:focus .ql-fill,
+    .ql-snow.ql-toolbar button.ql-active .ql-fill,
+    .ql-snow .ql-toolbar button.ql-active .ql-fill,
+    .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill,
+    .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill,
+    .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill,
+    .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill,
+    .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill,
+    .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill,
+    .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+    .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+    .ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill,
+    .ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill,
+    .ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill,
+    .ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill,
+    .ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill,
+    .ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill,
+    .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill,
+    .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill,
+    .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,
+    .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,
+    .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
+    .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
+    .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
+    .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
+        stroke: $handyBackgroundColorActive;
+        
+    }
+
+    .ql-snow.ql-toolbar button:hover .ql-stroke,
+    .ql-snow .ql-toolbar button:hover .ql-stroke,
+    .ql-snow.ql-toolbar button:focus .ql-stroke,
+    .ql-snow .ql-toolbar button:focus .ql-stroke,
+    .ql-snow.ql-toolbar button.ql-active .ql-stroke,
+    .ql-snow .ql-toolbar button.ql-active .ql-stroke,
+    .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
+    .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke,
+    .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+    .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+    .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke,
+    .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke,
+    .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+    .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+    .ql-snow.ql-toolbar button:hover .ql-stroke-miter,
+    .ql-snow .ql-toolbar button:hover .ql-stroke-miter,
+    .ql-snow.ql-toolbar button:focus .ql-stroke-miter,
+    .ql-snow .ql-toolbar button:focus .ql-stroke-miter,
+    .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,
+    .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,
+    .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+    .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter,
+    .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+    .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+    .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+    .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
+    .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
+    .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
+        stroke: $handyBackgroundColorActive;
+    }
+
+    .ql-snow.ql-toolbar button:hover,
+    .ql-snow .ql-toolbar button:hover,
+    .ql-snow.ql-toolbar button:focus,
+    .ql-snow .ql-toolbar button:focus,
+    .ql-snow.ql-toolbar button.ql-active,
+    .ql-snow .ql-toolbar button.ql-active,
+    .ql-snow.ql-toolbar .ql-picker-label:hover,
+    .ql-snow .ql-toolbar .ql-picker-label:hover,
+    .ql-snow.ql-toolbar .ql-picker-label.ql-active,
+    .ql-snow .ql-toolbar .ql-picker-label.ql-active,
+    .ql-snow.ql-toolbar .ql-picker-item:hover,
+    .ql-snow .ql-toolbar .ql-picker-item:hover,
+    .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+    .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+        stroke: $handyBackgroundColorActive;
+    }
+
+    .ql-snow.ql-toolbar button:hover,
+    .ql-snow .ql-toolbar button:hover,
+    .ql-snow.ql-toolbar button:focus,
+    .ql-snow .ql-toolbar button:focus,
+    .ql-snow.ql-toolbar button.ql-active,
+    .ql-snow .ql-toolbar button.ql-active,
+    .ql-snow.ql-toolbar .ql-picker-label:hover,
+    .ql-snow .ql-toolbar .ql-picker-label:hover,
+    .ql-snow.ql-toolbar .ql-picker-label.ql-active,
+    .ql-snow .ql-toolbar .ql-picker-label.ql-active,
+    .ql-snow.ql-toolbar .ql-picker-item:hover,
+    .ql-snow .ql-toolbar .ql-picker-item:hover,
+    .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+    .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+        color: $handyBackgroundColorActive;
+    }
+
+
+    .ql-snow a {
+        color: $handyBackgroundColorActive;
+    }
+
+    .ql-editor {
+        caret-color: $handyBackgroundColorActive;
+    }
+
+
+// active elements nav top right
+.mat-menu-content {
+  .mat-focus-indicator {
+    &:hover {
+      handy-icon {
+        mat-icon {
+          color: $handyColorWhite;
+        }
+
+      }
+
+      &::after {
+        color: $handyColorWhite;
+      }
+    }
+
+    &::after {
+      color: $handyColorTextLink;
+    }
+
+  }
+}
+
+.mat-menu-content {
+  .active {
+    background-color: $handyActiveIcon;
+    color: $handyColorWhite !important;
+
+    handy-icon {
+      mat-icon {
+        color: $handyColorWhite !important;
+      }
+    }
+  }
+}
+
+
+
+    @media only screen and (max-width: 850px) {
+        .side-nav-content-bottom {
+            &:hover {
+                background-color: $handyActiveItemNav;
+            }
+        }
+
+        handy-sidenav .sidneav-navigation-item-pined:hover .wide-text {
+            color: inherit;
+
+        }
+
+        handy-sidenav .sidneav-navigation-item-pined.active.parent:hover mat-icon,
+        handy-sidenav .sidneav-navigation-item-pined.parent:hover .wide-icon mat-icon {
+            color: inherit;
+        }
+
+
+
+        handy-sidenav .sidneav-navigation-item-pined:hover {
+            background-color: inherit;
+        }
+
+        handy-sidenav .sidneav-navigation-item-pined:hover mat-icon {
+            color: inherit;
+        }
+
+    }
+}

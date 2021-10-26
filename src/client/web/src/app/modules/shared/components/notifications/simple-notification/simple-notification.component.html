@@ -1,0 +1,26 @@
+<div fxLayout="row" fxLayoutAlign="space-between flex-start" fxLayoutGap="16px">
+
+  <div fxFlex>
+
+    <h4 *ngIf="headline" class="handy-notif-error">{{ headline }}</h4>
+    <p *ngFor="let singleMsg of msg">{{ singleMsg }}</p>
+
+  </div>
+
+  <mat-progress-spinner *ngIf="hasTimeLeftIndicator" fxAlign="start" [color]="timeLeftSpinnerColor" [strokeWidth]="4" [value]="timeLeftValue" [diameter]="20"></mat-progress-spinner>
+
+</div>
+
+<!-- Just in case you'd need this prop for styling -->
+<!-- <p>
+  Is error: {{isErr}}
+</p> -->
+
+<div *ngIf="hasDismissBtn" fxLayout="row" fxLayoutAlign="flex-end flex-end">
+
+  <!-- <raised-btn *ngIf="hasDismissBtn" (click)="closeSnackbar()" fxAlign="end">{{ dismissBtnLabel }}</raised-btn> -->
+  <flat-btn *ngIf="hasDismissBtn" (click)="closeSnackbar()" fxAlign="end">{{ dismissBtnLabel }}</flat-btn>
+
+</div>
+
+

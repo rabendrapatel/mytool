@@ -1,0 +1,11 @@
+<div 
+  #parent style="width: 100%;"
+  [ngStyle]="{ height: parent.offsetWidth + 'px'}"
+  fxLayout fxLayoutAlign="center center">
+
+  <mat-spinner [fxShow]="!rendered"></mat-spinner>
+  <div [class]="rendered && !resising ? '' : 'trsp'" 
+    [id]="randomId">
+  </div>
+
+</div>

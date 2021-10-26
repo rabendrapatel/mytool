@@ -1,0 +1,27 @@
+mat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// .default {
+
+// }
+
+.icon_placement_mat-icon-button {
+  margin-left: 8px !important;
+}
+
+.icon_placement_btn-left-icon {
+  margin-right: 8px !important;
+  font-size: 22px !important;
+}
+
+.icon_placement_btn-right-icon {
+  margin-left: 8px !important;
+  font-size: 22px !important;
+}
+
+.icon_placement_file-thumb {
+  display: inline-block;
+}

@@ -1,0 +1,19 @@
+import { HandyModelDeclaration } from "@handy/types";
+import { {{modelName}}ModelInterfaces } from "./model.interface";
+
+import { LengthValidator } from "@validators/mongoose";
+import { HandyConfigService } from "@services";
+import { Inject } from "@handy/core";
+
+const config = Inject(HandyConfigService);
+
+export const {{modelName}}ModelDeclaration: HandyModelDeclaration<{{modelName}}ModelInterfaces> = {
+  _id: {
+    publicName: 'Id',
+  },
+
+  // Rest of the fields
+
+}
+
+export type {{modelName}}ModelDeclarationType = typeof {{modelName}}ModelDeclaration;

@@ -1,0 +1,12 @@
+<handy-nav-layout>
+  
+  <h1 *ngIf="code !== '0'">{{ code }}</h1>
+  <h3>{{ headline }}</h3>
+
+  <p>{{ msg }}</p>
+
+  <div *ngIf="refCode">
+    <h3>Error reffrence code: <strong>{{ refCode }}</strong></h3>
+  </div>
+
+</handy-nav-layout>

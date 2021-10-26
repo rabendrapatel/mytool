@@ -1,0 +1,26 @@
+<div *ngIf="!isImg || !file.finished || file.error" class="file-thumb-file-icon">
+
+  <handy-icon placement="file-thumb"
+    [matTooltip]="(!file.finished) ? 'Uploading' : (!file.error) ? file.originalFileName : 'File upload failed'"
+    (click)="(file.finished && !file.error) ? downLoadFile() : null" [size]="50" [icon]="icon"
+    [color]="(file.error) ? 'warn' : (file.finished) ? null : 'accent'"></handy-icon>
+
+  <mat-progress-spinner *ngIf="!file.finished" [mode]="(file.progress < 100) ? 'determinate' : 'indeterminate'"
+    [diameter]="50" [value]="file.progress"></mat-progress-spinner>
+
+</div>
+
+<div *ngIf="isImg && file.finished && !file.error" class="file-thumb-image-block">
+  <img [src]="(thumb !== undefined) ? file.thumbs[thumb] : file.url" (click)="openFileInNewTab()" width="50" height="50"
+    [routerLink]="">
+
+</div>
+
+<p class="file-thumb-file-name">{{ preExt | truncate :7 :false }}{{ (ext) ? '.' + ext : '' }}</p>
+
+<div class="file-thumb-actions">
+  <icon-btn *ngIf="fileInput && file.finished" icon="cancel" matTooltip="Remove file"
+    (confirmClick)="removeFile()" color="warn"></icon-btn>
+  <icon-btn *ngIf="fileInput && file.finished && !file.error" matTooltip="Download" icon="cloud_download"
+    (click)="downLoadFile()" color="accent"></icon-btn>
+</div>

@@ -1,0 +1,60 @@
+<mat-form-field [appearance]="_appearance">
+
+  <mat-label *ngIf="_label">{{ _label }}</mat-label>
+    
+    <textarea 
+    #inputField="ngModel" 
+    matInput 
+    [rows]="(_rows) ? _rows : null" 
+    [(ngModel)]="_value" (ngModelChange)="updateChanges()"
+    [placeholder]="_placeholder" 
+    [matAutocomplete]="auto" 
+    [disabled]="_isDisabled" 
+    (focus)="_parseAutocompleteData()" 
+    (focus)="onTouched()"></textarea>
+
+  <handy-icon *ngIf="_prefixIcon && _fieldStatus !== 'PENDING' && !_pinningState" (click)="triggerPrefixClick()" matPrefix [brandIcon]="_brandedPrefixIcon"
+    [size]="_prefixAndSufixIconSize" [icon]="_prefixIcon"></handy-icon>
+  <handy-icon *ngIf="_sufixIcon && _fieldStatus !== 'PENDING' && !_pinningState" (click)="triggerSufixClick()" matSuffix [brandIcon]="_brandedSufixIcon"
+    [size]="_prefixAndSufixIconSize" [icon]="_sufixIcon"></handy-icon>
+
+    <!-- Pin button -->
+    <button *ngIf="_handyNgUserService.loggedInStatus && _pinningState && !_disableFieldPin" mat-icon-button (click)="handlePinClick()" matSuffix>
+      <handy-icon [size]="16" [icon]="(_hasPinnedVal) ? 'lock' : 'lock-open'"></handy-icon>
+    </button>
+
+  <span *ngIf="_prefixText && _fieldStatus !== 'PENDING' && !_pinningState" matPrefix (click)="triggerPrefixClick()">{{ _prefixText }}</span>
+  <span *ngIf="_sufixText && _fieldStatus !== 'PENDING' && !_pinningState" matSuffix (click)="triggerSufixClick()">{{ _sufixText }}</span>
+
+  <mat-progress-spinner *ngIf="_fieldStatus === 'PENDING' && !_pinningState" matSuffix [diameter]="16" color="primary"
+    mode="indeterminate">
+  </mat-progress-spinner>
+
+  <mat-hint *ngIf="_startHint" align="start">{{ _startHint }}</mat-hint>
+  <mat-hint *ngIf="_endHint" align="end">{{ _endHint }}</mat-hint>
+
+  <mat-error *ngIf="_fieldErr" [matTooltip]="_fieldErr">{{ _fieldErr | truncate }}</mat-error>
+
+  <mat-autocomplete #auto="matAutocomplete">
+
+    <!-- Simple autocomplete -->
+    <div *ngIf="_hasAutocomplete && _autocompleteType === 'simple'">
+      <mat-option *ngFor="let option of _simpleAutocomplete | async" [value]="option.fieldValue">{{option.displayValue}}</mat-option>
+    </div>
+    
+    <!-- Group autocomplete -->
+    <div *ngIf="_hasAutocomplete && _autocompleteType === 'group'">
+    
+      <mat-optgroup *ngFor="let group of _groupAutocomplete | async" [label]="group.groupName">
+
+        <mat-option *ngFor="let option of group.groupOptions" [value]="option.fieldValue">
+          {{option.displayValue}}
+        </mat-option>
+
+      </mat-optgroup>
+    
+    </div>
+
+  </mat-autocomplete>
+  
+</mat-form-field>

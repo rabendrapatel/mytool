@@ -1,0 +1,38 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/modules/shared/shared.module';
+import { HandyFormModule } from '@handy-ng/modules/handy-form/handy-form.module';
+import { HandyTableModule } from '@handy-ng/modules/handy-table/handy-table.module';
+
+import { {{UcFirst moduleName}}RoutingModule } from './{{filePath moduleName}}-routing.module';
+import { {{UcFirst moduleName}}Component } from './{{filePath moduleName}}.component';
+import { {{UcFirst formName}}Component } from './{{filePath formName}}/{{filePath formName}}.component';
+import { {{UcFirst tableName}}Component } from './{{filePath tableName}}/{{filePath tableName}}.component';
+
+@NgModule({
+  declarations: [
+    {{UcFirst moduleName}}Component,
+    {{UcFirst formName}}Component,
+    {{UcFirst tableName}}Component,
+  ],
+  imports: [
+    HandyFormModule,
+    HandyTableModule,
+    CommonModule,
+    SharedModule,
+    {{UcFirst moduleName}}RoutingModule
+  ]
+})
+export class {{UcFirst moduleName}}Module { }
+
+/* -------------------------------------------------------------------------- */
+/*                                Lazy loading                                */
+/* -------------------------------------------------------------------------- */
+
+/*
+  {
+    path: '',
+    loadChildren: () => import('./modules/{{{ filePath moduleName }}}/{{filePath moduleName}}.module').then(m => m.{{UcFirst moduleName}}Module),
+  },
+
+*/

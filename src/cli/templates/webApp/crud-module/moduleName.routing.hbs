@@ -1,0 +1,55 @@
+import { ErrorComponent } from 'src/app/pages/error/error.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { setRouteTitle } from '@handy-ng/core';
+
+import { {{UcFirst moduleName}}Component } from './{{filePath moduleName}}.component';
+import { {{UcFirst tableName}}Component } from './{{filePath tableName}}/{{filePath tableName}}.component';
+{{#if pageEntry}}
+import { {{UcFirst formName}}Component, {{UcFirst formName}}ComponentResolver } from './{{filePath formName}}/{{filePath formName}}.component';
+{{/if}}
+
+const routes: Routes = [
+  {
+    path: '',
+    component: {{UcFirst moduleName}}Component,
+    data: {
+      pageTitle: setRouteTitle({ title: '{{UcFirst moduleName}} management' })
+    },
+    children: [
+      {
+        path: '',
+        component: {{UcFirst tableName}}Component, 
+        data: {
+          pageTitle: setRouteTitle({ title: '{{UcFirst moduleName}} table' })
+        },
+      },
+      {{#if pageEntry}}
+      {
+        path: 'new', 
+        component: {{UcFirst formName}}Component,
+        data: {
+          pageTitle: setRouteTitle({ title: '{{UcFirst moduleName}} new' })
+        },
+      },     
+      {
+        path: 'edit/:id',
+        component: {{UcFirst formName}}Component,
+        data: {
+          pageTitle: setRouteTitle({ title: '{{UcFirst moduleName}} edit' })
+        },
+        resolve: {
+          formData: {{UcFirst formName}}ComponentResolver
+        }
+      },   
+      {{/if}}  
+    ]
+  },
+  { path: '**', component: ErrorComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class {{UcFirst moduleName}}RoutingModule { }

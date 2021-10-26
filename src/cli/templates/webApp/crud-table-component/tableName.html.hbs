@@ -1,0 +1,111 @@
+<div class="crud-table-page-wrapper">
+  <div [class]="(expanded) ? 'expanded-crud-table-wrapper' : 'crud-table-wrapper'">
+
+    <div class="crud-table-actions-bar">
+
+      {{#if forModule}}
+      <raised-btn icon="add" color="primary" {{#if modalEntry}}(click)="editOrCreateAction()" {{/if}}{{#unless
+        modalEntry}}routerLink="./new" {{/unless}}>New entry</raised-btn>
+      {{/if}}
+
+      {{#if hasSearchOrFilter}}
+
+      <handy-form #tableFilter class="crud-table-filters-form" [hideFormOptions]="true">
+        {{#if hasSearch}}
+        <div class="crud-table-search-bar">
+
+          <handy-text-input #searchInput class="crud-table-search-input" [formControl]="filterForm.get('search')"
+            label="Search" placeholder="Search">
+          </handy-text-input>
+
+          <handy-multi-select-input #searchableFieldsSelect class="crud-table-searchable-fields-input"
+            [formControl]="filterForm.get('searchableFields')" label="Search fields" placeholder="Search fields">
+          </handy-multi-select-input>
+        </div>
+        {{/if}}
+        {{#if hasOptionalColsOrFilter}}
+
+        <div class="crud-table-filters-btns-wrapper">
+
+          <div class="crud-table-filters-btns">
+
+            {{{ TableFiltersToggleBtn this }}}
+            <stroked-btn #clearFilters color="warn" icon="refresh">Reset filters</stroked-btn>
+
+          </div>
+
+        </div>
+
+    </div>
+    {{/if}}
+    {{#if hasOptionalColsOrFilter}}
+    <handy-table-filters>
+      {{#if hasOptionalCols}}
+      <handy-multi-select-input #optionalColumnsSelect class="crud-table-filter-input"
+        [formControl]="filterForm.get('displayedColumns')" label="Diplay columns" placeholder="Diplay columns">
+      </handy-multi-select-input>
+      {{/if}}
+
+      {{#each aditionalFilters}}
+      <handy-select-input class="crud-table-filter-input" [formControl]="filterForm.get('{{this.name}}')"
+        label="{{this.publicName}}" placeholder="{{this.publicName}}" [options]="{{this.name}}FilterOptions"
+        [hasEmptyOption]="true" emptyOptionLabel="Any"></handy-select-input>
+
+      {{/each}}
+    </handy-table-filters>
+    {{/if}}
+
+    </handy-form>
+
+    {{/if}}
+
+
+  </div>
+
+  <handy-table>
+
+    <mat-table [dataSource]="dataSource" matSort cdkDropList cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="drop($event)">
+
+      {{#unless forModule}}
+      {{#each displayedCols}}
+      <ng-container matColumnDef="{{this.name}}">
+        <mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x" mat-sort-header><span *cdkDragPreview>
+            <basic-btn icon="swap_horiz">{{this.publicName}}</basic-btn>
+          </span> {{this.publicName}}
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let element">{{{TableMarkupElement this.name}}}</mat-cell>
+
+      </ng-container>
+
+      {{/each}}
+      {{/unless}}
+      {{#if forModule}}
+      {{#each displayedCols}}
+      <ng-container matColumnDef="{{this.name}}">
+
+        {{{moduleTableActions this ../entryType}}}
+
+      </ng-container>
+
+      {{/each}}
+      {{/if}}
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+
+  </handy-table>
+
+  <handy-table-paginator></handy-table-paginator>
+
+  <div fxHide.lt-lg class="table-expand-btn">
+
+    <icon-btn (click)="toogleExpandedState()" [matTooltip]="(expanded) ? 'Shrink table' : 'Expand table'"
+      [icon]="(expanded) ? 'west' : 'east'"></icon-btn>
+
+  </div>
+
+</div>
+</div>

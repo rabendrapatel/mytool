@@ -1,0 +1,12 @@
+<input #inputField="ngModel" [(ngModel)]="_value" (ngModelChange)="updateChanges()" type="hidden">
+<mat-error *ngIf="_fieldErr" [matTooltip]="_fieldErr">{{ _fieldErr | truncate }}</mat-error>
+
+<icon-btn [fxHide]="true" fileUpload #uploadHandler="fileUpload" 
+  [allowedFileTypes]="allowedFileTypes"
+  [maxFiles]="_maxFiles" [accessRules]="accessRules" 
+  [thumbs]="thumbs" [disabled]="_isDisabled"
+  [disabledUpload]="_isDisabled"
+  (uploadEvent)="handleUpload($event)"  icon="cloud_upload">
+</icon-btn>
+
+<ng-content></ng-content>

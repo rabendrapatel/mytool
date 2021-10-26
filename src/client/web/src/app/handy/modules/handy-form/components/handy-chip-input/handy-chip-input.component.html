@@ -1,0 +1,88 @@
+<mat-form-field [appearance]="_appearance">
+
+  <mat-label *ngIf="_label">{{ _label }}</mat-label>
+
+  <mat-chip-list 
+    #chipList 
+    
+    ngDefaultControl 
+    [disabled]="_isDisabled"
+    [(ngModel)]="_value" 
+    #inputField="ngModel"
+    (ngModelChange)="updateChanges()">
+
+    <mat-chip [disabled]="_isDisabled" *ngFor="let singleVal of _value; let i = index" [selectable]="false" [removable]="_removable"
+      (removed)="remove(i)">
+      {{singleVal}}
+      <mat-icon matChipRemove *ngIf="_removable && !_isDisabled">cancel</mat-icon>
+    </mat-chip>
+
+    <input 
+       #inputElmRef        
+      (focus)="asignInputElm(inputElmRef)" 
+      (click)="asignCaretPos()"
+      (keyup)="asignCaretPos()" 
+      (focus)="_parseAutocompleteData()" 
+      [matAutocomplete]="auto" 
+      [disabled]="_isDisabled"
+      matInput       
+      [type]="'text'" 
+      [placeholder]="_placeholder"
+      [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="_addOnBlur" (matChipInputTokenEnd)="add($event)"
+      (focus)="onTouched()">
+
+  </mat-chip-list>
+
+  <handy-icon *ngIf="_prefixIcon && _fieldStatus !== 'PENDING' && !_pinningState" (click)="triggerPrefixClick()"
+    matPrefix [size]="_prefixAndSufixIconSize" [icon]="_prefixIcon"></handy-icon>
+  <handy-icon *ngIf="_sufixIcon && _fieldStatus !== 'PENDING' && !_pinningState" (click)="triggerSufixClick()" matSuffix
+    [size]="_prefixAndSufixIconSize" [icon]="_sufixIcon"></handy-icon>
+
+  <!-- Pin button -->
+  <button *ngIf="_handyNgUserService.loggedInStatus && _pinningState && !_disableFieldPin" mat-icon-button
+    (click)="handlePinClick()" matSuffix>
+    <handy-icon [size]="16" [icon]="(_hasPinnedVal) ? 'lock' : 'lock_open'"></handy-icon>
+  </button>
+
+  <span *ngIf="_prefixText && _fieldStatus !== 'PENDING' && !_pinningState" matPrefix (click)="triggerPrefixClick()">{{
+    _prefixText }}</span>
+  <span *ngIf="_sufixText && _fieldStatus !== 'PENDING' && !_pinningState" matSuffix (click)="triggerSufixClick()">{{
+    _sufixText }}</span>
+
+  <mat-progress-spinner *ngIf="_fieldStatus === 'PENDING' && !_pinningState" matSuffix [diameter]="16" color="primary"
+    mode="indeterminate">
+  </mat-progress-spinner>
+
+  <mat-hint *ngIf="_startHint" align="start">{{ _startHint }}</mat-hint>
+  <mat-hint *ngIf="_endHint" align="end">{{ _endHint }}</mat-hint>
+
+  <mat-error *ngIf="_fieldErr" [matTooltip]="_fieldErr">{{ _fieldErr | truncate }}</mat-error>
+
+  <mat-autocomplete #auto="matAutocomplete">
+
+    <!-- Simple autocomplete -->
+    <div *ngIf="_hasAutocomplete && _autocompleteType === 'simple'">
+      <mat-option *ngFor="let option of _simpleAutocomplete | async"
+        (onSelectionChange)="autocompleteSelected.next({selectEvent: $event, emitVal: option.emitVal})"
+        [value]="option.fieldValue">{{option.displayValue}}</mat-option>
+    </div>
+
+    <!-- Group autocomplete -->
+    <div *ngIf="_hasAutocomplete && _autocompleteType === 'group'">
+
+      <mat-optgroup *ngFor="let group of _groupAutocomplete | async" [label]="group.groupName">
+
+        <mat-option *ngFor="let option of group.groupOptions"
+          (onSelectionChange)="autocompleteSelected.next({selectEvent: $event, emitVal: option.emitVal})"
+          [value]="option.fieldValue">
+          {{option.displayValue}}
+        </mat-option>
+
+      </mat-optgroup>
+
+    </div>
+
+  </mat-autocomplete>
+
+</mat-form-field>

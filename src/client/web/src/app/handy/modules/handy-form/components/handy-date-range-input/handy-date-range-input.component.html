@@ -1,0 +1,55 @@
+<div class="data-range-content" >
+
+  <mat-label *ngIf="_label">{{ _label }}</mat-label>
+
+  <input #inputField="ngModel" [disabled]="_isDisabled" [(ngModel)]="_value" (ngModelChange)="updateChanges()"
+    [type]="'hidden'">
+
+  <div class="data-range-elements">
+    <div class="data-range-left">
+
+      <handy-date-input #fromInput [(ngModel)]="from" (valueChange)="fromValueChange()" [disabled]="_isDisabled"
+        [appearance]="_appearance" [getTime]="_getTime" [showTimeZone]="_showTimeZone"
+        [selectableTimezone]="_selectableTimezone" [label]="_fromLabel" [placeholder]="_fromPlaceholder"
+        [startHint]="_fromStartHint" [endHint]="_fromEndHint" [startDate]="_fromStartDate" [minDate]="_minFromDate"
+        [maxDate]="_maxFromDate" [minTime]="_minFromTime" [maxTime]="_maxFromTime" [simpleFilter]="_simpleFromFilter"
+        [customFilter]="_customFromFilter" [dateClass]="_dateFromClass" [timeZone]="_fromTimeZone"
+        [setTime]="_setFromTime" [fieldName]="(fieldName) ? fieldName + '_to' : null" [disableFieldPin]="true"
+        (open)="onTouched()"
+        [disableFieldStateMemory]="true">
+      </handy-date-input>
+
+    </div>
+
+    <div class="data-range-right">
+
+      <handy-date-input #toInput [(ngModel)]="to" (valueChange)="toValueChange()" [disabled]="_isDisabled"
+        [appearance]="_appearance" [getTime]="_getTime" [showTimeZone]="_showTimeZone"
+        [selectableTimezone]="_selectableTimezone" [label]="_toLabel" [placeholder]="_toPlaceholder"
+        [startHint]="_toStartHint" [endHint]="_toEndHint" [startDate]="_toStartDate" [minDate]="_minToDate"
+        [maxDate]="_maxToDate" [minTime]="_minToTime" [maxTime]="_maxToTime" [simpleFilter]="_simpleToFilter"
+        [customFilter]="_customToFilter" [dateClass]="_dateToClass" [timeZone]="_toTimeZone" [setTime]="_setToTime"
+        [fieldName]="(fieldName) ? fieldName + '_from' : null" [disableFieldPin]="true"
+        (open)="onTouched()"
+        [disableFieldStateMemory]="true">
+      </handy-date-input>
+
+    </div>
+  </div>
+
+  <mat-hint *ngIf="_startHint" align="start">{{ _startHint }}</mat-hint>
+  <mat-hint *ngIf="_endHint" align="end">{{ _endHint }}</mat-hint>
+
+  <mat-progress-spinner *ngIf="_fieldStatus === 'PENDING' && !_pinningState" matSuffix [diameter]="16" color="primary"
+    mode="indeterminate">
+  </mat-progress-spinner>
+
+  <mat-error *ngIf="_fieldErr" [matTooltip]="_fieldErr">{{ _fieldErr | truncate }}</mat-error>
+
+  <!-- Pin button -->
+  <button *ngIf="_handyNgUserService.loggedInStatus && _pinningState && !_disableFieldPin" mat-icon-button
+    (click)="handlePinClick()" matSuffix>
+    <handy-icon [size]="16" [icon]="(_hasPinnedVal) ? 'lock' : 'lock_open'"></handy-icon>
+  </button>
+
+</div>

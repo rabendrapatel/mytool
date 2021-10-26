@@ -1,0 +1,69 @@
+<div class="side-nav-content" [ngClass]="{
+    'pinned': handyNgLayoutService.sidenavPined,
+    'non-pinned': !handyNgLayoutService.sidenavPined
+  }">
+
+  <div class="side-nav-content-top">
+
+    <div class="logo-side-nav">
+      <img
+        (click)="(handyNgLayoutService.sidenavMode !== 'side') ? handyNgLayoutService.toggleSidenav(false, false) : null"
+        [routerLink]="(handyNguserService.loggedInStatus) ? '/admin/dashboard' : '/'" src="/assets/logo.png" alt="logo">
+    </div>
+  </div>
+
+  <div class="side-nav-content-middle">
+
+    <!-- <sidenav-nav-item *loggedIn icon="desktop_windows" text="Dashboard" link="/dashboard"></sidenav-nav-item> -->
+
+    <!-- Developer/superadmin only -->
+    <!-- <div *userRoles="'superAdmin'" class="sidebar-nav-title">Developer</div> title -->
+
+    <!-- Developer/superadmin only -->
+    <!-- <sidenav-nav-item *userRoles="'superAdmin'" icon="code" text="Dev tools">
+
+      <sidenav-nav-item icon="gamepad" text="Sandbox" link="/dev/sandbox"></sidenav-nav-item>
+      <sidenav-nav-item icon="vial" text="Sample crud module" link="/dev/testcrud"></sidenav-nav-item>
+      <sidenav-nav-item icon="file-upload" text="File upload" link="/dev/upload"></sidenav-nav-item>
+      <sidenav-nav-item icon="project-diagram" text="Project dev" link="/dev/project"></sidenav-nav-item>
+      <sidenav-nav-item icon="file-pdf" text="Pdf templates">
+        <sidenav-nav-item icon="info-circle" text="Example template" link="/pdf-templates/example"></sidenav-nav-item>
+      </sidenav-nav-item>
+
+    </sidenav-nav-item> -->
+
+    <!-- Account related -->
+    <!-- <div class="sidebar-nav-title">Account</div> title -->
+
+    <!-- Not logged in -->
+    <!-- <sidenav-nav-item *notLoggedIn icon="login" text="Login" link="/login"></sidenav-nav-item>
+    <sidenav-nav-item
+      *ngIf="handyNgCofigService.data.userRegistration.openRegistration && !handyNguserService.loggedInStatus"
+      icon="person_add" text="Register" link="/register"></sidenav-nav-item> -->
+
+    <sidenav-nav-item icon="account_box" text="Dead drop" link="/drop"></sidenav-nav-item>
+    <!-- Logged in -->
+    <!-- <sidenav-nav-item *loggedIn icon="settings" text="Settings">
+
+      <sidenav-nav-item icon="account_box" text="Profile" link="/user/profile"></sidenav-nav-item>
+      <sidenav-nav-item icon="palette" text="Preferences" link="/user/preferences"></sidenav-nav-item>
+
+    </sidenav-nav-item>
+
+    <sidenav-nav-item *loggedIn icon="exit_to_app" text="Logout" link="/logout"></sidenav-nav-item> -->
+
+  </div>
+
+  <div class="side-nav-content-bottom">
+
+    <div class="pin-icon"
+      [matTooltip]="(handyNgLayoutService.sidenavPined) ? 'Collapse navigation' : 'Expand navigation'">
+      <button mat-icon-button>
+        <handy-icon placement="mat-icon-button" (click)="handyNgLayoutService.toggleSidenavPinnedState(true)"
+          [icon]="(handyNgLayoutService.sidenavPined) ? 'chevron_left' : 'chevron_right'"></handy-icon>
+      </button>
+    </div>
+
+  </div>
+
+</div>

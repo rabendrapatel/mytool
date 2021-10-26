@@ -1,0 +1,36 @@
+<input #inputField="ngModel" [(ngModel)]="_value" (ngModelChange)="updateChanges()" type="hidden">
+
+<div class="upload-form-drag-and-drop-input">
+  
+  <!-- ion -->
+  <div class="upload-form-drag-and-drop-section" uploadDrag [uploadHandler]="uploadHandler" dragOverClass="upload-drag-over">
+
+    <mat-error *ngIf="_fieldErr" [matTooltip]="_fieldErr">{{ _fieldErr | truncate }}</mat-error>
+
+    <icon-btn fileUpload #uploadHandler="fileUpload" 
+      [maxFiles]="_maxFiles" [accessRules]="accessRules" 
+      [thumbs]="thumbs" [disabled]="_isDisabled"
+      [disabledUpload]="_isDisabled"
+      (uploadEvent)="handleUpload($event)"  icon="cloud-upload-alt">
+    </icon-btn>
+  
+  
+    <div class="upload-form-drag-and-drop-title">
+
+      <p> Drag and drop files here or</p>
+  
+      <a (click)="uploadHandler.triggerUploadDialog()" class="upload-btn-browse">select files</a>
+
+    </div>
+  
+  </div>
+  <!--  -->
+  
+  
+  <div *ngIf="_value" class="upload-form-drag-and-drop-files-list">
+  
+    <file-thumb *ngFor="let file of _value" [file]="file"></file-thumb>
+  
+  </div>
+
+</div>

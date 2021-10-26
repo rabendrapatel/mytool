@@ -1,0 +1,17 @@
+{
+  "ignore": [
+    "./node_modules/",
+    "./src/server/dist/",
+    "./src/server/handy/logs/",
+    "./src/server/handy/types/",
+    "./magic-box/",
+    "./src/client/",
+    "./src/cli/"
+  ],
+  "watch": [
+    "./src/server/", 
+    "./handy.json"
+  ],
+  "ext": "ts, json, hbs",
+  "verbose": false
+}

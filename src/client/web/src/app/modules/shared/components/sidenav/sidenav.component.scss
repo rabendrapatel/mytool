@@ -1,0 +1,57 @@
+.side-nav-content {
+  display: flex;
+  flex-direction: column;
+  // width: 100%;
+  height: 100%;
+}
+
+.side-nav-content-middle {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.side-nav-content-top {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.non-pinned {
+  width: 50px;
+}
+
+.pinned {
+  width: 250px;
+}
+
+.side-nav-content-bottom {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.close-expand-icons {
+  display: flex;
+  width: 50px;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.pin-icon {
+  display: flex;
+  width: 50px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.sindenav-logo {
+  display: block;
+  max-width: 130px;
+  padding: 1rem;
+  margin: 0 auto;
+}

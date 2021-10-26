@@ -1,0 +1,44 @@
+<ng-template #formContent>
+
+  <h1 class="handy-form-title"> {{ headline[action]}} </h1>
+
+  <handy-form #formComp 
+    [formName]="formName" 
+    [formGroup]="form" 
+    [rememberState]="rememberFormState" 
+    [defaultResetBtn]="false" 
+    [disablePin]="true"
+    [hideFormOptions]="true"
+    (validSubmitEvent)="onValidSubmit($event)" 
+    (invalidSubmitEvent)="onInvalidSubmit($event)"
+    (submitDisabledChange)="submitDisabledChange($event)">
+
+    <!-- Input fields -->
+
+    <handy-text-input [formControl]="form.get('accountEmail')" placeholder="account@email.com" label="Account email" ></handy-text-input>
+
+    <raised-btn *ngIf="!inDialog" color="primary" icon="send" [disabled]="submitDisabled"
+      (click)="triggerSubmit()" class="handy-single-button-form">Send</raised-btn>
+
+  </handy-form>
+</ng-template>
+
+<!-- For handling both, as regular component and as dialog -->
+<ng-container *ngIf="!inDialog">
+  <ng-container *ngTemplateOutlet="formContent"></ng-container>
+</ng-container>
+
+<ng-container *ngIf="inDialog">
+
+  <mat-dialog-content class="mat-typography">
+
+    <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <flat-btn (click)="dialogRef.close()">Cancel</flat-btn>
+    <raised-btn color="primary" icon="send" [disabled]="submitDisabled" (click)="triggerSubmit()">Send</raised-btn>
+  </mat-dialog-actions>
+
+</ng-container>

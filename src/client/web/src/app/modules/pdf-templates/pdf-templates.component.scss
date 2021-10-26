@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  // .print {
+  //   border: none !important;
+  //   margin-top: 0 !important;
+  // }
+  
+  .page-break {
+    page-break-after: always;
+  }
+  
+  // .A4 {
+  //   margin-top: -1cm !important; // TODO because of the print margin, has to be dynamic and set with the call...
+  //   padding: 1cm !important;
+  // }
+
+}
+
+// .print {
+  
+//   border: 1px solid red;
+//   margin-top: 1cm;
+
+// }
+
+// // Insetad of format
+// .A4 {
+//   width: 210mm;
+//   min-height: 297mm;
+//   padding: calc(1cm - 2px);
+// }
+
+.ruler {
+  width: 30px; 
+  min-height: 100%;
+}
+
+// .ruler.right {
+//   border-right: 1px solid red;
+//   border-left: none;
+// }
+
+// .ruler-page {
+//   border-bottom: 3px solid red;
+//   width: 30px;  
+//   height: calc(287mm - 3px); // will be dynamic
+// }
+
+// .ruler-page.nxt {
+//   height: calc(297mm - 2.5cm + 3px); // will be dynamic
+// }

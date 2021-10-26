@@ -1,0 +1,22 @@
+form {
+  position: relative;
+}
+
+.btns-pading {
+  padding-top: 35px;
+}
+
+.form-options-menu-btn {
+  padding-right: 1.7rem !important;
+}
+
+.form-options-menu-trigger {
+  position: absolute;
+  right: 0;
+  top: 0.2rem;
+  z-index: 200;
+}
+
+:host {
+  display: block;
+}

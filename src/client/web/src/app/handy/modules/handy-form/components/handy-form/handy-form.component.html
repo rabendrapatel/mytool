@@ -1,0 +1,27 @@
+<form [formGroup]="formGroup" [class.btns-pading]="(!disablePin && _handyNgUserService.loggedInStatus) || defaultResetBtn" autocomplete="off">
+
+  <icon-btn icon="more_vert" class="form-options-menu-trigger" *ngIf="!hideFormOptions" matTooltip="Form options" [matMenuTriggerFor]="formMenu"></icon-btn>
+  
+  <mat-menu #formMenu="matMenu">
+
+    <button mat-menu-item (click)="showAllErrors()" class="btn-with-icon form-options-menu-btn">
+      <handy-icon icon="cancel"></handy-icon>Show fields errors
+    </button>
+
+    <button [disabled]="!defaultResetBtn" mat-menu-item (click)="triggerReset()" class="btn-with-icon form-options-menu-btn">
+      <handy-icon icon="refresh"></handy-icon>Reset form
+    </button>
+
+    <button [disabled]="disablePin" mat-menu-item (click)="toggleFormPinning()" class="btn-with-icon form-options-menu-btn">
+      <handy-icon icon="push_pin"></handy-icon>Set default values
+    </button>
+  
+    <button [disabled]="!allowFullScreen" mat-menu-item (click)="toogleFullScreen()" class="btn-with-icon form-options-menu-btn">
+      <handy-icon [icon]="(handyNgLayoutService.isFullScreenForm) ? 'fullscreen_exit' : 'fullscreen'"></handy-icon>{{ (handyNgLayoutService.isFullScreenForm) ? 'Exit full screen' : 'Full screen' }}
+    </button>       
+
+  </mat-menu>  
+
+  <ng-content></ng-content>
+
+</form>

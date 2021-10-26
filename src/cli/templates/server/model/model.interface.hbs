@@ -1,0 +1,41 @@
+import {
+  MongooseModelInterfaces, SearchableMongooseModelFields, CompleteMongooseModelShapeInterface,
+  MongooseModelCreateShape, CompleteMongoModelFields, UnSignedObject
+} from "@handy/types";
+
+/* -------------------------------------------------------------------------- */
+/*                            {{modelName}} model interfaces                           */
+/* -------------------------------------------------------------------------- */
+
+export interface {{modelName}}ModelInterfaces extends MongooseModelInterfaces {
+
+  /* ---------------------- Model fields shape interface ---------------------- */
+  shape: {
+
+    // field: type,
+
+  },
+
+  /* --------------------------- Settings interfaces -------------------------- */
+
+  softDelete: {{softDelete}},
+  createdAt: {{createdAt}},
+  createdBy: {{createdBy}},
+  autoIncrement: {{autoIncrement}},
+  changesHistory: {{changesHistory}},
+  defaultSelect: {
+    selectType: 'deselect',
+    fields: ['_id']
+  }
+
+  /* --------------------- Dynamicly generated interfaces --------------------- */
+  /* ------------------------------ Do not change ----------------------------- */
+
+  fullModelShape: CompleteMongooseModelShapeInterface<this['shape'], this['softDelete'], this['createdAt'], this['createdBy'], this['autoIncrement'], this['changesHistory']>,
+  docShape: this['fullModelShape'],
+  createShape: MongooseModelCreateShape<this['fullModelShape']>,
+  allFields: CompleteMongoModelFields<keyof this['fullModelShape'], this['softDelete'], this['createdAt'], this['createdBy'], this['changesHistory']>,
+  idType: this['fullModelShape']['_id'],
+  searchableFields: SearchableMongooseModelFields<this>,
+
+}

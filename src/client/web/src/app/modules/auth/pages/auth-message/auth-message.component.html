@@ -1,0 +1,3 @@
+<h1>{{ headlines[action] }}</h1>
+<p *ngIf="messages[action]">{{ messages[action] }}</p>
+<p *ngIf="redirects[action]">{{ redirects[action].msg }} {{ countDown | handyTime }}</p>

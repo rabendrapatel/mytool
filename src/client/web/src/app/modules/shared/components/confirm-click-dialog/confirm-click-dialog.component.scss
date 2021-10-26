@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+mat-dialog-actions{
+  display: flex;
+  justify-content: center !important;
+  flat-btn {
+    &:last-of-type{
+      margin-left: .8rem;
+    }
+  }
+}
+
+h2{
+  text-align: center;
+}

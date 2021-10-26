@@ -1,0 +1,14 @@
+<div style="width: 100%;">
+
+  <raised-btn routerLink="/drop">Create a new drop</raised-btn>
+
+  <div *ngIf="!authorized">
+    <handy-password-input [(ngModel)]="password" label="Drop password"></handy-password-input>
+    <raised-btn [disabled]="!password" (click)="authorize()">See drop content</raised-btn>
+  </div>
+
+  <div *ngIf="authorized" [innerHTML]="content">
+
+  </div>
+
+</div>

@@ -1,0 +1,20 @@
+import { MongooseFieldValidator } from "@validators/mongoose";
+import { MongooseValidatorProps } from "@handy/types";
+
+export class {{validatorName}}Validator extends MongooseFieldValidator {
+
+  constructor () {
+    super();
+  }
+
+  validator(value: any): boolean | Promise<boolean> {
+
+    return true;
+
+  }
+
+  message(props: MongooseValidatorProps): string {
+    return 'Custom error message';
+  }
+
+}

@@ -1,0 +1,46 @@
+.sidneav-navigation-item-pined {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.sidneav-navigation-item-non-pined {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+// .wide-icon {
+//   // border: 0.5px solid green;
+// }
+
+.wide-text {
+  flex: 1;
+  white-space: nowrap;
+}
+
+
+.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: default;
+}
+
+.separator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  mat-divider {
+    width: 100%;
+  }
+
+  padding-bottom: 7px;
+  padding-top: 7px;
+
+}
