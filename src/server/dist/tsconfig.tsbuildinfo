@@ -1781,9 +1781,49 @@
         "signature": "8210618a70cb44bbc71604b22b38304494e039b74428d4dabcb1d5328a83ec60",
         "affectsGlobalScope": false
       },
+      "../models/mydrop/model.interface.ts": {
+        "version": "f00b992021d7e0cc4590ab2c7febfea696388ac16a2ebc98907cbff80bcdcc94",
+        "signature": "08787043d045a5fa0f255be9b19dac0ad58d111a9415302771366953af8da0f0",
+        "affectsGlobalScope": false
+      },
+      "../models/mydrop/model.declaration.ts": {
+        "version": "9b47b65a8c555ed207d62523e1dc6f9cc22db73442b50d95d9658d145cbc5a70",
+        "signature": "e55c49763b920723b9f83a4409578dd9f1ef7092dad826a36d69bf0d189e59f8",
+        "affectsGlobalScope": false
+      },
+      "../models/mydrop/mydrop.model.ts": {
+        "version": "73668123bdfcde12024e2a3f18eb00171c2f87ea6cc92dcf75e6f80f35dacff4",
+        "signature": "d97df191637b35ff22685411e70e91c62331176a96a7d42f2aabdb5ddd4925e3",
+        "affectsGlobalScope": false
+      },
+      "../models/mydrop/index.ts": {
+        "version": "3fc1d89272228d657334e612af55401630759043b5ad059fb4aebb535878d866",
+        "signature": "1a34becc8f6b6890b13533b1b8306676c714b38291ca2ba6249549da8dbc7462",
+        "affectsGlobalScope": false
+      },
+      "../models/student/model.interface.ts": {
+        "version": "d801928ca9978fd6d9a1502fc3a61fec9e9d6f1409c8cb34f91783ecf988dc06",
+        "signature": "c97cbccddb3d31cf2c0997f24e3cdbc876a8282e5bc23da215a64ebc18bda001",
+        "affectsGlobalScope": false
+      },
+      "../models/student/model.declaration.ts": {
+        "version": "fe72713e1244252199f3aab994464a06d1f49f59b55e7c08444c9455df11e8cc",
+        "signature": "50d9adb478f6b4995f33eaa211c447ecd153cb536be8c6291393fa8cca90c66c",
+        "affectsGlobalScope": false
+      },
+      "../models/student/student.model.ts": {
+        "version": "ce9b8feabdcb5d5aae19135f515ddfad59398c55a158c0778171e9182ae686f8",
+        "signature": "b135320064570adde7bce42285d5273555267beb043916c02e30db3a55b80b56",
+        "affectsGlobalScope": false
+      },
+      "../models/student/index.ts": {
+        "version": "c1faaa1d6e4fd1840d446895f83d8060f99a91bdf10a6996d1cf317e06be8424",
+        "signature": "706c3d2d9ff507063d007b514076cfa2543e4968d6a0227372285ed027a4b7f3",
+        "affectsGlobalScope": false
+      },
       "../models/index.ts": {
-        "version": "01743bde83956f3e2aaafd1b519a104f28b590a3480eec2072ef9286f06a34f8",
-        "signature": "4f7b7d1b28c4050dcf0b49d60b2ff6e337a0de6811377e5d39ae585f31fd90ec",
+        "version": "d0bd8231e6eb137b0db99235041af143da0f03913019b529aeab3062925aa732",
+        "signature": "6148ca6d676009b2dd1520f4bb802512df147a0a909037969038dfe3f72bb0bc",
         "affectsGlobalScope": false
       },
       "../models/user/model.declaration.ts": {
@@ -1951,9 +1991,14 @@
         "signature": "7b66dd2d09de5912b1226c697a1b0503c7e9e12a85f0db4699f2577f528a5fb8",
         "affectsGlobalScope": false
       },
+      "../services/mydrop/mydrop.service.ts": {
+        "version": "e7e58a3357cfd42aad3c0db18a19697fa1e852f98ae8016c3c5950c5fb010539",
+        "signature": "bba9361537e83e8b578c22950458f0d272168c0c2e6da2ca2682e3b8a85b67ac",
+        "affectsGlobalScope": false
+      },
       "../services/index.ts": {
-        "version": "e001156489a36ea3b1cab27134ac6b7c0596c45be22f544c8dd45d6b44073664",
-        "signature": "32ef551b690a3129c392e64873cb3f012421bbe35564418b2933e311187b96d8",
+        "version": "e11e2367fa450d8ae4a1d10882f6187e7fe02fe65e993a0cb8d6439442d09166",
+        "signature": "2f57237a38fb5fab49a7f03d69e58ff104d15e226433e35ae86e0e2fa79d3fe4",
         "affectsGlobalScope": false
       },
       "../../../node_modules/@types/cookie-parser/index.d.ts": {
@@ -2077,7 +2122,7 @@
         "affectsGlobalScope": false
       },
       "../handy.module.ts": {
-        "version": "ce727e741b8b8578b18f08591ce958db0c497e6a1847ea653c03ac61f210900d",
+        "version": "9758748c9e31a6a74445dac8c6ec5ade00d5bdcdc3903f55c43f1c33964bd667",
         "signature": "ba4f7eed340c1b748d98d72cd35fabeda999f482744582c250ce74a365e34d9f",
         "affectsGlobalScope": false
       },
@@ -2189,7 +2234,7 @@
       "esModuleInterop": true,
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
-      "pathsBasePath": "C:/Projects/handy-tools/src/server",
+      "pathsBasePath": "E:/My Project/Freelance/Project/tools/src/server",
       "configFilePath": "../tsconfig.json"
     },
     "referencedMap": {
@@ -6482,8 +6527,10 @@
         "../handy/core/index.ts",
         "../handy/handy-core.module.ts",
         "../models/index.ts",
+        "../models/student/index.ts",
         "../models/user/index.ts",
-        "../services/index.ts"
+        "../services/index.ts",
+        "../services/mydrop/mydrop.service.ts"
       ],
       "../handy/core/bootstrap.ts": [
         "../../../node_modules/@types/jsdom/index.d.ts",
@@ -7498,9 +7545,68 @@
         "../../../node_modules/@types/node/util.d.ts",
         "../models/drop/index.ts",
         "../models/handy.model.ts",
+        "../models/mydrop/index.ts",
         "../models/shortlink/index.ts",
+        "../models/student/index.ts",
         "../models/uploads/index.ts",
         "../models/user/index.ts"
+      ],
+      "../models/mydrop/index.ts": [
+        "../../../node_modules/@types/jsdom/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.1/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.4/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.5/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.6/index.d.ts",
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../../node_modules/@types/node/util.d.ts",
+        "../models/mydrop/model.declaration.ts",
+        "../models/mydrop/model.interface.ts",
+        "../models/mydrop/mydrop.model.ts"
+      ],
+      "../models/mydrop/model.declaration.ts": [
+        "../../../node_modules/@types/jsdom/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.1/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.4/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.5/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.6/index.d.ts",
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../../node_modules/@types/node/util.d.ts",
+        "../handy/core/index.ts",
+        "../handy/types/index.d.ts",
+        "../models/mydrop/model.interface.ts",
+        "../services/index.ts",
+        "../validators/mongoose/index.ts"
+      ],
+      "../models/mydrop/model.interface.ts": [
+        "../../../node_modules/@types/jsdom/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.1/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.4/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.5/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.6/index.d.ts",
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../../node_modules/@types/node/util.d.ts",
+        "../handy/types/index.d.ts"
+      ],
+      "../models/mydrop/mydrop.model.ts": [
+        "../../../node_modules/@types/jsdom/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.1/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.4/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.5/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.6/index.d.ts",
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../../node_modules/@types/node/util.d.ts",
+        "../handy/core/index.ts",
+        "../models/index.ts",
+        "../models/mydrop/model.declaration.ts",
+        "../models/mydrop/model.interface.ts"
       ],
       "../models/shortlink/index.ts": [
         "../../../node_modules/@types/jsdom/index.d.ts",
@@ -7558,6 +7664,63 @@
         "../models/index.ts",
         "../models/shortlink/model.declaration.ts",
         "../models/shortlink/model.interface.ts"
+      ],
+      "../models/student/index.ts": [
+        "../../../node_modules/@types/jsdom/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.1/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.4/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.5/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.6/index.d.ts",
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../../node_modules/@types/node/util.d.ts",
+        "../models/student/model.declaration.ts",
+        "../models/student/model.interface.ts",
+        "../models/student/student.model.ts"
+      ],
+      "../models/student/model.declaration.ts": [
+        "../../../node_modules/@types/jsdom/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.1/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.4/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.5/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.6/index.d.ts",
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../../node_modules/@types/node/util.d.ts",
+        "../handy/core/index.ts",
+        "../handy/types/index.d.ts",
+        "../models/student/model.interface.ts",
+        "../services/index.ts",
+        "../validators/mongoose/index.ts"
+      ],
+      "../models/student/model.interface.ts": [
+        "../../../node_modules/@types/jsdom/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.1/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.4/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.5/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.6/index.d.ts",
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../../node_modules/@types/node/util.d.ts",
+        "../handy/types/index.d.ts"
+      ],
+      "../models/student/student.model.ts": [
+        "../../../node_modules/@types/jsdom/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.1/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.4/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.5/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.6/index.d.ts",
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../../node_modules/@types/node/util.d.ts",
+        "../handy/core/index.ts",
+        "../models/index.ts",
+        "../models/student/model.declaration.ts",
+        "../models/student/model.interface.ts"
       ],
       "../models/uploads/index.ts": [
         "../../../node_modules/@types/jsdom/index.d.ts",
@@ -7939,7 +8102,23 @@
         "../services/handy-services/handy-socket-emitter/handy-socket-emitter.service.ts",
         "../services/handy-services/handy-user/handy-user.service.ts",
         "../services/handy-services/handy-utils/handy-utils.service.ts",
-        "../services/handy.service.ts"
+        "../services/handy.service.ts",
+        "../services/mydrop/mydrop.service.ts"
+      ],
+      "../services/mydrop/mydrop.service.ts": [
+        "../../../node_modules/@types/jsdom/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.1/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.4/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.5/index.d.ts",
+        "../../../node_modules/@types/jsdom/ts3.6/index.d.ts",
+        "../../../node_modules/@types/node/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../../node_modules/@types/node/util.d.ts",
+        "../handy/core/index.ts",
+        "../handy/types/index.d.ts",
+        "../models/index.ts",
+        "../services/index.ts"
       ],
       "../validators/mongoose/default.validator.ts": [
         "../../../node_modules/@types/jsdom/index.d.ts",
@@ -12600,9 +12779,27 @@
       "../models/index.ts": [
         "../models/drop/index.ts",
         "../models/handy.model.ts",
+        "../models/mydrop/index.ts",
         "../models/shortlink/index.ts",
+        "../models/student/index.ts",
         "../models/uploads/index.ts",
         "../models/user/index.ts"
+      ],
+      "../models/mydrop/index.ts": [
+        "../models/mydrop/model.declaration.ts",
+        "../models/mydrop/model.interface.ts",
+        "../models/mydrop/mydrop.model.ts"
+      ],
+      "../models/mydrop/model.declaration.ts": [
+        "../handy/types/index.d.ts",
+        "../models/mydrop/model.interface.ts"
+      ],
+      "../models/mydrop/model.interface.ts": [
+        "../handy/types/index.d.ts"
+      ],
+      "../models/mydrop/mydrop.model.ts": [
+        "../models/index.ts",
+        "../models/mydrop/model.interface.ts"
       ],
       "../models/shortlink/index.ts": [
         "../models/shortlink/model.declaration.ts",
@@ -12619,6 +12816,22 @@
       "../models/shortlink/shortlink.model.ts": [
         "../models/index.ts",
         "../models/shortlink/model.interface.ts"
+      ],
+      "../models/student/index.ts": [
+        "../models/student/model.declaration.ts",
+        "../models/student/model.interface.ts",
+        "../models/student/student.model.ts"
+      ],
+      "../models/student/model.declaration.ts": [
+        "../handy/types/index.d.ts",
+        "../models/student/model.interface.ts"
+      ],
+      "../models/student/model.interface.ts": [
+        "../handy/types/index.d.ts"
+      ],
+      "../models/student/student.model.ts": [
+        "../models/index.ts",
+        "../models/student/model.interface.ts"
       ],
       "../models/uploads/index.ts": [
         "../models/uploads/model.declaration.ts",
@@ -12727,7 +12940,13 @@
         "../services/handy-services/handy-socket-emitter/handy-socket-emitter.service.ts",
         "../services/handy-services/handy-user/handy-user.service.ts",
         "../services/handy-services/handy-utils/handy-utils.service.ts",
-        "../services/handy.service.ts"
+        "../services/handy.service.ts",
+        "../services/mydrop/mydrop.service.ts"
+      ],
+      "../services/mydrop/mydrop.service.ts": [
+        "../handy/types/index.d.ts",
+        "../models/index.ts",
+        "../services/index.ts"
       ],
       "../validators/mongoose/default.validator.ts": [
         "../handy/core/defaults/models/model-field-validator.ts"
@@ -13132,10 +13351,18 @@
       "../models/drop/model.interface.ts",
       "../models/handy.model.ts",
       "../models/index.ts",
+      "../models/mydrop/index.ts",
+      "../models/mydrop/model.declaration.ts",
+      "../models/mydrop/model.interface.ts",
+      "../models/mydrop/mydrop.model.ts",
       "../models/shortlink/index.ts",
       "../models/shortlink/model.declaration.ts",
       "../models/shortlink/model.interface.ts",
       "../models/shortlink/shortlink.model.ts",
+      "../models/student/index.ts",
+      "../models/student/model.declaration.ts",
+      "../models/student/model.interface.ts",
+      "../models/student/student.model.ts",
       "../models/uploads/index.ts",
       "../models/uploads/model.declaration.ts",
       "../models/uploads/model.interface.ts",
@@ -13163,6 +13390,7 @@
       "../services/handy-services/handy-utils/handy-utils.service.ts",
       "../services/handy.service.ts",
       "../services/index.ts",
+      "../services/mydrop/mydrop.service.ts",
       "../validators/mongoose/default.validator.ts",
       "../validators/mongoose/index.ts",
       "../validators/mongoose/length.validator.ts"

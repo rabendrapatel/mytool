@@ -1,0 +1,53 @@
+{
+  "modelName": "Mydrop",
+  "autoIncrement": true,
+  "softDelete": false,
+  "fields": [
+    {
+      "inputType": "none",
+      "publicName": "Id",
+      "name": "_id",
+      "unique": "all",
+      "required": true
+    },
+    {
+      "name": "content",
+      "publicName": "Content",
+      "inputType": "rich-text",
+      "unique": false,
+      "required": true
+    },
+    {
+      "name": "password",
+      "publicName": "Password",
+      "inputType": "password",
+      "unique": false,
+      "required": true
+    },
+    {
+      "name": "expireAt",
+      "publicName": "Expiration",
+      "inputType": "date",
+      "unique": false,
+      "required": true
+    }
+  ],
+  "searchableFields": [
+    {
+      "name": "_id",
+      "displayValue": "ID"
+    },
+    {
+      "name": "content",
+      "displayValue": "Content"
+    },
+    {
+      "name": "password",
+      "displayValue": "Password"
+    },
+    {
+      "name": "expireAt",
+      "displayValue": "Expiration"
+    }
+  ]
+}

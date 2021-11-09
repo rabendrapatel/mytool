@@ -17,7 +17,7 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
-        // ? Guard for avoinding redirect flicker from homepage to dashboard... 
+        // ? Guard for avoinding redirect flicker from homepage to dashboard...
         canActivate: [UserGuard.condition({ fn: HomePageGuardCondition })],
       },
       {
@@ -43,7 +43,7 @@ const routes: Routes = [
     loadChildren: () => import('./handy/modules/dev/dev.module').then(m => m.DevModule),
     data: {
       pageTitle: setRouteTitle({ title: 'Dev module' })
-    }, 
+    },
   },
   {
     path: 'error',
@@ -63,12 +63,30 @@ const routes: Routes = [
     path: 'pdf-templates',
     loadChildren: () => import('./modules/pdf-templates/pdf-templates.module').then(m => m.PdfTemplatesModule)
   },
-  { 
-    path: 'drop', 
+  {
+    path: 'drop',
     loadChildren: () => import('./modules/drop/drop.module').then(m => m.DropModule),
     data: {
       pageTitle: setRouteTitle({ title: 'Dead drop' })
     },
+  },
+  {
+    path: 'mydrop',
+    loadChildren: () => import('./modules/my-drop/my-drop.module').then(m => m.MyDropModule),
+    data: {
+      pageTitle: setRouteTitle({ title: 'My Dead drop' })
+    },
+  },
+  {
+    path: 'dropmsg',
+    loadChildren: () => import('./modules/dropmsg/dropmsg.module').then(m => m.DropmsgModule) ,
+    data: {
+      pageTitle: setRouteTitle({ title: 'Dead drop Msg' })
+    },
+  },
+  {
+    path: 'student',
+    loadChildren: () => import('./modules/student-crud/student-crud.module').then(m => m.StudentCrudModule),
   },
   {
     path: '**',

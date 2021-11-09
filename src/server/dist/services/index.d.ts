@@ -13,3 +13,4 @@ export * from './handy-services/handy-file-upload/handy-file-upload.service';
 export * from './handy-services/handy-pdf/pdf.service';
 export * from './handy-services/handy-csv/handy-csv.service';
 export * from './drop/drop.service';
+export * from './mydrop/mydrop.service';

@@ -1,436 +1,436 @@
 {
-  "projectName": {
-    "val": "Handy-tools",
-    "devVal": "Handy-tools - Development",
-    "public": true,
-    "stagVal": "Handy-tools - Staging"
-  },
-  "superAdminEmail": {
-    "val": "struckap@gmail.com",
-    "devVal": "struckap@gmail.com"
-  },
-  "createSuperAdminAccount": {
-    "val": false
-  },
-  "domain": {
-    "val": "",
-    "devVal": "localhost",
-    "stagVal": "",
-    "public": true
-  },
-  "ssl": {
-    "val": true,
-    "devVal": false,
-    "public": true
-  },
-  "errors": {
-    "val": {
-      "console": [
-        "low",
-        "medium",
-        "high"
-      ],
-      "notifyByEmail": [
-        "high"
-      ],
-      "emailTo": "struckap@gmail.com",
-      "defaultResponses": {
-        "Server error": {
-          "code": 500,
-          "msg": "Something went wrong on our server. We've been notified about this error and we are working on fixing it."
-        },
-        "Bad request": {
-          "code": 400,
-          "msg": "This request is invalid."
-        },
-        "Unauthorized": {
-          "code": 401,
-          "msg": "You are not authorised to perform this request."
-        },
-        "Forbidden": {
-          "code": 403,
-          "msg": "You are forbidden to perform this request."
-        },
-        "Resource not found": {
-          "code": 404,
-          "msg": "We could't find the resource You are looking for."
-        },
-        "Gone": {
-          "code": 410,
-          "msg": "This resource was removed."
-        },
-        "Unsupported Media Type": {
-          "code": 415,
-          "msg": "This media type is not supported."
-        }
-      },
-      "refCodeLenght": 6,
-      "errorsLogHistorylength": 1000
+    "projectName": {
+        "val": "Handy-tools",
+        "devVal": "Handy-tools - Development",
+        "public": true,
+        "stagVal": "Handy-tools - Staging"
     },
-    "devVal": {
-      "console": [
-        "medium",
-        "high"
-      ]
+    "superAdminEmail": {
+        "val": "rabendra.org@gmail.com",
+        "devVal": "rabendra.org@gmail.com"
     },
-    "stagVal": {
-      "console": [
-        "high"
-      ]
+    "createSuperAdminAccount": {
+        "val": false
     },
-    "generateInterface": true
-  },
-  "mailer": {
-    "val": {
-      "providers": {
-        "zenbox": {
-          "host": "smtp.zenbox.pl",
-          "port": 587,
-          "accounts": {
-            "noReply": {
-              "mail": "no-reply@handyapps.ie",
-              "password": "EepQEA@Yj6rY",
-              "from": "Handy Project"
+    "domain": {
+        "val": "",
+        "devVal": "localhost",
+        "stagVal": "",
+        "public": true
+    },
+    "ssl": {
+        "val": true,
+        "devVal": false,
+        "public": true
+    },
+    "errors": {
+        "val": {
+            "console": [
+                "low",
+                "medium",
+                "high"
+            ],
+            "notifyByEmail": [
+                "high"
+            ],
+            "emailTo": "rabendra.org@gmail.com",
+            "defaultResponses": {
+                "Server error": {
+                    "code": 500,
+                    "msg": "Something went wrong on our server. We've been notified about this error and we are working on fixing it."
+                },
+                "Bad request": {
+                    "code": 400,
+                    "msg": "This request is invalid."
+                },
+                "Unauthorized": {
+                    "code": 401,
+                    "msg": "You are not authorised to perform this request."
+                },
+                "Forbidden": {
+                    "code": 403,
+                    "msg": "You are forbidden to perform this request."
+                },
+                "Resource not found": {
+                    "code": 404,
+                    "msg": "We could't find the resource You are looking for."
+                },
+                "Gone": {
+                    "code": 410,
+                    "msg": "This resource was removed."
+                },
+                "Unsupported Media Type": {
+                    "code": 415,
+                    "msg": "This media type is not supported."
+                }
+            },
+            "refCodeLenght": 6,
+            "errorsLogHistorylength": 1000
+        },
+        "devVal": {
+            "console": [
+                "medium",
+                "high"
+            ]
+        },
+        "stagVal": {
+            "console": [
+                "high"
+            ]
+        },
+        "generateInterface": true
+    },
+    "mailer": {
+        "val": {
+            "providers": {
+                "zenbox": {
+                    "host": "smtp.zenbox.pl",
+                    "port": 587,
+                    "accounts": {
+                        "noReply": {
+                            "mail": "no-reply@handyapps.ie",
+                            "password": "EepQEA@Yj6rY",
+                            "from": "Handy Project"
+                        }
+                    },
+                    "defaultAccount": "noReply"
+                }
+            },
+            "defaultProvider": "zenbox",
+            "templatesPath": "src/server/templates/mailer",
+            "defaultTextMsg": "Your email client doesn't support HTML emails. Open this message in another email client."
+        },
+        "generateInterface": true
+    },
+    "secret": {
+        "val": "yjrxo588",
+        "stagVal": "kj4kvio5",
+        "devVal": "wymf140r"
+    },
+    "cookieSecret": {
+        "val": "7ecadmz2",
+        "stagVal": "az4wp11n",
+        "devVal": "flzchc9n"
+    },
+    "jwt": {
+        "val": {
+            "types": {
+                "webApp": {
+                    "secret": "sp5bibma",
+                    "prefix": "Bearer_",
+                    "sufix": "_wa",
+                    "lifeSpanUnit": "hr",
+                    "lifeSpan": 1,
+                    "refreshKoeficient": 0.75
+                },
+                "mobileApp": {
+                    "secret": "unun7qts",
+                    "prefix": "Bearer_",
+                    "sufix": "_ma",
+                    "lifeSpanUnit": "hr",
+                    "lifeSpan": 1,
+                    "refreshKoeficient": 0.75
+                },
+                "refresh": {
+                    "secret": "qiig65y9",
+                    "prefix": "Refresh_Bearer_",
+                    "sufix": "_rf",
+                    "lifeSpanUnit": "d",
+                    "lifeSpan": 10,
+                    "refreshKoeficient": 0.7
+                }
             }
-          },
-          "defaultAccount": "noReply"
-        }
-      },
-      "defaultProvider": "zenbox",
-      "templatesPath": "src/server/templates/mailer",
-      "defaultTextMsg": "Your email client doesn't support HTML emails. Open this message in another email client."
-    },
-    "generateInterface": true
-  },
-  "secret": {
-    "val": "yjrxo588",
-    "stagVal": "kj4kvio5",
-    "devVal": "wymf140r"
-  },
-  "cookieSecret": {
-    "val": "7ecadmz2",
-    "stagVal": "az4wp11n",
-    "devVal": "flzchc9n"
-  },
-  "jwt": {
-    "val": {
-      "types": {
-        "webApp": {
-          "secret": "sp5bibma",
-          "prefix": "Bearer_",
-          "sufix": "_wa",
-          "lifeSpanUnit": "hr",
-          "lifeSpan": 1,
-          "refreshKoeficient": 0.75
         },
-        "mobileApp": {
-          "secret": "unun7qts",
-          "prefix": "Bearer_",
-          "sufix": "_ma",
-          "lifeSpanUnit": "hr",
-          "lifeSpan": 1,
-          "refreshKoeficient": 0.75
+        "generateInterface": true
+    },
+    "userRegistration": {
+        "val": {
+            "openRegistration": false,
+            "emailInvitation": true,
+            "verifyEmail": true,
+            "minPasswordStrengthPoints": 70,
+            "multiStepRegistration": true
         },
-        "refresh": {
-          "secret": "qiig65y9",
-          "prefix": "Refresh_Bearer_",
-          "sufix": "_rf",
-          "lifeSpanUnit": "d",
-          "lifeSpan": 10,
-          "refreshKoeficient": 0.7
+        "public": true
+    },
+    "usersRoles": {
+        "val": {
+            "superAdmin": {
+                "description": "Can do anything",
+                "canBeCreatedBy": [
+                    "superAdmin"
+                ],
+                "defaultPermissions": [],
+                "publicName": "Super Admin"
+            },
+            "admin": {
+                "description": "Can do app owner stuff",
+                "canBeCreatedBy": [
+                    "superAdmin",
+                    "admin"
+                ],
+                "defaultPermissions": [
+                    "loggedIn"
+                ],
+                "publicName": "Admin"
+            },
+            "user": {
+                "description": "Can do user designated stuff",
+                "defaultPermissions": [
+                    "loggedIn"
+                ],
+                "canBeCreatedBy": [
+                    "superAdmin",
+                    "admin"
+                ],
+                "publicName": "User"
+            }
+        },
+        "public": true,
+        "generateInterface": true
+    },
+    "defaultUserRole": {
+        "val": "user"
+    },
+    "allowUsersGroups": {
+        "val": false,
+        "public": true,
+        "generateInterface": true
+    },
+    "userGroups": {
+        "val": {
+            "paid": {
+                "description": "Can do anything"
+            },
+            "free": {
+                "description": "Can do free stuff"
+            }
+        },
+        "public": true,
+        "generateInterface": true
+    },
+    "defaultUserGroupType": {
+        "val": "free"
+    },
+    "additionalAccessPermissionsSettings": {
+        "val": {
+            "loggedIn": {
+                "description": "Logged in user",
+                "publicName": "Logged in"
+            }
+        },
+        "public": true,
+        "generateInterface": true
+    },
+    "userPassSufixFlag": {
+        "val": "c227kk2f",
+        "stagVal": "2z2vcwvk",
+        "devVal": "h5vcls8i"
+    },
+    "mongoDB": {
+        "val": {
+            "active": true,
+            "defaultQueryLimit": 1000,
+            "defaultSoftDelete": true,
+            "defaultCreatedAt": true,
+            "defaultCreatedBy": true,
+            "defaultLeanFindResults": true,
+            "defaultPaginationDataIncluded": true,
+            "defaultExactPagination": true,
+            "defaultQueryDeletedOption": "active",
+            "defaultChangesHistory": true,
+            "defaultChangesHistoryLength": 5,
+            "defaultChangesHistoryLimited": true,
+            "defaultKeysToRemoveFromChangesHistory": [
+                "createdBy",
+                "createdAt",
+                "changesHistory",
+                "_id"
+            ],
+            "searchDefaultOptions": {
+                "caseSensitive": false,
+                "multiline": true,
+                "extended": false,
+                "dotAsWildCard": false
+            },
+            "defaultModelsRoutable": true,
+            "defaultValidationOnUpdate": true,
+            "returnUpdatedDocOnUpdateByDefault": true,
+            "mongooseAutoIndexing": false,
+            "stringAutoTrimming": false,
+            "port": 27017,
+            "dbName": "this#projectName",
+            "local": true,
+            "host": "",
+            "auth": false,
+            "user": "",
+            "password": "",
+            "secret": "this#secret",
+            "wrongIndexingWaring": true,
+            "uniqueValidatorOnNonIndexedFieldWarning": true,
+            "mongooseDebugMode": false
+        },
+        "devVal": {
+            "mongooseDebugMode": false
+        },
+        "generateInterface": true
+    },
+    "apiVersions": {
+        "val": [
+            "1"
+        ],
+        "public": true
+    },
+    "defaultApiVersions": {
+        "val": "1",
+        "public": true
+    },
+    "publicRoutingByDefault": {
+        "val": false
+    },
+    "serverPort": {
+        "val": 3011,
+        "stagVal": 3012,
+        "devVal": 80,
+        "public": false
+    },
+    "usedRequestHeaders": {
+        "val": [
+            "Authorization",
+            "Dev-authorization",
+            "Origin",
+            "Handy-client-session-id",
+            "Handy-client-device-id",
+            "X-xsrf-token"
+        ]
+    },
+    "deviceIdCookieHash": {
+        "val": "8bl9l0b7",
+        "public": true
+    },
+    "objectCookiePreffix": {
+        "val": "__HandyObjectCookieVal_",
+        "public": true
+    },
+    "cors": {
+        "val": {
+            "active": true,
+            "allowedOrigins": [
+                "*"
+            ],
+            "methodsToCheck": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS"
+        },
+        "devVal": {
+            "active": true
         }
-      }
     },
-    "generateInterface": true
-  },
-  "userRegistration": {
-    "val": {
-      "openRegistration": false,
-      "emailInvitation": true,
-      "verifyEmail": true,
-      "minPasswordStrengthPoints": 70,
-      "multiStepRegistration": true
+    "isMicroService": {
+        "val": false
     },
-    "public": true
-  },
-  "usersRoles": {
-    "val": {
-      "superAdmin": {
-        "description": "Can do anything",
-        "canBeCreatedBy": [
-          "superAdmin"
-        ],
-        "defaultPermissions": [],
-        "publicName": "Super Admin"
-      },
-      "admin": {
-        "description": "Can do app owner stuff",
-        "canBeCreatedBy": [
-          "superAdmin",
-          "admin"
-        ],
-        "defaultPermissions": [
-          "loggedIn"
-        ],
-        "publicName": "Admin"
-      },
-      "user": {
-        "description": "Can do user designated stuff",
-        "defaultPermissions": [
-          "loggedIn"
-        ],
-        "canBeCreatedBy": [
-          "superAdmin",
-          "admin"
-        ],
-        "publicName": "User"
-      }
-    },
-    "public": true,
-    "generateInterface": true
-  },
-  "defaultUserRole": {
-    "val": "user"
-  },
-  "allowUsersGroups": {
-    "val": false,
-    "public": true,
-    "generateInterface": true
-  },
-  "userGroups": {
-    "val": {
-      "paid": {
-        "description": "Can do anything"
-      },
-      "free": {
-        "description": "Can do free stuff"
-      }
-    },
-    "public": true,
-    "generateInterface": true
-  },
-  "defaultUserGroupType": {
-    "val": "free"
-  },
-  "additionalAccessPermissionsSettings": {
-    "val": {
-      "loggedIn": {
-        "description": "Logged in user",
-        "publicName": "Logged in"
-      }
-    },
-    "public": true,
-    "generateInterface": true
-  },
-  "userPassSufixFlag": {
-    "val": "c227kk2f",
-    "stagVal": "2z2vcwvk",
-    "devVal": "h5vcls8i"
-  },
-  "mongoDB": {
-    "val": {
-      "active": true,
-      "defaultQueryLimit": 1000,
-      "defaultSoftDelete": true,
-      "defaultCreatedAt": true,
-      "defaultCreatedBy": true,
-      "defaultLeanFindResults": true,
-      "defaultPaginationDataIncluded": true,
-      "defaultExactPagination": true,
-      "defaultQueryDeletedOption": "active",
-      "defaultChangesHistory": true,
-      "defaultChangesHistoryLength": 5,
-      "defaultChangesHistoryLimited": true,
-      "defaultKeysToRemoveFromChangesHistory": [
-        "createdBy",
-        "createdAt",
-        "changesHistory",
-        "_id"
-      ],
-      "searchDefaultOptions": {
-        "caseSensitive": false,
-        "multiline": true,
-        "extended": false,
-        "dotAsWildCard": false
-      },
-      "defaultModelsRoutable": true,
-      "defaultValidationOnUpdate": true,
-      "returnUpdatedDocOnUpdateByDefault": true,
-      "mongooseAutoIndexing": false,
-      "stringAutoTrimming": false,
-      "port": 27017,
-      "dbName": "this#projectName",
-      "local": true,
-      "host": "",
-      "auth": false,
-      "user": "",
-      "password": "",
-      "secret": "this#secret",
-      "wrongIndexingWaring": true,
-      "uniqueValidatorOnNonIndexedFieldWarning": true,
-      "mongooseDebugMode": false
-    },
-    "devVal": {
-      "mongooseDebugMode": false
-    },
-    "generateInterface": true
-  },
-  "apiVersions": {
-    "val": [
-      "1"
-    ],
-    "public": true
-  },
-  "defaultApiVersions": {
-    "val": "1",
-    "public": true
-  },
-  "publicRoutingByDefault": {
-    "val": false
-  },
-  "serverPort": {
-    "val": 3011,
-    "stagVal": 3012,
-    "devVal": 80,
-    "public": false
-  },
-  "usedRequestHeaders": {
-    "val": [
-      "Authorization",
-      "Dev-authorization",
-      "Origin",
-      "Handy-client-session-id",
-      "Handy-client-device-id",
-      "X-xsrf-token"
-    ]
-  },
-  "deviceIdCookieHash": {
-    "val": "8bl9l0b7",
-    "public": true
-  },
-  "objectCookiePreffix": {
-    "val": "__HandyObjectCookieVal_",
-    "public": true
-  },
-  "cors": {
-    "val": {
-      "active": true,
-      "allowedOrigins": [
-        "*"
-      ],
-      "methodsToCheck": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS"
-    },
-    "devVal": {
-      "active": true
-    }
-  },
-  "isMicroService": {
-    "val": false
-  },
-  "webClientSettings": {
-    "val": {
-      "clientRootPath": "./src/client/web",
-      "ssr": true,
-      "ssrRenderingTimeout": 5000
-    },
-    "devVal": {
-      "ssr": false
-    }
-  },
-  "socketConnectionType": {
-    "val": [
-      "websocket",
-      "polling"
-    ],
-    "public": true
-  },
-  "failedLoginLock": {
-    "val": {
-      "active": true,
-      "lockAfterFailedLoginAttemptsCount": 3,
-      "sendUnlockEmailAfterLock": true,
-      "unlockEmailSubject": "Account locked",
-      "lockDuration": {
-        "unit": "min",
-        "length": 30
-      }
-    }
-  },
-  "loginsRecordsTrackLength": {
-    "val": 10
-  },
-  "defaultUserPreferences": {
-    "val": {
-      "webNotificationPosition": {
-        "horizontal": "right",
-        "vertical": "top"
-      },
-      "webNotificationDurationInSeconds": 5,
-      "webDarkTheme": false,
-      "webSidenavOpenState": true,
-      "webSidenavMode": "side",
-      "webSidenavPosition": "side",
-      "webSidenavPinned": true,
-      "mobileWebSidenavPinned": true
-    },
-    "public": true
-  },
-  "logNetworkIpQrCodeOnDev": {
-    "val": true
-  },
-  "fileUpload": {
-    "val": {
-      "maxFileSizeInMB": 5,
-      "allowedFileTypes": [
-        "jpg",
-        "jpeg",
-        "png",
-        "svg",
-        "pdf",
-        "csv"
-      ],
-      "imgFileTypes": [
-        "jpg",
-        "jpeg",
-        "svg",
-        "png"
-      ],
-      "separateUploadHandlersFileTypes": [
-        "svg"
-      ],
-      "thumsSets": {
-        "logo": {
-          "width": 500,
-          "height": 500,
-          "position": "center",
-          "background": "#ffffff",
-          "fit": "contain"
+    "webClientSettings": {
+        "val": {
+            "clientRootPath": "./src/client/web",
+            "ssr": true,
+            "ssrRenderingTimeout": 5000
+        },
+        "devVal": {
+            "ssr": false
         }
-      },
-      "fileTypeThumbsIcons": {
-        "jpg": "isThumb",
-        "jpeg": "isThumb",
-        "png": "isThumb",
-        "svg": "isThumb",
-        "pdf": "picture_as_pdf",
-        "rest": "attachment"
-      },
-      "imgThumbIconPlaceholder": "isThumb",
-      "loadingImageIcon": "perm_media"
     },
-    "public": true
-  },
-  "clientAnalytics": {
-    "val": {
-      "tracking": true,
-      "abTesting": true,
-      "recordSession": true
+    "socketConnectionType": {
+        "val": [
+            "websocket",
+            "polling"
+        ],
+        "public": true
     },
-    "devVal": {
-      "tracking": true,
-      "abTesting": true,
-      "recordSession": true
+    "failedLoginLock": {
+        "val": {
+            "active": true,
+            "lockAfterFailedLoginAttemptsCount": 3,
+            "sendUnlockEmailAfterLock": true,
+            "unlockEmailSubject": "Account locked",
+            "lockDuration": {
+                "unit": "min",
+                "length": 30
+            }
+        }
     },
-    "public": true
-  }
+    "loginsRecordsTrackLength": {
+        "val": 10
+    },
+    "defaultUserPreferences": {
+        "val": {
+            "webNotificationPosition": {
+                "horizontal": "right",
+                "vertical": "top"
+            },
+            "webNotificationDurationInSeconds": 5,
+            "webDarkTheme": false,
+            "webSidenavOpenState": true,
+            "webSidenavMode": "side",
+            "webSidenavPosition": "side",
+            "webSidenavPinned": true,
+            "mobileWebSidenavPinned": true
+        },
+        "public": true
+    },
+    "logNetworkIpQrCodeOnDev": {
+        "val": true
+    },
+    "fileUpload": {
+        "val": {
+            "maxFileSizeInMB": 5,
+            "allowedFileTypes": [
+                "jpg",
+                "jpeg",
+                "png",
+                "svg",
+                "pdf",
+                "csv"
+            ],
+            "imgFileTypes": [
+                "jpg",
+                "jpeg",
+                "svg",
+                "png"
+            ],
+            "separateUploadHandlersFileTypes": [
+                "svg"
+            ],
+            "thumsSets": {
+                "logo": {
+                    "width": 500,
+                    "height": 500,
+                    "position": "center",
+                    "background": "#ffffff",
+                    "fit": "contain"
+                }
+            },
+            "fileTypeThumbsIcons": {
+                "jpg": "isThumb",
+                "jpeg": "isThumb",
+                "png": "isThumb",
+                "svg": "isThumb",
+                "pdf": "picture_as_pdf",
+                "rest": "attachment"
+            },
+            "imgThumbIconPlaceholder": "isThumb",
+            "loadingImageIcon": "perm_media"
+        },
+        "public": true
+    },
+    "clientAnalytics": {
+        "val": {
+            "tracking": true,
+            "abTesting": true,
+            "recordSession": true
+        },
+        "devVal": {
+            "tracking": true,
+            "abTesting": true,
+            "recordSession": true
+        },
+        "public": true
+    }
 }

@@ -29,7 +29,7 @@ export class CreateDropComponent implements OnInit {
 
     let { content, expiryAt } = this;
     this.__api.postRequest('/service/drop/create', {
-      content, expiryAt 
+      content, expiryAt
     }).subscribe(requestResult => {
 
       let { url, password } = requestResult.data;

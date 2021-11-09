@@ -580,10 +580,10 @@ module.exports = content.locals || {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Projects\handy-tools\src\client\web\src\styles.scss */"./src/styles.scss");
-__webpack_require__(/*! C:\Projects\handy-tools\src\client\web\src\app\handy\core\defaults\styles.scss */"./src/app/handy/core/defaults/styles.scss");
-__webpack_require__(/*! C:\Projects\handy-tools\src\client\web\src\app\handy\core\defaults\grid.scss */"./src/app/handy/core/defaults/grid.scss");
-module.exports = __webpack_require__(/*! C:\Projects\handy-tools\src\client\web\src\project.styles.scss */"./src/project.styles.scss");
+__webpack_require__(/*! E:\My Project\Freelance\Project\tools\src\client\web\src\styles.scss */"./src/styles.scss");
+__webpack_require__(/*! E:\My Project\Freelance\Project\tools\src\client\web\src\app\handy\core\defaults\styles.scss */"./src/app/handy/core/defaults/styles.scss");
+__webpack_require__(/*! E:\My Project\Freelance\Project\tools\src\client\web\src\app\handy\core\defaults\grid.scss */"./src/app/handy/core/defaults/grid.scss");
+module.exports = __webpack_require__(/*! E:\My Project\Freelance\Project\tools\src\client\web\src\project.styles.scss */"./src/project.styles.scss");
 
 
 /***/ })

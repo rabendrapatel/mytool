@@ -15,4 +15,6 @@ __exportStar(require("./user"), exports);
 __exportStar(require("./shortlink"), exports);
 __exportStar(require("./uploads"), exports);
 __exportStar(require("./drop"), exports);
+__exportStar(require("./mydrop"), exports);
+__exportStar(require("./student"), exports);
 //# sourceMappingURL=index.js.map

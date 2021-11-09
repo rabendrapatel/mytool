@@ -4,7 +4,9 @@ import { HandyErrorService, HandyConfigService, DropService } from "@services";
 
 import { HandyCoreModule } from '@handy/handy-core.module';
 import { UserModel } from '@models/user';
-import { DropModel } from '@models';
+import { DropModel, MydropModel } from '@models';
+import { MydropService } from '@services/mydrop/mydrop.service';
+import { StudentModel } from '@models/student';
 
 @HandyModule({
   // Basically prebuild services that are essential to run first...
@@ -16,7 +18,10 @@ import { DropModel } from '@models';
     HandyCoreModule,
     UserModel,
     DropModel,
-    DropService
+    MydropModel,
+    StudentModel,
+    DropService,
+    MydropService
   ]
 })
 export class HandyServer {}

@@ -13,6 +13,8 @@ const _services_1 = require("@services");
 const handy_core_module_1 = require("@handy/handy-core.module");
 const user_1 = require("@models/user");
 const _models_1 = require("@models");
+const mydrop_service_1 = require("@services/mydrop/mydrop.service");
+const student_1 = require("@models/student");
 let HandyServer = class HandyServer {
 };
 HandyServer = __decorate([
@@ -26,7 +28,10 @@ HandyServer = __decorate([
             handy_core_module_1.HandyCoreModule,
             user_1.UserModel,
             _models_1.DropModel,
-            _services_1.DropService
+            _models_1.MydropModel,
+            student_1.StudentModel,
+            _services_1.DropService,
+            mydrop_service_1.MydropService
         ]
     })
 ], HandyServer);

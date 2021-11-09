@@ -1,0 +1,22 @@
+<div *ngIf="creating" style="width: 100%;">
+
+    <!-- Content -->
+    <handy-rte-input fxFlex="100%" [(ngModel)]="content" fieldName="dropCrudForm_content" placeholder="Content"></handy-rte-input>
+
+    <!-- Expiration -->
+    <handy-date-input [minDate]="minExpiryAt" class="handy-form-input" [getTime]="true" [showTimeZone]="true" [selectableTimezone]="false" [multiSelect]="false" [(ngModel)]="expireAt" fieldName="dropCrudForm_expiryAt" label="Expiration" placeholder="Expiration"></handy-date-input>
+
+    <raised-btn [disabled]="!content || !expireAt" (click)="createDrop()">Create drop</raised-btn>
+
+</div>
+
+<div *ngIf="!creating" style="width: 100%;">
+
+    <div>
+        <span>{{ url }}</span><br>
+        <span>{{ password }}</span>
+    </div>
+
+    <raised-btn (click)="reset()">Create new drop</raised-btn>
+
+</div>

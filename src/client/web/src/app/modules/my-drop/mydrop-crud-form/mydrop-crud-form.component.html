@@ -1,0 +1,62 @@
+<ng-template #formContent>
+  <handy-form #formComp [formName]="formName" [formGroup]="form" [rememberState]="rememberFormState"
+    [defaultResetBtn]="true" [disablePin]="isUpdate" (validSubmitEvent)="onValidSubmit($event)" [hideFormOptions]="true"
+    (invalidSubmitEvent)="onInvalidSubmit($event)" (submitDisabledChange)="submitDisabledChange($event)">
+
+    <div fxLayout="row wrap" fxLayoutGap="8px">
+      <!-- Content -->
+      <handy-rte-input fxFlex="100%" [formControl]="form.get('content')" fieldName="mydropCrudForm_content" placeholder="Content"></handy-rte-input>
+
+      <!-- Password -->
+      <handy-password-input class="handy-form-input" [formControl]="form.get('password')" fieldName="mydropCrudForm_password" label="Password" placeholder="Password"></handy-password-input>
+
+      <!-- Expiration -->
+      <handy-date-input class="handy-form-input" [getTime]="false" [showTimeZone]="true" [selectableTimezone]="false" [multiSelect]="false" [formControl]="form.get('expireAt')" fieldName="mydropCrudForm_expireAt" label="Expiration" placeholder="Expiration"></handy-date-input>
+
+
+      <div *ngIf="!inDialog" fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="flex-end flex-end">
+
+        <div fxFlex="100%" class="handy-form-actions-divider">
+          <mat-divider></mat-divider>
+        </div>
+
+        <raised-btn color="primary" [disabled]="submitDisabled" (click)="triggerSubmit()">Submit
+        </raised-btn>
+
+      </div>
+
+    </div>
+
+  </handy-form>
+</ng-template>
+
+<!-- For handling both, as regular component and as dialog -->
+<ng-container *ngIf="!inDialog">
+
+  <div class="handy-form-page-wrapper">
+
+    <div class="handy-form-wrapper">
+
+      <basic-btn icon="chevron_left" [routerLink]="[(isUpdate) ? '../../' : '../']">Back to all</basic-btn>
+      <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+    </div>
+
+  </div>
+
+</ng-container>
+
+<ng-container *ngIf="inDialog">
+
+  <mat-dialog-content class="mat-typography">
+
+    <ng-container *ngTemplateOutlet="formContent"></ng-container>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <basic-btn icon="close" (click)="dialogRef.close()">Cancel</basic-btn>
+    <raised-btn color="primary" [disabled]="submitDisabled" (click)="triggerSubmit()">Submit</raised-btn>
+  </mat-dialog-actions>
+
+</ng-container>

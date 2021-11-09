@@ -26,4 +26,5 @@ __exportStar(require("./handy-services/handy-file-upload/handy-file-upload.servi
 __exportStar(require("./handy-services/handy-pdf/pdf.service"), exports);
 __exportStar(require("./handy-services/handy-csv/handy-csv.service"), exports);
 __exportStar(require("./drop/drop.service"), exports);
+__exportStar(require("./mydrop/mydrop.service"), exports);
 //# sourceMappingURL=index.js.map

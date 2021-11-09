@@ -1,0 +1,75 @@
+{
+  "modelName": "Student",
+  "autoIncrement": true,
+  "softDelete": false,
+  "fields": [
+    {
+      "inputType": "none",
+      "publicName": "Id",
+      "name": "_id",
+      "unique": "all",
+      "required": true
+    },
+    {
+      "name": "studentName",
+      "publicName": "Student Name",
+      "inputType": "text",
+      "unique": false,
+      "required": true
+    },
+    {
+      "name": "studentAddress",
+      "publicName": "Full Address",
+      "inputType": "text-area",
+      "unique": false,
+      "required": true
+    },
+    {
+      "name": "studentCourse",
+      "publicName": "Course",
+      "inputType": "select",
+      "unique": false,
+      "required": true
+    },
+    {
+      "name": "studentMobile",
+      "publicName": "Mobile No",
+      "inputType": "number",
+      "unique": true,
+      "required": true
+    },
+    {
+      "name": "studentEmail",
+      "publicName": "Email",
+      "inputType": "text",
+      "unique": false,
+      "required": false
+    }
+  ],
+  "searchableFields": [
+    {
+      "name": "_id",
+      "displayValue": "ID"
+    },
+    {
+      "name": "studentName",
+      "displayValue": "Student Name"
+    },
+    {
+      "name": "studentAddress",
+      "displayValue": "Full Address"
+    },
+    {
+      "name": "studentCourse",
+      "displayValue": "Course"
+    },
+    {
+      "name": "studentMobile",
+      "displayValue": "Mobile No"
+    },
+    {
+      "name": "studentEmail",
+      "displayValue": "Email"
+    }
+  ]
+}
